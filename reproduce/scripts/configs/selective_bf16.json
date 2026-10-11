@@ -1,0 +1,16 @@
+{
+  "transformer": {
+    "method": "fp8",
+    "activation_scheme": "dynamic",
+    "is_checkpoint_fp8_serialized": false,
+    "ignored_layers": [
+      "transformer.transformer_blocks.0.*",
+      "transformer.transformer_blocks.1.*",
+      "transformer.transformer_blocks.30.*",
+      "transformer.transformer_blocks.31.*"
+    ]
+  },
+  "text_encoder": null,
+  "vae": null,
+  "default": null
+}

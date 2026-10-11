@@ -1,0 +1,219 @@
+{
+  "created_at_utc": "2026-10-11T12:32:10.255510+00:00",
+  "scope": "Exact copied C1 reproduction scripts/configs from archived remote execution; no source bytes or archived evidence hashes rewritten. Documentation/manifest are publication additions.",
+  "upstream_a0_revision": "cf99e73c8fa1603718c47405730d94c9fbfe6e16",
+  "omni_revision": "3dc35694b3d458fc1461a8fe71832ac12e8c8cea",
+  "model_revision": "d26bb61231c349cf6b7896fa83353113880e1ba3",
+  "files": [
+    {
+      "public_path": "reproduce/scripts/c1_offline.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/c1_offline.py",
+      "sha256": "17e0e0323c0d30d319abb42d6c807f8f8a930233f2d387292b29e03cf42925b0",
+      "bytes": 19522,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/c1_serving.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/c1_serving.py",
+      "sha256": "2ff421a38ab0c4791deed880b18f0a1987f2eea5417dd0595164a74650d53033",
+      "bytes": 9385,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/run_experiment.sh",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/run_experiment.sh",
+      "sha256": "5ced2f688c1dbf130abd42b9c61d4564ca18798aa27d97db597ae2fbacf748ee",
+      "bytes": 3574,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/setup.sh",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/setup.sh",
+      "sha256": "1ff498a1dee9ce7f2cd3fe4e79e1495360f9f59b6bff97a999642bbd5d2a7a84",
+      "bytes": 3045,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/constraints.txt",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/constraints.txt",
+      "sha256": "1f0497c63ebe3529d5f053e223624ad16e3317c9162709185a5d89d80094e006",
+      "bytes": 117,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quality_manifest.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quality_manifest.json",
+      "sha256": "7740b28014c2237f667b2f9b54e4bc8351cccde2da916a00cc3b44d63b151c58",
+      "bytes": 19141,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quality_manifest_effective.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quality_manifest_effective.json",
+      "sha256": "00316975bdce49a82ff721a9ee076a1a0663e0ee7bffd31974b58295fde46a6c",
+      "bytes": 19423,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/analyze_performance.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/analyze_performance.py",
+      "sha256": "43278fee21048c381bef34b3c450cd104254b5cfe70fe0edf579b31ab46e44f5",
+      "bytes": 26731,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/analyze_profiles.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/analyze_profiles.py",
+      "sha256": "e15cb78db7a49bc213344b0d7edf8c4f2ed664f95566d581b792f840c79a5e06",
+      "bytes": 35768,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/analysis/analyse_quality.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/analysis/analyse_quality.py",
+      "sha256": "2c2dd13be62b9014259696c013a3b71fc9c175abefceb63ccc4dc155abba4c39",
+      "bytes": 29490,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/reference/parse_diagnostics.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/reference/parse_diagnostics.py",
+      "sha256": "8c77adc895fc220f7568e4e51146a9150d0cffa8a9bf4d4f6bdbc04f259918f5",
+      "bytes": 1981,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/reference/profiler_export_only/sitecustomize.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/reference/profiler_export_only/sitecustomize.py",
+      "sha256": "455d4e96f7ecb7f96594fcc474d7eab0f563ee4e227843118e86fe346bd813ba",
+      "bytes": 2906,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/configs/arms.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/arms.json",
+      "sha256": "dc9577e05f94bd496bc0d3e2c6dc627f53e08c3e8f6d016f838aad476810827b",
+      "bytes": 1899,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/configs/bf16.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/bf16.json",
+      "sha256": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+      "bytes": 84,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/configs/dit_fp8.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/dit_fp8.json",
+      "sha256": "3a83d78d9578e3503448249c1ca85959d70959f42af3154eec02e7ac637d2ae1",
+      "bytes": 184,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/configs/joint_fp8.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/joint_fp8.json",
+      "sha256": "3d57c141835473c5d96c45cf821852fd6e620e552a290d37bb8c66ba978ff010",
+      "bytes": 355,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/configs/selective_bf16.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/selective_bf16.json",
+      "sha256": "3f5a289d9b4c5db9c1ff1835ff5441fdc56862620a6a8d7bc633be274d622525",
+      "bytes": 392,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/configs/te_fp8.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/te_fp8.json",
+      "sha256": "782cf375cbd2ab774bb87bb889dddd889b68d770e48c1701a417585780ad8acc",
+      "bytes": 255,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quant_audit/sitecustomize.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/sitecustomize.py",
+      "sha256": "15a641c31fbee179fa514fdb2e77177e37d7132d9034cfd2ca0fa3629f0bbcad",
+      "bytes": 14808,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quant_audit/audit_protocol.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/audit_protocol.py",
+      "sha256": "2f747a3684c0ed1cccd986927665045541e745fde2501ee3e59ed6c56a7cbf7c",
+      "bytes": 4434,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quant_audit/verify_audit.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/verify_audit.py",
+      "sha256": "2f252bc97e4f889d54e3a3edfa72d593d8f96192431210971da9e6b67cad4408",
+      "bytes": 5769,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quant_audit/source_guards.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/source_guards.json",
+      "sha256": "7560e7e632a32717fda0f70a41a7381f6d337e17ae0d26fe5c125905a6144716",
+      "bytes": 1248,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quant_audit/expected_topology.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/expected_topology.json",
+      "sha256": "8dfa7116ddbe04e04640d633759e55f53065b97e64617e5313ddd19359119116",
+      "bytes": 32410,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/quant_audit/cpu_selftest.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/cpu_selftest.py",
+      "sha256": "74b8a8411098e589cf1eb64cec8d182f9cb3e4a6928e3524137e3513df2ab1b9",
+      "bytes": 5322,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    },
+    {
+      "public_path": "reproduce/scripts/capture_kernel_sources.py",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/capture_kernel_sources.py",
+      "sha256": "1540d663a4118e463daf66bcc12c13fb0ca1e7dcaf70a4a5e7e5213cfe67cbef",
+      "bytes": 945,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true
+    }
+  ],
+  "omitted": [
+    "complete upstream A0 repository/bench tree",
+    "historical PID1953 run_postprocess.sh",
+    "lark/Feishu upload helpers",
+    "provider provisioning/status/cleanup scripts",
+    "__pycache__/pyc",
+    "model weights",
+    "previous run logs/results"
+  ],
+  "capture_scope_note": "Original capture helper kept byte-identical; run only in a fresh experiment-only container because it collects /tmp/torchinductor_* Python sources. Captured dependency sources retain their own provenance/headers and are not relicensed."
+}

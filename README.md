@@ -1,0 +1,29 @@
+# Qwen-Image 2.1 — C1 H200 experiments
+
+Performance, paired image quality and torch-profiler evidence for the C1 FP8 work in [vLLM-Omni #8586](https://github.com/vllm-project/vllm-omni/issues/8586), following [luca-888's A0 baseline](https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/A0_REPORT.md).
+
+**1× H200 SXM · 1024² · 50 steps · CFG 1 · eager · FA3 · batch/concurrency 1.** Five fresh arms: BF16, DiT FP8, language-encoder FP8, joint FP8, and selective DiT FP8 with BF16 blocks.
+
+| Start here | Contents |
+|---|---|
+| [C1 report](C1_REPORT.md) | Setup, A0 cross-check, latency, memory, quality and profiler findings |
+| [Original image gallery](GALLERY.md) | Same-input comparisons: T2I, editing, English and Chinese text |
+| [Raw data and ten traces](https://github.com/Dmaner/qwen-image-21-bench/releases/tag/c1-h200-20261011) | All 120 quality outputs, raw request rows/logs, memory snapshots and separate A0 cross-check |
+| [Data index](data/README.md) | Machine-readable results and evidence mapping |
+| [Reproduction](reproduce/README.md) | Executed harness, configs, frozen prompts and analysis tools |
+| [Issue comment](ISSUE_COMMENT.md) | Concise draft with public links |
+| [Provenance](PROVENANCE.md) | Source revisions, attribution and artifact boundaries |
+
+DiT-only FP8 reduced offline T2I/edit latency by **17.1% / 14.7%** and peak allocated memory by **6.50 GiB**. Joint FP8 saved **12.97 GiB**, but both lost the requested title in one text-rendering case. The selective configuration retained it with a small speed/memory cost. **Quality acceptance remains pending**; the review is model-assisted and the selected images are not a general quality pass.
+
+The main report uses the **2026-10-11 Phase 2 five-arm cohort**. The historical **2026-10-10 A0 cross-check** is separate; the earlier Phase 1 pilot is not pooled into these results. No model weights are distributed.
+
+Download and verify the raw archives:
+
+```sh
+gh release download c1-h200-20261011 --repo Dmaner/qwen-image-21-bench --dir c1-data
+cd c1-data
+sha256sum -c SHA256SUMS  # macOS: shasum -a 256 -c SHA256SUMS
+```
+
+See [ARTIFACT_MANIFEST.json](data/ARTIFACT_MANIFEST.json) for archive/member hashes and exclusions. Original experimental files retain recorded paths and timestamps. Operational account files and the duplicate A0 checkout were omitted from the public package; retained evidence bytes were not edited. Chrome trace JSON can be inspected directly; only deserialize a pickle snapshot if you trust its provenance.

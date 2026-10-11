@@ -1,0 +1,206 @@
+{
+  "verified_at_utc": "2026-10-11T12:36:34.830544+00:00",
+  "comparison_script": {
+    "path": "reproduce/a0-cross/compare_a0.py",
+    "original_source_workspace_relative": "artifacts/qwen-image-a0-cross-20261010/analysis/compare_a0.py",
+    "sha256": "7a0b7ca20e920c26a675099d9287e4444fa6b711a425165281d1b4bb9d7d76da",
+    "byte_identical_copy": true,
+    "syntax_parse_passed": true,
+    "matches_recorded_analysis_script_sha256": true
+  },
+  "evidence_archive": {
+    "filename": "C1-A0-cross-20261010-evidence.zip",
+    "sha256": "44a65d343a62c94ce486c00f87c1add2f83307208398fc01f0b64f941b4e32d4",
+    "bytes": 43466706,
+    "member_count": 101,
+    "crc_test_passed": true,
+    "png_count": 28,
+    "t2i_png_count": 16,
+    "edit_png_count": 12,
+    "result_group_count": 9,
+    "excluded_trace_or_pickle_payloads": true,
+    "pngs_all_match_original_source": true,
+    "group_png_counts": {
+      "20261010_a0_edit_h200_eager_mem": 3,
+      "20261010_a0_edit_h200_eager_stages": 3,
+      "20261010_a0_edit_h200_eager_time": 4,
+      "20261010_a0_edit_h200_eager_trace_export_only": 2,
+      "20261010_a0_serving_t2i_h200_eager": 4,
+      "20261010_a0_t2i_h200_eager_mem": 3,
+      "20261010_a0_t2i_h200_eager_stages": 3,
+      "20261010_a0_t2i_h200_eager_time": 4,
+      "20261010_a0_t2i_h200_eager_trace_export_only": 2
+    },
+    "pngs": [
+      {
+        "member": "results/20261010_a0_edit_h200_eager_mem/images/measured_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_mem/images/measured_1.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_mem/images/warmup_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_stages/images/measured_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_stages/images/measured_1.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_stages/images/warmup_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_time/images/feasibility_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_time/images/measured_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_time/images/measured_1.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_time/images/warmup_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_trace_export_only/images/trace_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_edit_h200_eager_trace_export_only/images/warmup_0.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_serving_t2i_h200_eager/images/feasibility_0.png",
+        "sha256": "be3af4a6b1767285ab5326910043bcb25df0246375a997d721c6f30b11873629",
+        "bytes": 4196804,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_serving_t2i_h200_eager/images/measured_0.png",
+        "sha256": "be3af4a6b1767285ab5326910043bcb25df0246375a997d721c6f30b11873629",
+        "bytes": 4196804,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_serving_t2i_h200_eager/images/measured_1.png",
+        "sha256": "be3af4a6b1767285ab5326910043bcb25df0246375a997d721c6f30b11873629",
+        "bytes": 4196804,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_serving_t2i_h200_eager/images/warmup_0.png",
+        "sha256": "be3af4a6b1767285ab5326910043bcb25df0246375a997d721c6f30b11873629",
+        "bytes": 4196804,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_mem/images/measured_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_mem/images/measured_1.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_mem/images/warmup_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_stages/images/measured_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_stages/images/measured_1.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_stages/images/warmup_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_time/images/feasibility_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_time/images/measured_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_time/images/measured_1.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_time/images/warmup_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_trace_export_only/images/trace_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      },
+      {
+        "member": "results/20261010_a0_t2i_h200_eager_trace_export_only/images/warmup_0.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "matches_original_source_bytes": true
+      }
+    ]
+  },
+  "boundary": "28 saved repeated output PNGs across timing and diagnostic groups, including warmup/feasibility/trace images; not28 independent prompts or28 headline samples. This archive intentionally excludes full Chrome traces and memory pickles. No GPU execution or comparison rerun performed for this verification."
+}

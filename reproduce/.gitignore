@@ -1,0 +1,11 @@
+hf/
+results/
+analysis/performance/
+analysis/quality/
+analysis/profiles/
+supplementary/
+reference/upstream/
+*.ok
+*.log
+__pycache__/
+*.pyc

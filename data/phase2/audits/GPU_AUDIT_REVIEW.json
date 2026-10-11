@@ -1,0 +1,1432 @@
+{
+  "created_at_utc": "2026-10-10T16:18:31.887698+00:00",
+  "scope": "Independent CPU-only review of actual Phase2 GPU edit-audit artifacts using formula-derived module names, direct metadata and file hashes. No GPU/SSH; no prior run substitutes.",
+  "passed": true,
+  "check_count": 160,
+  "errors": [],
+  "arms": {
+    "bf16": {
+      "worker_pid": 1958,
+      "observed_fp8_dit_linears": 0,
+      "observed_fp8_te_language_linears": 0,
+      "observed_fp8_total": 0,
+      "observed_bf16_linear_total": 537,
+      "components": {
+        "text_encoder": {
+          "parameter_count": 750,
+          "dtype_counts": {
+            "torch.bfloat16": 750
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 8767123696
+          }
+        },
+        "transformer": {
+          "parameter_count": 233,
+          "dtype_counts": {
+            "torch.bfloat16": 233
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 7115124736
+          }
+        },
+        "vae": {
+          "parameter_count": 238,
+          "dtype_counts": {
+            "torch.bfloat16": 238
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 337740404
+          }
+        }
+      },
+      "executed_te_linear_count": 369,
+      "actual_te_hidden_state": {
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "element_size": 2,
+        "is_meta": false,
+        "numel": 4354048,
+        "shape": [
+          1,
+          1063,
+          4096
+        ],
+        "stride": [
+          4354048,
+          4096,
+          1
+        ]
+      },
+      "attention_backends": {
+        "<class 'vllm_omni.diffusion.attention.backends.flash_attn.FlashAttentionBackend'>": 32
+      },
+      "source_guard_count": 6,
+      "gpu": {
+        "index": "0",
+        "name": "NVIDIA H200",
+        "uuid": "GPU-5bd3f691-4394-23d2-fa7b-8913ce1bd54a",
+        "pci.bus_id": "00000000:BA:00.0",
+        "driver_version": "595.91.07",
+        "memory.total [MiB]": "143771 MiB",
+        "clocks.max.sm [MHz]": "1980 MHz",
+        "power.limit [W]": "700.00 W"
+      },
+      "audit_inventory_time_utc": "2026-10-10T16:11:27.009156+00:00",
+      "te_runtime_time_utc": "2026-10-10T16:11:39.151480+00:00",
+      "success_requests": 2,
+      "source_files": {
+        "remote-evidence/results/audit_bf16/env.json": {
+          "sha256": "7a674678eb4da6a25886d47b8c4f197439c70e55c618f0c76f98f2ed7954215d",
+          "bytes": 4251
+        },
+        "remote-evidence/results/audit_bf16/runs.jsonl": {
+          "sha256": "4ee2acebad18cab1aedcf06a6833e70528a2f9f970a0ce7f01a29c90348b00e9",
+          "bytes": 2284
+        },
+        "remote-evidence/results/audit_bf16/summary.json": {
+          "sha256": "1aa116e6f91dc0c6726da89563f5c0f283b4558be21df074e75bec4c63437a7a",
+          "bytes": 1916
+        },
+        "remote-evidence/results/audit_bf16/validation.json": {
+          "sha256": "2f441f404e52a361ee09336f85b30366baf3207b53ef8954046f6f7addcc96fe",
+          "bytes": 439
+        },
+        "remote-evidence/results/audit_bf16/quant_audit/attention_runtime_1958.json": {
+          "sha256": "fdbaeaa13a3d12a97d0d2b6c294f3af8bfff568f21bb7deb5ce7887c4c8b883b",
+          "bytes": 41370
+        },
+        "remote-evidence/results/audit_bf16/quant_audit/prefix_runtime_1958.json": {
+          "sha256": "8bfe59c294ef65cac98a49bdd8e71618c6e8ceaae7bc1317e32b7d67840c41e1",
+          "bytes": 65830
+        },
+        "remote-evidence/results/audit_bf16/quant_audit/text_encoder_runtime_1958.json": {
+          "sha256": "19441a82708c5f51a9868ccfa107751a41cdedc2f1f9381577b91daf9a4499a2",
+          "bytes": 283884
+        },
+        "remote-evidence/results/audit_bf16/quant_audit/verification.json": {
+          "sha256": "97afcdbb40134bb939603560b6b342052ab80b9c4f993b4139006870210fe9e9",
+          "bytes": 438
+        },
+        "remote-evidence/results/audit_bf16/quant_audit/worker_inventory_1958.json": {
+          "sha256": "c5349b7ed42cdecb15982aae2451b19964223e9e982aa8dfc3d9421fb25afb9a",
+          "bytes": 897179
+        }
+      }
+    },
+    "dit_fp8": {
+      "worker_pid": 3384,
+      "observed_fp8_dit_linears": 160,
+      "observed_fp8_te_language_linears": 0,
+      "observed_fp8_total": 160,
+      "observed_bf16_linear_total": 377,
+      "components": {
+        "text_encoder": {
+          "parameter_count": 750,
+          "dtype_counts": {
+            "torch.bfloat16": 750
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 8767123696
+          }
+        },
+        "transformer": {
+          "parameter_count": 393,
+          "dtype_counts": {
+            "torch.bfloat16": 73,
+            "torch.float8_e4m3fn": 160,
+            "torch.float32": 160
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 135802880,
+            "torch.float32": 160,
+            "torch.float8_e4m3fn": 6979321856
+          }
+        },
+        "vae": {
+          "parameter_count": 238,
+          "dtype_counts": {
+            "torch.bfloat16": 238
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 337740404
+          }
+        }
+      },
+      "executed_te_linear_count": 369,
+      "actual_te_hidden_state": {
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "element_size": 2,
+        "is_meta": false,
+        "numel": 4354048,
+        "shape": [
+          1,
+          1063,
+          4096
+        ],
+        "stride": [
+          4354048,
+          4096,
+          1
+        ]
+      },
+      "attention_backends": {
+        "<class 'vllm_omni.diffusion.attention.backends.flash_attn.FlashAttentionBackend'>": 32
+      },
+      "source_guard_count": 10,
+      "gpu": {
+        "index": "0",
+        "name": "NVIDIA H200",
+        "uuid": "GPU-5bd3f691-4394-23d2-fa7b-8913ce1bd54a",
+        "pci.bus_id": "00000000:BA:00.0",
+        "driver_version": "595.91.07",
+        "memory.total [MiB]": "143771 MiB",
+        "clocks.max.sm [MHz]": "1980 MHz",
+        "power.limit [W]": "700.00 W"
+      },
+      "audit_inventory_time_utc": "2026-10-10T16:12:12.220885+00:00",
+      "te_runtime_time_utc": "2026-10-10T16:12:23.331637+00:00",
+      "success_requests": 2,
+      "source_files": {
+        "remote-evidence/results/audit_dit_fp8/env.json": {
+          "sha256": "751b4e9420b30b4039e36487b5e67a75196a39d99e1c06ed90fd194aac98e50c",
+          "bytes": 4531
+        },
+        "remote-evidence/results/audit_dit_fp8/runs.jsonl": {
+          "sha256": "e480bf66e4717b09d1a2b7c24e2b225a42353dfaf5186ae21a9f008a26007928",
+          "bytes": 2293
+        },
+        "remote-evidence/results/audit_dit_fp8/summary.json": {
+          "sha256": "597f01a83e5d6d6cefd71ae0b3351c6448c282f9cb648e47b11d00e3c14c5b3e",
+          "bytes": 1915
+        },
+        "remote-evidence/results/audit_dit_fp8/validation.json": {
+          "sha256": "141b09947d6a23b26b50335406246945b6626f9fa775ec36549fa7671b2be6af",
+          "bytes": 442
+        },
+        "remote-evidence/results/audit_dit_fp8/quant_audit/attention_runtime_3384.json": {
+          "sha256": "648ce3c33bc54eaf7b5594c25de259c411983d83c469e3d714b8e6fa5658c7d8",
+          "bytes": 41373
+        },
+        "remote-evidence/results/audit_dit_fp8/quant_audit/prefix_runtime_3384.json": {
+          "sha256": "9eb0aae94269767a90edaa01aa6497bc7429fc98216e59291fd0e0751ebeb702",
+          "bytes": 65833
+        },
+        "remote-evidence/results/audit_dit_fp8/quant_audit/text_encoder_runtime_3384.json": {
+          "sha256": "9c9011b1ba9bdaa9dabb0ad85107f1d9dc38414511b167b14178e60a73a80a6d",
+          "bytes": 283887
+        },
+        "remote-evidence/results/audit_dit_fp8/quant_audit/verification.json": {
+          "sha256": "ef81d5de2fc93f6f4fb91f7fd4ef8ed46aa60cb8e806db86d9d3121a8b58c007",
+          "bytes": 441
+        },
+        "remote-evidence/results/audit_dit_fp8/quant_audit/worker_inventory_3384.json": {
+          "sha256": "7437bc1641656dc7eb2e2bb3b251d6048f092f6b85acb15f768ad0b25c81276e",
+          "bytes": 1084398
+        }
+      }
+    },
+    "te_fp8": {
+      "worker_pid": 4709,
+      "observed_fp8_dit_linears": 0,
+      "observed_fp8_te_language_linears": 252,
+      "observed_fp8_total": 252,
+      "observed_bf16_linear_total": 285,
+      "components": {
+        "text_encoder": {
+          "parameter_count": 1002,
+          "dtype_counts": {
+            "torch.bfloat16": 498,
+            "torch.float8_e4m3fn": 252,
+            "torch.float32": 252
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 1821356272,
+            "torch.float32": 252,
+            "torch.float8_e4m3fn": 6945767424
+          }
+        },
+        "transformer": {
+          "parameter_count": 233,
+          "dtype_counts": {
+            "torch.bfloat16": 233
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 7115124736
+          }
+        },
+        "vae": {
+          "parameter_count": 238,
+          "dtype_counts": {
+            "torch.bfloat16": 238
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 337740404
+          }
+        }
+      },
+      "executed_te_linear_count": 369,
+      "actual_te_hidden_state": {
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "element_size": 2,
+        "is_meta": false,
+        "numel": 4354048,
+        "shape": [
+          1,
+          1063,
+          4096
+        ],
+        "stride": [
+          4354048,
+          4096,
+          1
+        ]
+      },
+      "attention_backends": {
+        "<class 'vllm_omni.diffusion.attention.backends.flash_attn.FlashAttentionBackend'>": 32
+      },
+      "source_guard_count": 10,
+      "gpu": {
+        "index": "0",
+        "name": "NVIDIA H200",
+        "uuid": "GPU-5bd3f691-4394-23d2-fa7b-8913ce1bd54a",
+        "pci.bus_id": "00000000:BA:00.0",
+        "driver_version": "595.91.07",
+        "memory.total [MiB]": "143771 MiB",
+        "clocks.max.sm [MHz]": "1980 MHz",
+        "power.limit [W]": "700.00 W"
+      },
+      "audit_inventory_time_utc": "2026-10-10T16:12:56.295232+00:00",
+      "te_runtime_time_utc": "2026-10-10T16:13:07.663151+00:00",
+      "success_requests": 2,
+      "source_files": {
+        "remote-evidence/results/audit_te_fp8/env.json": {
+          "sha256": "1f001a09e3e95582b37006df71617c1701ed0549c842bf6d4353add05c537141",
+          "bytes": 4617
+        },
+        "remote-evidence/results/audit_te_fp8/runs.jsonl": {
+          "sha256": "a28f63737f2fc933823932c9c3d7ed69b7af389b2ac59c4394a45a4ee256a79b",
+          "bytes": 2288
+        },
+        "remote-evidence/results/audit_te_fp8/summary.json": {
+          "sha256": "9adc94208e629d959c13b6dff97b5409c58690b2eeb1d8e7bb1479bed3c0cecd",
+          "bytes": 1905
+        },
+        "remote-evidence/results/audit_te_fp8/validation.json": {
+          "sha256": "54e0a27b87b04142aad8e718464363779d477665be88e42ffbb94b84b3295052",
+          "bytes": 441
+        },
+        "remote-evidence/results/audit_te_fp8/quant_audit/attention_runtime_4709.json": {
+          "sha256": "a3b3d15404d3107be2d8e829a60bdde74b3261355e27fff20e6c7de36d39a543",
+          "bytes": 41372
+        },
+        "remote-evidence/results/audit_te_fp8/quant_audit/prefix_runtime_4709.json": {
+          "sha256": "f996ca25024c2d0cf9c8f19f09ce22d6f1429d9474c7a9cc3f73691b9ae64d7d",
+          "bytes": 65832
+        },
+        "remote-evidence/results/audit_te_fp8/quant_audit/text_encoder_runtime_4709.json": {
+          "sha256": "096e24e364e4cb115f2536e5c6e9ebe7bab485eb37d8192d1432de78b58ad2c8",
+          "bytes": 317609
+        },
+        "remote-evidence/results/audit_te_fp8/quant_audit/verification.json": {
+          "sha256": "8f3109d7df2ad7067a14176c729adadd31413e06d17f5e2364aaeaed874a6104",
+          "bytes": 440
+        },
+        "remote-evidence/results/audit_te_fp8/quant_audit/worker_inventory_4709.json": {
+          "sha256": "336b63834fd59335b56391c5ae24eebe20ab2ed76f7e7ba8edc5c36792190099",
+          "bytes": 1191209
+        }
+      }
+    },
+    "joint_fp8": {
+      "worker_pid": 6090,
+      "observed_fp8_dit_linears": 160,
+      "observed_fp8_te_language_linears": 252,
+      "observed_fp8_total": 412,
+      "observed_bf16_linear_total": 125,
+      "components": {
+        "text_encoder": {
+          "parameter_count": 1002,
+          "dtype_counts": {
+            "torch.bfloat16": 498,
+            "torch.float8_e4m3fn": 252,
+            "torch.float32": 252
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 1821356272,
+            "torch.float32": 252,
+            "torch.float8_e4m3fn": 6945767424
+          }
+        },
+        "transformer": {
+          "parameter_count": 393,
+          "dtype_counts": {
+            "torch.bfloat16": 73,
+            "torch.float8_e4m3fn": 160,
+            "torch.float32": 160
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 135802880,
+            "torch.float32": 160,
+            "torch.float8_e4m3fn": 6979321856
+          }
+        },
+        "vae": {
+          "parameter_count": 238,
+          "dtype_counts": {
+            "torch.bfloat16": 238
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 337740404
+          }
+        }
+      },
+      "executed_te_linear_count": 369,
+      "actual_te_hidden_state": {
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "element_size": 2,
+        "is_meta": false,
+        "numel": 4354048,
+        "shape": [
+          1,
+          1063,
+          4096
+        ],
+        "stride": [
+          4354048,
+          4096,
+          1
+        ]
+      },
+      "attention_backends": {
+        "<class 'vllm_omni.diffusion.attention.backends.flash_attn.FlashAttentionBackend'>": 32
+      },
+      "source_guard_count": 10,
+      "gpu": {
+        "index": "0",
+        "name": "NVIDIA H200",
+        "uuid": "GPU-5bd3f691-4394-23d2-fa7b-8913ce1bd54a",
+        "pci.bus_id": "00000000:BA:00.0",
+        "driver_version": "595.91.07",
+        "memory.total [MiB]": "143771 MiB",
+        "clocks.max.sm [MHz]": "1980 MHz",
+        "power.limit [W]": "700.00 W"
+      },
+      "audit_inventory_time_utc": "2026-10-10T16:13:41.977053+00:00",
+      "te_runtime_time_utc": "2026-10-10T16:13:52.138174+00:00",
+      "success_requests": 2,
+      "source_files": {
+        "remote-evidence/results/audit_joint_fp8/env.json": {
+          "sha256": "7e09bb8004210352ee3663dc5b0ffc8af400e44d74e8e071f21d4a9a81392154",
+          "bytes": 4736
+        },
+        "remote-evidence/results/audit_joint_fp8/runs.jsonl": {
+          "sha256": "8d7b76ef847e56ddcf18864cd716b34a7543b60e998de35ecf2db2017fa2bd5d",
+          "bytes": 2299
+        },
+        "remote-evidence/results/audit_joint_fp8/summary.json": {
+          "sha256": "53184870722444feb1c98fc8b8bf923d8663955ac43064c1266fe332bc8a3965",
+          "bytes": 1909
+        },
+        "remote-evidence/results/audit_joint_fp8/validation.json": {
+          "sha256": "f6ad27df3c954e4ce2a90b4c562ae79c32b790193d651a127081b449211c29d4",
+          "bytes": 444
+        },
+        "remote-evidence/results/audit_joint_fp8/quant_audit/attention_runtime_6090.json": {
+          "sha256": "e3f00d7d3a04ccaa7c4946471ce1ab1a34f7cb3c63569bfa19b676223e3f909f",
+          "bytes": 41375
+        },
+        "remote-evidence/results/audit_joint_fp8/quant_audit/prefix_runtime_6090.json": {
+          "sha256": "9a78939fd4fc1a70e8eff7af59c1e2665c6ae00d4ec1c8c85bb1146695651438",
+          "bytes": 65835
+        },
+        "remote-evidence/results/audit_joint_fp8/quant_audit/text_encoder_runtime_6090.json": {
+          "sha256": "99297adab45f94c4fb31cabb72c2665cc1f0884ce968a3cdd7826e4faa3366d8",
+          "bytes": 317612
+        },
+        "remote-evidence/results/audit_joint_fp8/quant_audit/verification.json": {
+          "sha256": "6a99c71184fe606c2c6ab9babd5d777bac9405f7bf98f101c05c4aaa7476c450",
+          "bytes": 443
+        },
+        "remote-evidence/results/audit_joint_fp8/quant_audit/worker_inventory_6090.json": {
+          "sha256": "e5f03c2859937314f8f0abed7abf316bfe250b973a69a1cf06d8eeacbd5f9f00",
+          "bytes": 1377692
+        }
+      }
+    },
+    "selective_bf16": {
+      "worker_pid": 7412,
+      "observed_fp8_dit_linears": 140,
+      "observed_fp8_te_language_linears": 0,
+      "observed_fp8_total": 140,
+      "observed_bf16_linear_total": 397,
+      "components": {
+        "text_encoder": {
+          "parameter_count": 750,
+          "dtype_counts": {
+            "torch.bfloat16": 750
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 8767123696
+          }
+        },
+        "transformer": {
+          "parameter_count": 373,
+          "dtype_counts": {
+            "torch.bfloat16": 93,
+            "torch.float8_e4m3fn": 140,
+            "torch.float32": 140
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 1008218112,
+            "torch.float32": 140,
+            "torch.float8_e4m3fn": 6106906624
+          }
+        },
+        "vae": {
+          "parameter_count": 238,
+          "dtype_counts": {
+            "torch.bfloat16": 238
+          },
+          "dtype_numel": {
+            "torch.bfloat16": 337740404
+          }
+        }
+      },
+      "executed_te_linear_count": 369,
+      "actual_te_hidden_state": {
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "element_size": 2,
+        "is_meta": false,
+        "numel": 4354048,
+        "shape": [
+          1,
+          1063,
+          4096
+        ],
+        "stride": [
+          4354048,
+          4096,
+          1
+        ]
+      },
+      "attention_backends": {
+        "<class 'vllm_omni.diffusion.attention.backends.flash_attn.FlashAttentionBackend'>": 32
+      },
+      "source_guard_count": 10,
+      "gpu": {
+        "index": "0",
+        "name": "NVIDIA H200",
+        "uuid": "GPU-5bd3f691-4394-23d2-fa7b-8913ce1bd54a",
+        "pci.bus_id": "00000000:BA:00.0",
+        "driver_version": "595.91.07",
+        "memory.total [MiB]": "143771 MiB",
+        "clocks.max.sm [MHz]": "1980 MHz",
+        "power.limit [W]": "700.00 W"
+      },
+      "audit_inventory_time_utc": "2026-10-10T16:14:23.492191+00:00",
+      "te_runtime_time_utc": "2026-10-10T16:14:34.037017+00:00",
+      "success_requests": 2,
+      "source_files": {
+        "remote-evidence/results/audit_selective_bf16/env.json": {
+          "sha256": "ef31a613a0b6423de3f6fc54fef4428a360c4dacebe175660ba62697efa9786d",
+          "bytes": 4770
+        },
+        "remote-evidence/results/audit_selective_bf16/runs.jsonl": {
+          "sha256": "2e9cfabbf29ec2cb17237691bd893f4f59d27453dd7969fcb79d0dc7542cc45d",
+          "bytes": 2321
+        },
+        "remote-evidence/results/audit_selective_bf16/summary.json": {
+          "sha256": "849e95ea53e0f0609eb4e284411b80c204c461484ed07cd6d28807f8c4fcbfa2",
+          "bytes": 1910
+        },
+        "remote-evidence/results/audit_selective_bf16/validation.json": {
+          "sha256": "8b75847d1af88bc404954945919a3506e760920ccf119901af05732b92eef0e8",
+          "bytes": 449
+        },
+        "remote-evidence/results/audit_selective_bf16/quant_audit/attention_runtime_7412.json": {
+          "sha256": "a0b93ed2925f58df786a94856d6de143c0e5f2cff9c96100418f01a7a937e1d4",
+          "bytes": 41380
+        },
+        "remote-evidence/results/audit_selective_bf16/quant_audit/prefix_runtime_7412.json": {
+          "sha256": "4651f76802e77ed55c087a658985a1687092cc79287ba18c90949ecb0549e0b1",
+          "bytes": 65840
+        },
+        "remote-evidence/results/audit_selective_bf16/quant_audit/text_encoder_runtime_7412.json": {
+          "sha256": "11742c6983386827670abe87eb8ad745f67edd6b181c020d0a313444c0bbe972",
+          "bytes": 283894
+        },
+        "remote-evidence/results/audit_selective_bf16/quant_audit/verification.json": {
+          "sha256": "215920c02bae27c194686a565d515562e1e2e116cb43cb76060a20468c821cc1",
+          "bytes": 448
+        },
+        "remote-evidence/results/audit_selective_bf16/quant_audit/worker_inventory_7412.json": {
+          "sha256": "0f301d39ab66437d573c8be812ad24e3aee6579756703d5db615722f6a527a5f",
+          "bytes": 1061566
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "arm": "bf16",
+      "check": "one TP1 worker inventory",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "formula-derived complete unique 537 module names",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "exact intended FP8 name set",
+      "passed": true,
+      "detail": {
+        "dit_count": 0,
+        "te_language_count": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "arm": "bf16",
+      "check": "every Linear actual weight CUDA0 and intended precision",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "online FP8 method and postprocess",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "scalar CUDA FP32 scales, dynamic input scale, no inverse scale",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "selected CUTLASS and dynamic per-token activation/static per-tensor weight keys",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "preserved Linear unquantized methods",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "text_encoder all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "bf16",
+      "check": "transformer all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "bf16",
+      "check": "vae all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "bf16",
+      "check": "351 vision parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "238 VAE parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "actual architecture32/36/27 and eager/native BF16 resolved config",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "cond_prefill full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "cond_decode full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "all32 actual attention QKV CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "actual TE execution language252 + vision116 + LMhead1",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "TE actual Linear input/output and final hiddenstate CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "evidence identities",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "actual hook/helper hashes match frozen local bundle",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "actual imported source guards match fixed pins",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "actual package pins",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "actual H200 UUID/source/model and clean checkout",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "requested config/checksum matches frozen arm",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "warmup1 measured1 edit with failures0",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "fixed input task/seed/size/steps/CFG/reference hash",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "audit diagnostic isolated from trace/memory/quality",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "both saved validators pass same worker/arm/edit",
+      "passed": true
+    },
+    {
+      "arm": "bf16",
+      "check": "audit PNG files exist and hashes match records",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "one TP1 worker inventory",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "formula-derived complete unique 537 module names",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "exact intended FP8 name set",
+      "passed": true,
+      "detail": {
+        "dit_count": 160,
+        "te_language_count": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "every Linear actual weight CUDA0 and intended precision",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "online FP8 method and postprocess",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "scalar CUDA FP32 scales, dynamic input scale, no inverse scale",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "selected CUTLASS and dynamic per-token activation/static per-tensor weight keys",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "preserved Linear unquantized methods",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "text_encoder all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "transformer all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "vae all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "351 vision parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "238 VAE parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "actual architecture32/36/27 and eager/native BF16 resolved config",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "cond_prefill full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "cond_decode full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "all32 actual attention QKV CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "actual TE execution language252 + vision116 + LMhead1",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "TE actual Linear input/output and final hiddenstate CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "evidence identities",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "actual hook/helper hashes match frozen local bundle",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "actual imported source guards match fixed pins",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "actual package pins",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "actual H200 UUID/source/model and clean checkout",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "requested config/checksum matches frozen arm",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "warmup1 measured1 edit with failures0",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "fixed input task/seed/size/steps/CFG/reference hash",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "audit diagnostic isolated from trace/memory/quality",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "both saved validators pass same worker/arm/edit",
+      "passed": true
+    },
+    {
+      "arm": "dit_fp8",
+      "check": "audit PNG files exist and hashes match records",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "one TP1 worker inventory",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "formula-derived complete unique 537 module names",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "exact intended FP8 name set",
+      "passed": true,
+      "detail": {
+        "dit_count": 0,
+        "te_language_count": 252,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "arm": "te_fp8",
+      "check": "every Linear actual weight CUDA0 and intended precision",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "online FP8 method and postprocess",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "scalar CUDA FP32 scales, dynamic input scale, no inverse scale",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "selected CUTLASS and dynamic per-token activation/static per-tensor weight keys",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "preserved Linear unquantized methods",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "text_encoder all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "te_fp8",
+      "check": "transformer all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "te_fp8",
+      "check": "vae all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "te_fp8",
+      "check": "351 vision parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "238 VAE parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "actual architecture32/36/27 and eager/native BF16 resolved config",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "cond_prefill full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "cond_decode full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "all32 actual attention QKV CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "actual TE execution language252 + vision116 + LMhead1",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "TE actual Linear input/output and final hiddenstate CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "evidence identities",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "actual hook/helper hashes match frozen local bundle",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "actual imported source guards match fixed pins",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "actual package pins",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "actual H200 UUID/source/model and clean checkout",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "requested config/checksum matches frozen arm",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "warmup1 measured1 edit with failures0",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "fixed input task/seed/size/steps/CFG/reference hash",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "audit diagnostic isolated from trace/memory/quality",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "both saved validators pass same worker/arm/edit",
+      "passed": true
+    },
+    {
+      "arm": "te_fp8",
+      "check": "audit PNG files exist and hashes match records",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "one TP1 worker inventory",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "formula-derived complete unique 537 module names",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "exact intended FP8 name set",
+      "passed": true,
+      "detail": {
+        "dit_count": 160,
+        "te_language_count": 252,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "every Linear actual weight CUDA0 and intended precision",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "online FP8 method and postprocess",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "scalar CUDA FP32 scales, dynamic input scale, no inverse scale",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "selected CUTLASS and dynamic per-token activation/static per-tensor weight keys",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "preserved Linear unquantized methods",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "text_encoder all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "transformer all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "vae all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "351 vision parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "238 VAE parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "actual architecture32/36/27 and eager/native BF16 resolved config",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "cond_prefill full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "cond_decode full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "all32 actual attention QKV CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "actual TE execution language252 + vision116 + LMhead1",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "TE actual Linear input/output and final hiddenstate CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "evidence identities",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "actual hook/helper hashes match frozen local bundle",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "actual imported source guards match fixed pins",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "actual package pins",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "actual H200 UUID/source/model and clean checkout",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "requested config/checksum matches frozen arm",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "warmup1 measured1 edit with failures0",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "fixed input task/seed/size/steps/CFG/reference hash",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "audit diagnostic isolated from trace/memory/quality",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "both saved validators pass same worker/arm/edit",
+      "passed": true
+    },
+    {
+      "arm": "joint_fp8",
+      "check": "audit PNG files exist and hashes match records",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "one TP1 worker inventory",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "formula-derived complete unique 537 module names",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "exact intended FP8 name set",
+      "passed": true,
+      "detail": {
+        "dit_count": 140,
+        "te_language_count": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "every Linear actual weight CUDA0 and intended precision",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "online FP8 method and postprocess",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "scalar CUDA FP32 scales, dynamic input scale, no inverse scale",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "selected CUTLASS and dynamic per-token activation/static per-tensor weight keys",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "preserved Linear unquantized methods",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "text_encoder all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "transformer all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "vae all component parameters correct",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "351 vision parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "238 VAE parameter tensors BF16",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "actual architecture32/36/27 and eager/native BF16 resolved config",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "cond_prefill full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "cond_decode full32 BF16 K/V no scales",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "all32 actual attention QKV CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "actual TE execution language252 + vision116 + LMhead1",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "TE actual Linear input/output and final hiddenstate CUDA BF16",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "evidence identities",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "actual hook/helper hashes match frozen local bundle",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "actual imported source guards match fixed pins",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "actual package pins",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "actual H200 UUID/source/model and clean checkout",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "requested config/checksum matches frozen arm",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "warmup1 measured1 edit with failures0",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "fixed input task/seed/size/steps/CFG/reference hash",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "audit diagnostic isolated from trace/memory/quality",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "both saved validators pass same worker/arm/edit",
+      "passed": true
+    },
+    {
+      "arm": "selective_bf16",
+      "check": "audit PNG files exist and hashes match records",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same vllm_omni_checkout",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same vllm_omni_dirty",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same model",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same model_revision",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same packages",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same python",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same torch_cuda",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same nvidia_smi",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same hostname",
+      "passed": true
+    },
+    {
+      "arm": "all_arms",
+      "check": "same harness_sha256",
+      "passed": true
+    }
+  ],
+  "executed_hook_sha256": "15a641c31fbee179fa514fdb2e77177e37d7132d9034cfd2ca0fa3629f0bbcad",
+  "frozen_arms_sha256": "dc9577e05f94bd496bc0d3e2c6dc627f53e08c3e8f6d016f838aad476810827b",
+  "namespace_note": "DiT actual named_modules path is attn.to_out; its constructor quantization prefix is attn.to_out.0. Four selective block globs cover both; no precision mismatch.",
+  "evidence_boundaries": [
+    "Each arm completed one warmup and one measured edit audit with no recorded failure; these diagnostics are not performance samples.",
+    "FP8 weights, scalar FP32 scales, post-load flags, selected online/CUTLASS methods and actual TE module invocation verified. Selected kernel class does not prove executed FP8 GEMM; independent GPU trace remains required for GEMM, activation quantization and FA3 execution.",
+    "TE language252, vision116 and BF16 LM head actually invoked with BF16 input/output; VAE238 and vision351 parameter tensors BF16. Numeric scale values were not read.",
+    "32-block cond prefill/decode native BF16 KV and attention QKV observed; no CFG dual-branch or prefix FP8 claim.",
+    "Audit PNGs hash-verified only; this report provides no visual/numeric quality acceptance, black-image/NaN guarantee, or headline speed/memory claim.",
+    "Phase2 H200 UUID differs from Phase1; performance/quality comparisons require fresh same-Phase2 control arms."
+  ]
+}

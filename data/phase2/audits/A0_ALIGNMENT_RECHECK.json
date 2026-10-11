@@ -1,0 +1,75 @@
+{
+  "audited_at_utc": "2026-10-11T04:17:58.621645+00:00",
+  "scope": "Read-only CPU comparison of the two current Phase2 BF16 seed42 anchor PNG files against pinned external author A0 measured_0.png files; original artifacts and archive manifests unchanged.",
+  "method": "Read original bytes, SHA256 PNG bytes; Pillow convert to RGB, SHA256 decoded RGB bytes; exact byte equality and all-channel difference histogram. No GPU inference, metric thresholds or new visual review.",
+  "reference_kind": "External author A0 outputs under reference/upstream, not internal BF16-versus-FP8 pairs.",
+  "pair_count": 2,
+  "pairs": [
+    {
+      "case_id": "t2i_teapot_s42",
+      "phase2_bf16": {
+        "absolute_path": "/Users/dman/Documents/learn/vLLM/artifacts/qwen-image-c1-phase2-20261011/remote-evidence/results/quality_bf16/images/t2i_teapot_s42.png",
+        "png_sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "rgb_sha256": "59f66d3d3e605e07ab2467be32d1b099258ae92fbf26e777b71f817f83a9a064",
+        "original_mode": "RGBA",
+        "decoded_mode": "RGB",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "author_A0": {
+        "absolute_path": "/Users/dman/Documents/learn/vLLM/artifacts/qwen-image-c1-phase2-20261011/reference/upstream/results/20261008T100913Z_a0_t2i_h200_eager_time/images/measured_0.png",
+        "png_sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "rgb_sha256": "59f66d3d3e605e07ab2467be32d1b099258ae92fbf26e777b71f817f83a9a064",
+        "original_mode": "RGBA",
+        "decoded_mode": "RGB",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "png_exact_equal": true,
+      "rgb_exact_equal": true,
+      "rgb_mse": 0.0,
+      "rgb_max_abs_channel_difference": 0,
+      "psnr_db": "Infinity",
+      "ssim_recomputed": false
+    },
+    {
+      "case_id": "edit_bear_s42",
+      "phase2_bf16": {
+        "absolute_path": "/Users/dman/Documents/learn/vLLM/artifacts/qwen-image-c1-phase2-20261011/remote-evidence/results/quality_bf16/images/edit_bear_s42.png",
+        "png_sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "rgb_sha256": "312ace2cf1785fb44308439297cf76878a3bb1b3589e9a32b55551288b07db0d",
+        "original_mode": "RGBA",
+        "decoded_mode": "RGB",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "author_A0": {
+        "absolute_path": "/Users/dman/Documents/learn/vLLM/artifacts/qwen-image-c1-phase2-20261011/reference/upstream/results/20261008T125447Z_a0_edit_h200_eager_time_bear/images/measured_0.png",
+        "png_sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "rgb_sha256": "312ace2cf1785fb44308439297cf76878a3bb1b3589e9a32b55551288b07db0d",
+        "original_mode": "RGBA",
+        "decoded_mode": "RGB",
+        "size": [
+          1024,
+          1024
+        ]
+      },
+      "png_exact_equal": true,
+      "rgb_exact_equal": true,
+      "rgb_mse": 0.0,
+      "rgb_max_abs_channel_difference": 0,
+      "psnr_db": "Infinity",
+      "ssim_recomputed": false
+    }
+  ],
+  "pass": true,
+  "errors": [],
+  "error_count": 0,
+  "formal_FP8_quality_acceptance": "not established by this BF16 anchor comparison"
+}

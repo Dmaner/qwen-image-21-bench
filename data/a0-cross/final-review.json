@@ -1,0 +1,177 @@
+{
+  "audited_at_utc": "2026-10-10T13:08:45.035229+00:00",
+  "scope": "CPU-only final review; only analysis files written",
+  "completed_run_groups": 9,
+  "request_rows": 28,
+  "generation_failures": 0,
+  "read_errors": [],
+  "summary_discrepancies": [],
+  "output_rgb_cohorts": {
+    "edit": {
+      "reference_images": 12,
+      "candidate_images": 12,
+      "reference_rgb_hashes": [
+        "312ace2cf1785fb44308439297cf76878a3bb1b3589e9a32b55551288b07db0d"
+      ],
+      "candidate_rgb_hashes": [
+        "312ace2cf1785fb44308439297cf76878a3bb1b3589e9a32b55551288b07db0d"
+      ],
+      "candidate_decode_complete": true,
+      "all_candidate_rgb_match_reference": true
+    },
+    "t2i": {
+      "reference_images": 16,
+      "candidate_images": 16,
+      "reference_rgb_hashes": [
+        "59f66d3d3e605e07ab2467be32d1b099258ae92fbf26e777b71f817f83a9a064"
+      ],
+      "candidate_rgb_hashes": [
+        "59f66d3d3e605e07ab2467be32d1b099258ae92fbf26e777b71f817f83a9a064"
+      ],
+      "candidate_decode_complete": true,
+      "all_candidate_rgb_match_reference": true
+    }
+  },
+  "serving": {
+    "A0": {
+      "fixed_request_engine_s": {
+        "values": [
+          7.351141691207886,
+          7.332984447479248
+        ],
+        "mean": 7.342063069343567,
+        "sample_sd": 0.012839110168176628
+      },
+      "shared_benchmark": {
+        "duration": 23.75483633399999,
+        "completed_requests": 3,
+        "failed_requests": 0,
+        "request_errors": [],
+        "throughput_qps": 0.12629007238017206,
+        "latency_mean": 7.917812598666671,
+        "latency_median": 7.913666247000009,
+        "latency_p99": 7.927907192459995,
+        "latency_p95": 7.926744666299996,
+        "latency_p50": 7.913666247000009,
+        "peak_memory_mb_max": 39030.0,
+        "peak_memory_mb_mean": 39030.0,
+        "peak_memory_mb_median": 39030.0,
+        "stage_durations_mean": {
+          "QwenImage21Pipeline.text_encoder.forward": 0.0372025409999992,
+          "QwenImage21Pipeline.diffuse": 7.174514967999992,
+          "QwenImage21Pipeline.vae.decode": 0.11334222066667128,
+          "queue_wait_ms": 0.2752533333326331,
+          "stage_0_gen_ms": 7375.433365503947
+        },
+        "stage_durations_p50": {
+          "QwenImage21Pipeline.text_encoder.forward": 0.03669179999999983,
+          "QwenImage21Pipeline.diffuse": 7.170189547999996,
+          "QwenImage21Pipeline.vae.decode": 0.11324493800000823,
+          "queue_wait_ms": 0.23112399999547506,
+          "stage_0_gen_ms": 7369.559526443481
+        },
+        "stage_durations_p99": {
+          "QwenImage21Pipeline.text_encoder.forward": 0.03843448892000111,
+          "QwenImage21Pipeline.diffuse": 7.192873822619977,
+          "QwenImage21Pipeline.vae.decode": 0.11414642627999967,
+          "queue_wait_ms": 0.38176764000240837,
+          "stage_0_gen_ms": 7393.160533905029
+        },
+        "endpoint": "/v1/chat/completions",
+        "model": "Qwen/Qwen-Image-2.1",
+        "dataset": "random",
+        "task": "t2i"
+      },
+      "benchmark_file_sha256": "5fbd89aef027aed0a46914ff0239d90dfc90421c807ca2aaf26837aef5b33607"
+    },
+    "Runpod": {
+      "fixed_request_engine_s": {
+        "values": [
+          7.3694374561309814,
+          7.356484889984131
+        ],
+        "mean": 7.362961173057556,
+        "sample_sd": 0.00915884735620536
+      },
+      "shared_benchmark": {
+        "duration": 23.78048539700103,
+        "completed_requests": 3,
+        "failed_requests": 0,
+        "request_errors": [],
+        "throughput_qps": 0.1261538589274688,
+        "latency_mean": 7.926436314339905,
+        "latency_median": 7.934158440999454,
+        "latency_p99": 7.940631860411377,
+        "latency_p95": 7.940103418010404,
+        "latency_p50": 7.934158440999454,
+        "peak_memory_mb_max": 39030.0,
+        "peak_memory_mb_mean": 39030.0,
+        "peak_memory_mb_median": 39030.0,
+        "stage_durations_mean": {
+          "QwenImage21Pipeline.text_encoder.forward": 0.027679906993095454,
+          "QwenImage21Pipeline.diffuse": 7.199837896662454,
+          "QwenImage21Pipeline.vae.decode": 0.11317853999207728,
+          "queue_wait_ms": 0.33734300329039496,
+          "stage_0_gen_ms": 7414.754629135132
+        },
+        "stage_durations_p50": {
+          "QwenImage21Pipeline.text_encoder.forward": 0.027583441988099366,
+          "QwenImage21Pipeline.diffuse": 7.1981890960014425,
+          "QwenImage21Pipeline.vae.decode": 0.11313929900643416,
+          "queue_wait_ms": 0.3053940017707646,
+          "stage_0_gen_ms": 7427.5243282318115
+        },
+        "stage_durations_p99": {
+          "QwenImage21Pipeline.text_encoder.forward": 0.028687376727466473,
+          "QwenImage21Pipeline.diffuse": 7.217945928330883,
+          "QwenImage21Pipeline.vae.decode": 0.11344052355212625,
+          "queue_wait_ms": 0.4883051215438172,
+          "stage_0_gen_ms": 7447.036924362183
+        },
+        "endpoint": "/v1/chat/completions",
+        "model": "Qwen/Qwen-Image-2.1",
+        "dataset": "random",
+        "task": "t2i"
+      },
+      "benchmark_file_sha256": "4a4ed00904ea1b1b0749c460f0c0381379e76001995e92073daa493e5c5d3dd2"
+    }
+  },
+  "traces": [
+    {
+      "directory": "artifacts/qwen-image-a0-cross-20261010/results/20261010_a0_edit_h200_eager_trace_export_only",
+      "steps": 50,
+      "executed_fa3_sm90": 1696,
+      "bf16_named": 1696,
+      "memory_peak_phase": "vae.decode",
+      "memory_events_window": 100000,
+      "memory_window_s": 3.103625
+    },
+    {
+      "directory": "artifacts/qwen-image-a0-cross-20261010/results/20261010_a0_t2i_h200_eager_trace_export_only",
+      "steps": 50,
+      "executed_fa3_sm90": 1632,
+      "bf16_named": 1632,
+      "memory_peak_phase": "vae.decode",
+      "memory_events_window": 100000,
+      "memory_window_s": 2.824983
+    }
+  ],
+  "download_verification_read": {
+    "time_utc": "2026-10-10T13:06:30.474700+00:00",
+    "manifest_utc": "2026-10-10T13:04:34.740949+00:00",
+    "files": 133,
+    "bytes": 285638809,
+    "errors": [],
+    "verified": true
+  },
+  "root_REPORT_sha256_at_review": "497178bb0d45877091d01e98b0d45141aedf54642ffad857e2465355c2b752a4",
+  "root_report_review": "All headline/serving/benchmark deltas, n=2 sample SD, memory rounded values, 9 completed groups / zero generation failures, 28 RGB-identical saved outputs, denoise shares and trace evidence agree with raw files. No numerical correction required.",
+  "boundaries": [
+    "Trace groups use explicit _on_stop_hook export-only adapter; source and marker confirm capture options retained, post-capture reporting skipped.",
+    "Serving wrapper changes only missing mem/stages metadata defaults.",
+    "Memory snapshot retains 100000 allocator events; VAE peak attribution is within retained window and consistent with independent memory diagnostics, not a full unbounded allocation history.",
+    "Local scikit-image absent: SSIM remains null; all saved RGB exact matches established independently.",
+    "Original incomplete profiling attempt under setup-attempts excluded from nine completed groups, retained as separate stop/export limitation."
+  ],
+  "root_report_changes_recommended": []
+}

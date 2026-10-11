@@ -1,0 +1,7 @@
+# Preserve recorded evidence and source bytes.
+data/** -text
+figures/** -text
+reproduce/scripts/** -text
+reproduce/reference/** -text
+reproduce/analysis/** -text
+reproduce/a0-cross/compare_a0.py -text

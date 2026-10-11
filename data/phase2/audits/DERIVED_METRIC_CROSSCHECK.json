@@ -1,0 +1,9 @@
+{
+  "gate": "pass",
+  "numeric_and_boolean_checks": 35895,
+  "max_abs_float_difference": 1.3877787807814457e-17,
+  "absolute_compute_tolerance": 1e-12,
+  "integers_exact": true,
+  "errors": [],
+  "scope": "Final independently checked local and remote numeric/boolean values; paths and timestamps excluded. Float tolerance is CPU computation consistency, not experimental or quality acceptance."
+}

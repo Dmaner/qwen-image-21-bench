@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "arms": [
+    {
+      "arm": "bf16",
+      "quant_config_file": "configs/bf16.json",
+      "quant_config_sha256": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+      "expected_dit_fp8_linears": 0,
+      "expected_te_fp8_linears": 0,
+      "selective_bf16_dit_blocks": []
+    },
+    {
+      "arm": "dit_fp8",
+      "quant_config_file": "configs/dit_fp8.json",
+      "quant_config_sha256": "3a83d78d9578e3503448249c1ca85959d70959f42af3154eec02e7ac637d2ae1",
+      "expected_dit_fp8_linears": 160,
+      "expected_te_fp8_linears": 0,
+      "selective_bf16_dit_blocks": []
+    },
+    {
+      "arm": "te_fp8",
+      "quant_config_file": "configs/te_fp8.json",
+      "quant_config_sha256": "782cf375cbd2ab774bb87bb889dddd889b68d770e48c1701a417585780ad8acc",
+      "expected_dit_fp8_linears": 0,
+      "expected_te_fp8_linears": 252,
+      "selective_bf16_dit_blocks": []
+    },
+    {
+      "arm": "joint_fp8",
+      "quant_config_file": "configs/joint_fp8.json",
+      "quant_config_sha256": "3d57c141835473c5d96c45cf821852fd6e620e552a290d37bb8c66ba978ff010",
+      "expected_dit_fp8_linears": 160,
+      "expected_te_fp8_linears": 252,
+      "selective_bf16_dit_blocks": []
+    },
+    {
+      "arm": "selective_bf16",
+      "quant_config_file": "configs/selective_bf16.json",
+      "quant_config_sha256": "3f5a289d9b4c5db9c1ff1835ff5441fdc56862620a6a8d7bc633be274d622525",
+      "expected_dit_fp8_linears": 140,
+      "expected_te_fp8_linears": 0,
+      "selective_bf16_dit_blocks": [
+        0,
+        1,
+        30,
+        31
+      ],
+      "primary_comparison_arm": "dit_fp8"
+    }
+  ],
+  "selection": "Pre-registered structural hypothesis: DiT-only FP8 with DiT first two and last two blocks BF16, text encoder BF16; primary comparison dit_fp8. Not sensitivity localization or tuned on Phase2 holdout.",
+  "all_arms_vision_lm_head_vae_bf16": true
+}

@@ -1,0 +1,14 @@
+{
+  "transformer": null,
+  "text_encoder": {
+    "method": "fp8",
+    "activation_scheme": "dynamic",
+    "is_checkpoint_fp8_serialized": false,
+    "ignored_layers": [
+      "model.visual.*",
+      "lm_head"
+    ]
+  },
+  "vae": null,
+  "default": null
+}
