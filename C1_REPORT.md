@@ -85,7 +85,7 @@ Counts agree for T2I and editing. Runtime audits and correlated CUDA launches ve
 
 DiT-only activation quantization accumulated **599.67 ms T2I / 614.55 ms edit**, about **11.0% / 9.9% of denoising GPU-event time**. This is a meaningful overhead alongside the FP8 GEMMs. These are GPU-event duration sums, not E2E latency: events may overlap and host gaps are excluded.
 
-A diagnostic adapter changed only post-capture summary aggregation; raw Chrome traces and memory snapshots were retained.
+A diagnostic adapter changed only post-capture summary aggregation; raw Chrome traces and memory snapshots were retained locally.
 
 ## Remaining work and artifacts
 
@@ -93,4 +93,4 @@ Agree on quality tolerances and independently cross-review the text failures and
 
 Public evidence: [original comparison images](GALLERY.md), [machine-readable results and audit index](data/README.md), [executed harness/configs and reproduction guide](reproduce/README.md), and [SHA256 checksums](data/SHA256SUMS).
 
-The [raw-data release](https://github.com/Dmaner/qwen-image-21-bench/releases/tag/c1-h200-20261011) contains the [Phase 2 request records, all 120 quality images and analysis](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-Phase2-20261011-results-public.zip), five profiler archives with ten raw traces/memory snapshots, and the [separate A0 cross-check evidence](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-A0-cross-20261010-evidence.zip). [Provenance and packaging boundaries](PROVENANCE.md) distinguish recorded originals, upstream references and omitted operational files.
+The [release](https://github.com/Dmaner/qwen-image-21-bench/releases/tag/c1-h200-20261011) provides one [compact data package](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip): raw request/environment/configuration records, worker-memory measurements, analysis and A0 cross-check metadata. The repository includes selected original images, all quality metrics and profile summaries. Full raw traces, memory pickles and the complete image corpus remain local. [Provenance](PROVENANCE.md) records the source and packaging boundaries.

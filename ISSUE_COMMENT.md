@@ -23,8 +23,10 @@ Public artifacts:
 
 - [Full report, exact revisions and measurement definitions](https://github.com/Dmaner/qwen-image-21-bench/blob/c1-h200-20261011/C1_REPORT.md)
 - [Original T2I/editing/text comparison images](https://github.com/Dmaner/qwen-image-21-bench/blob/c1-h200-20261011/GALLERY.md)
-- [Raw data, all 120 quality outputs, ten traces and A0 cross-check evidence](https://github.com/Dmaner/qwen-image-21-bench/releases/tag/c1-h200-20261011)
+- [Compact raw numerical records, configuration and A0 cross-check metadata](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip)
 - [Configs, frozen prompts and reproduction tools](https://github.com/Dmaner/qwen-image-21-bench/tree/c1-h200-20261011/reproduce)
 - [Artifact SHA256 manifest](https://github.com/Dmaner/qwen-image-21-bench/blob/c1-h200-20261011/data/SHA256SUMS)
+
+The [release](https://github.com/Dmaner/qwen-image-21-bench/releases/tag/c1-h200-20261011) contains this single compact package. Full raw traces, memory pickles and the complete image corpus remain local; profile summaries and quality metrics are public.
 
 Next coordination: agree on quality tolerances and independently cross-review the text failures and selective result with A0. Prefix-KV FP8, consumer GPUs, multi-GPU and concurrent workloads are not covered.

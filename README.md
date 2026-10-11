@@ -8,7 +8,7 @@ Performance, paired image quality and torch-profiler evidence for the C1 FP8 wor
 |---|---|
 | [C1 report](C1_REPORT.md) | Setup, A0 cross-check, latency, memory, quality and profiler findings |
 | [Original image gallery](GALLERY.md) | Same-input comparisons: T2I, editing, English and Chinese text |
-| [Raw data and ten traces](https://github.com/Dmaner/qwen-image-21-bench/releases/tag/c1-h200-20261011) | All 120 quality outputs, raw request rows/logs, memory snapshots and separate A0 cross-check |
+| [Essential numerical records](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip) | Compact raw request/environment/configuration and worker-memory records; analysis and A0 cross-check metadata |
 | [Data index](data/README.md) | Machine-readable results and evidence mapping |
 | [Reproduction](reproduce/README.md) | Executed harness, configs, frozen prompts and analysis tools |
 | [Issue comment](ISSUE_COMMENT.md) | Concise draft with public links |
@@ -18,12 +18,13 @@ DiT-only FP8 reduced offline T2I/edit latency by **17.1% / 14.7%** and peak allo
 
 The main report uses the **2026-10-11 Phase 2 five-arm cohort**. The historical **2026-10-10 A0 cross-check** is separate; the earlier Phase 1 pilot is not pooled into these results. No model weights are distributed.
 
-Download and verify the raw archives:
+Download the single compact [release asset](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip) and verify it from this repository checkout:
 
 ```sh
-gh release download c1-h200-20261011 --repo Dmaner/qwen-image-21-bench --dir c1-data
-cd c1-data
-sha256sum -c SHA256SUMS  # macOS: shasum -a 256 -c SHA256SUMS
+gh release download c1-h200-20261011 --repo Dmaner/qwen-image-21-bench \
+  --pattern C1-H200-essential-data-20261011.zip --dir c1-data
+(cd c1-data && sha256sum -c ../data/SHA256SUMS)
+# macOS: replace sha256sum with shasum -a 256
 ```
 
-See [ARTIFACT_MANIFEST.json](data/ARTIFACT_MANIFEST.json) for archive/member hashes and exclusions. Original experimental files retain recorded paths and timestamps. Operational account files and the duplicate A0 checkout were omitted from the public package; retained evidence bytes were not edited. Chrome trace JSON can be inspected directly; only deserialize a pickle snapshot if you trust its provenance.
+See [ARTIFACT_MANIFEST.json](data/ARTIFACT_MANIFEST.json) for the included records and hashes. The repository retains the original-image gallery, all quality metrics, model-assisted reviews and profile summaries. **Full raw traces, memory pickles and the complete image corpus remain local.** Retained evidence bytes were not edited; operational account files are excluded.
