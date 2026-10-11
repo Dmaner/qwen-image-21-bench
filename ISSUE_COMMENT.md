@@ -1,6 +1,12 @@
 ## C1 update: H200 FP8 performance, quality and profiler results
 
-Completed a five-arm comparison on **1× H200 SXM**: BF16, DiT-only FP8, language-encoder-only FP8, joint FP8, and selective DiT FP8 with blocks 0/1/30/31 kept in BF16.
+**C1 requirement:**
+
+> H200 BF16 versus FP8 quality, memory, and latency; extend only after the first comparison
+
+Completed the initial **BF16 versus DiT-only FP8** comparison on H200, covering paired quality/failures, peak memory and latency. TE-only FP8, joint FP8 and selective BF16 followed as extensions. Completion of the comparison does not imply quality acceptance.
+
+The results below use fresh controls and all three extensions on **1× H200 SXM** in Phase 2. Selective BF16 retains DiT blocks 0/1/30/31 in BF16; Phase 1 timings are not pooled into these values.
 
 All arms used the same pinned Omni/model revisions, 1024×1024, 50 steps, CFG 1, eager FA3, and batch/concurrency 1. Performance/profiler runs retained **A0's prompts, reference image and seed 42**. The latest BF16 anchor images match the author's PNGs exactly; the separate historical n=2 BF16 cross-check was within −0.11% T2I / +1.18% editing latency of A0 on a different H200.
 
@@ -21,7 +27,7 @@ Latency is the mean of 10 measured requests after warmup/feasibility, with torch
 
 Public artifacts:
 
-- [Full report, exact revisions and measurement definitions](https://github.com/Dmaner/qwen-image-21-bench/blob/c1-h200-20261011/C1_REPORT.md)
+- [Full report in A0 format, exact revisions and measurement definitions](https://github.com/Dmaner/qwen-image-21-bench/blob/main/C1_REPORT.md)
 - [Original T2I/editing/text comparison images](https://github.com/Dmaner/qwen-image-21-bench/blob/c1-h200-20261011/GALLERY.md)
 - [Compact raw numerical records, configuration and A0 cross-check metadata](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip)
 - [Configs, frozen prompts and reproduction tools](https://github.com/Dmaner/qwen-image-21-bench/tree/c1-h200-20261011/reproduce)

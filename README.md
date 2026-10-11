@@ -2,6 +2,8 @@
 
 Performance, paired image quality and torch-profiler evidence for the C1 FP8 work in [vLLM-Omni #8586](https://github.com/vllm-project/vllm-omni/issues/8586), following [luca-888's A0 baseline](https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/A0_REPORT.md).
 
+**Requirement:** H200 BF16 versus FP8 quality, memory, and latency; extend only after the first comparison. BF16 versus DiT-only FP8 is the primary comparison; TE-only, joint and selective configurations are subsequent extensions.
+
 **1× H200 SXM · 1024² · 50 steps · CFG 1 · eager · FA3 · batch/concurrency 1.** Five fresh arms: BF16, DiT FP8, language-encoder FP8, joint FP8, and selective DiT FP8 with BF16 blocks.
 
 | Start here | Contents |
