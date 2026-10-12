@@ -78,8 +78,6 @@ The mean scores combine all 24 paired cases (12 initial + 12 held-out). All case
 | Text Encoder FP8 | 26.10 dB | 0.9319 | 0.0728 |
 | DiT + Text Encoder FP8 | 23.42 dB | 0.9097 | 0.0951 |
 
-All metrics use full-resolution RGB. PSNR uses `data_range=255`; SSIM uses Gaussian weights, sigma 1.5, window 11 and population covariance. LPIPS uses AlexNet v0.1 (`lpips==0.1.4`), RGB normalized to [-1, 1], with no resize/crop; lower means closer to BF16. LPIPS was added on 2026-10-13 by CPU scoring of the archived outputs, without rerunning inference. [Per-image metrics](data/phase2/quality) · [LPIPS scores and method](data/phase2/quality/lpips/lpips_metrics.json) · [Prompts and seeds](reproduce/scripts/quality_manifest.json).
-
 | Task | BF16 | DiT-only FP8 |
 |---|---|---|
 | T2I, seed 42 | [![BF16 T2I](figures/t2i_teapot_s42/bf16.png)](figures/t2i_teapot_s42/bf16.png) | [![DiT FP8 T2I](figures/t2i_teapot_s42/dit_fp8.png)](figures/t2i_teapot_s42/dit_fp8.png) |
