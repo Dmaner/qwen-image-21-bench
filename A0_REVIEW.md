@@ -17,9 +17,7 @@ Independent BF16 reproduction by Dmaner of [luca-888's A0 report](https://github
 
 - **Environment:** matched prompts, seed, reference input, model/code revisions and core versions; different hosts and drivers (**580.95.05 vs 595.91.07**).
 - **Startup differs substantially:** T2I/edit initialization **34.92/29.12 → 13.68/10.33 s**; serving ready **72.07 → 24.04 s**. Cold-start conditions were not controlled across providers, so these are observations, not inference speedups.
-- **Trace structure:** both traces contain 50 steps and 1,832 events per steady step; kernel/module shares differ by <0.5 percentage points.
 - **A0's approximately 8% idle estimate is not reproduced:** applying its cross-run arithmetic here gives **3.95%** for T2I. This combines profiled event-duration sums with a separate unprofiled wall interval; it is not measured GPU utilization or confirmed graph/compile headroom.
-- **Scope:** all 28 saved outputs, covering two fixed inputs, match A0's corresponding RGB pixels. [Cross-check records](data/a0-cross/comparison.json)
 
 ## Setup
 
