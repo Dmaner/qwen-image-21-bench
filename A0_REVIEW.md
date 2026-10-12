@@ -2,7 +2,7 @@
 
 Independent BF16 reproduction by Dmaner of [luca-888's A0 report](https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/A0_REPORT.md) for [vLLM-Omni #8586](https://github.com/vllm-project/vllm-omni/issues/8586). Experiments: **2026-10-10**; report: **2026-10-12**. This is the earlier A0 cross-check; C1's later FP8 comparisons use their own fresh BF16 controls.
 
-**Result:** the two fixed workloads reproduce A0's output pixels, peak memory and similar request latency. The GPU-event structure and cost distribution agree; absolute trace timings differ. This is a small-sample cross-check, not statistical equivalence or broad quality acceptance.
+**Result:** the two fixed workloads reproduce A0's output pixels, peak memory and similar request latency.
 
 ## Setup
 
@@ -34,8 +34,6 @@ The timing runs keep A0's synchronized stock stage profiler. They do not enable 
 | Generation failures / OOM | 0 / 0 | 0 / 0 |
 | Within-group output determinism | 4/4 identical PNG hashes | 4/4 identical PNG hashes |
 
-Engine stage time is 7.377 / 8.460 s, within 2 ms of the respective wall time. [Calculated tables and source run IDs](data/a0-cross/review_metrics.json); original rows are in the [compact data package](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip).
-
 ### Full pipeline accounting
 
 | Stage | T2I | Edit |
@@ -54,16 +52,6 @@ Engine stage time is 7.377 / 8.460 s, within 2 ms of the respective wall time. [
 | ↳ ↳ VAE decode | 0.113 s | 0.113 s |
 | Post-process | 0.031 s | 0.039 s |
 | Outside pre/forward/post | 0.003 s | 0.006 s |
-
-### Separate diagnostic runs
-
-All runs below used the same physical H200, unlike A0's cross-container table. Different instrumentation means their differences are **not** a clean estimate of run-to-run variance.
-
-| Run, mean of two measured requests | T2I | Edit |
-|---|---:|---:|
-| Timing | 7.379 s | 8.462 s |
-| Memory diagnostic | 7.361 s | 8.489 s |
-| Extended stage diagnostic | 7.312 s | 8.488 s |
 
 | T2I output | Edit input | Edit output |
 |:---:|:---:|:---:|
@@ -142,20 +130,6 @@ Binary units throughout: GiB = 1024³ bytes. The worker's independent per-reques
 | Highest recorded denoising allocation | 30.87 GiB | 32.88 GiB | Retained snapshot window only |
 
 The engine's `peak_memory_mb` corresponds to **reserved MiB**, not allocated memory. The bounded snapshots retain 100,000 allocator events, about 2.82 / 3.10 seconds. Their VAE-decode peaks agree with the independent whole-request counters **at 0.01 GiB reporting precision**; this supports the peak-location conclusion without claiming the snapshots contain the entire request. [T2I memory analysis](data/a0-cross/t2i_memory_snapshot_analysis.json) · [Edit memory analysis](data/a0-cross/edit_memory_snapshot_analysis.json)
-
-## 5. Findings
-
-- Denoising accounts for **97.1% / 95.8%** of T2I/edit headline latency. GEMM is roughly half of GPU-event time, and elementwise/copy about one third. The same major optimization targets identified by A0 remain visible.
-- Editing adds first-step reference processing and higher steady-state attention cost. The traces do not isolate every cause of that difference.
-- VAE decode determines peak allocated memory, approximately **6.6 GiB above the end-of-request allocation**. This run did not test a VAE/offload optimization.
-- Timing, memory and output checks support a reproducible fixed-workload BF16 baseline. They do not establish FP8 quality, consumer-GPU support or a specific graph/compile speedup.
-
-## Evidence and reproduction
-
-- [Report metrics](data/a0-cross/review_metrics.json), [original comparison](data/a0-cross/comparison.json), [independent experiment review](data/a0-cross/final-review.json).
-- [Compact raw records](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip) already contain `a0-cross/results/`: original `runs.jsonl`, `summary.json`, `env.json`, commands, stage/worker-memory records and profile summaries. [Package hashes and member list](data/README.md). Full raw traces, memory pickles and repeated-image corpus remain local.
-- [Pinned upstream harness and analyzers](https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/bench); [cross-check analysis](reproduce/a0-cross/README.md). Completed runs preserve their exact commands in the package.
-- Two existing compatibility adapters were used only where required: the serving wrapper adds missing `mem/stages` metadata defaults; the trace stop hook retains Chrome traces/memory snapshots but skips CPU summary/stack/Excel exports after the original aggregation stalled. These are disclosed adaptations, not model changes or new measured runs.
 
 ## Differences from A0
 
