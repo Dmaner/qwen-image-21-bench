@@ -105,6 +105,8 @@ Both traces contain all **50 steps**. The unchanged [A0 analyzer](https://github
 | GPU events/step, steps 1–49 | 1,832 | 1,832 |
 | GPU events, step 0 | 1,972 | 2,074 |
 
+<img src="figures/a0-review/denoising_steps.svg" width="900" alt="A0 cross-check GPU-event duration per denoising step: edit step 0 is 276.9 ms; steps 1–49 average 152.6 ms for edit and 137.7 ms for T2I. Duration sums are not GPU utilization.">
+
 Editing's first step exceeds its later-step mean by **124.24 ms**, including reference-prefix prefill and other first-step work; this is not a prefill-only ablation. Later edit steps cost **14.93 ms** more than T2I. Whole-request attention-event time is approximately **669 / 1,315 ms** for T2I/edit.
 
 GPU-event duration by kernel class, as a share of the whole request:
@@ -115,6 +117,10 @@ GPU-event duration by kernel class, as a share of the whole request:
 | Elementwise / copy / cat / casts | 32.96% | 31.01% |
 | Attention kernels (FA3 + PyTorch SDPA) | 9.55% | 16.51% |
 | Reduce + norm | 3.33% | 3.05% |
+
+<img src="figures/a0-review/kernel_classes.svg" width="900" alt="Whole-request GPU-event duration by kernel class: T2I 7,003 ms, edit 7,964 ms. GEMM, elementwise/copy, attention, reduce/norm and other categories are stacked in absolute milliseconds.">
+
+Both figures use this review's recorded trace summaries. [Plotting source and reproduction](reproduce/a0-cross/README.md#report-figures).
 
 Within Transformer blocks, with a different denominator:
 

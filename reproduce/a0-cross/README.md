@@ -7,3 +7,15 @@ The [compact data package](https://github.com/Dmaner/qwen-image-21-bench/release
 The full 28-output image corpus is retained locally, so the compact public package cannot rerun that entire pixel comparison. Its recorded image hashes and comparison results remain available; the two latest Phase 2 anchor images are also in the public gallery.
 
 To reuse the unmodified script with a complete corpus, explicitly supply `--reference-results`, `--candidate-results` and `--output-dir`; its original directory defaults do not apply here. The author reference is fixed at A0 revision `cf99e73c8fa1603718c47405730d94c9fbfe6e16`. Pillow is required for decoded RGB; inspect `read_errors` and image counts before interpreting an incomplete run.
+
+## Report figures
+
+[`plot_review.py`](plot_review.py) generates the two SVGs in [`figures/a0-review/`](../../figures/a0-review) from the published T2I/edit `trace_analysis.json` files. This is a new plotting script for the historical data; it does not run model inference or copy the author's charts.
+
+From the repository root, with [uv](https://docs.astral.sh/uv/):
+
+```sh
+uv run --no-project --with matplotlib==3.9.4 python reproduce/a0-cross/plot_review.py
+```
+
+The line plot shows steps 0–49; its mean labels use steps 1–49. The stacked bars use whole-request category totals, combine `reduce` with `norm`, and put remaining categories (including editing's small `conv` entry) in `Other`. Both use summed GPU-event durations, not elapsed request time or GPU utilization.

@@ -165,5 +165,39 @@
     }
   ],
   "public_pixel_boundary": "Existing gallery provides two displayed anchor PNGs with verified original Phase2 quality provenance and exact equivalence to both timing cohorts. The essential ZIP intentionally omits all28 saved A0-cross output images; do not claim readers can independently rerun all28 raw-image comparisons using this compact asset. Retain the recorded28-image result as a local audit with explicit scope. No new images requested or copied.",
-  "raw_profile_boundary": "The essential ZIP has derived trace/memory analyses and provenance markers, but not raw Chrome trace.gz or memory pickle payloads. Readers can check reported values/arithmetic from public JSON, not independently rerun raw-event extraction or allocator-history replay. No large attachments proposed."
+  "raw_profile_boundary": "The essential ZIP has derived trace/memory analyses and provenance markers, but not raw Chrome trace.gz or memory pickle payloads. Readers can check reported values/arithmetic from public JSON, not independently rerun raw-event extraction or allocator-history replay. No large attachments proposed.",
+  "report_figures": {
+    "generated_at_utc": "2026-10-12T13:13:26.484674+00:00",
+    "source_cohort": "2026-10-10 A0 cross-check",
+    "renderer": "matplotlib 3.9.4",
+    "files": [
+      {
+        "path": "reproduce/a0-cross/plot_review.py",
+        "sha256": "ab1e003d238f5c93fa021b5f38c103a4d0893a1051c792388a6e84c21dfc5271",
+        "bytes": 6655
+      },
+      {
+        "path": "data/a0-cross/t2i_trace_analysis.json",
+        "sha256": "ee01a781b9d7aa17d0fe8c26ca3cd5eaa0dc5a19d2b01077d6c1255883fd5b80",
+        "bytes": 12085
+      },
+      {
+        "path": "data/a0-cross/edit_trace_analysis.json",
+        "sha256": "c48fc9425117a83b7b97a4ec8286e4177a861f71296778ada80f991d9315ffbe",
+        "bytes": 12136
+      },
+      {
+        "path": "figures/a0-review/denoising_steps.svg",
+        "sha256": "143da38ac307027f1a7469b39416639d9caac2719017037284ce80cb77413978",
+        "bytes": 12008
+      },
+      {
+        "path": "figures/a0-review/kernel_classes.svg",
+        "sha256": "47f83acebb795edabbf8f5f28c9a5a001b7cce2a92affb06ac048a4ff5056338",
+        "bytes": 10889
+      }
+    ],
+    "new_inference_run": false,
+    "upstream_figures_copied": false
+  }
 }
