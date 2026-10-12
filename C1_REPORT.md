@@ -25,8 +25,6 @@ For [vllm-project/vllm-omni#8586](https://github.com/vllm-project/vllm-omni/issu
 
 Online FP8 uses E4M3 weights and dynamic per-token activation quantization. Text Encoder FP8 covers the 252 language-model linear layers; the vision encoder and LM head remain BF16. VAE, DiT boundary projections and attention also remain BF16. [Configurations](reproduce/scripts/configs) · [Runtime verification](data/phase2/audits/GPU_AUDIT_REVIEW.json).
 
-All percentage changes use `(configuration / BF16 − 1) × 100%`; negative values indicate lower latency or memory.
-
 ## 1. Latency
 
 Offline wall time per image, n=10. The timer covers `omni.generate(...)` and output processing, excluding initialization, warmup and PNG saving.
