@@ -16,8 +16,7 @@ Independent BF16 reproduction by Dmaner of [luca-888's A0 report](https://github
 | Allocated / reserved peaks | 36.86/38.12 GiB T2I; 36.87/39.28 GiB edit | Same | Match at reported precision |
 
 - **Environment:** matched prompts, seed, reference input, model/code revisions and core versions; different hosts and drivers (**580.95.05 vs 595.91.07**).
-- **Startup differs substantially:** T2I/edit initialization **34.92/29.12 → 13.68/10.33 s**; serving ready **72.07 → 24.04 s**. Cold-start conditions were not controlled across providers, so these are observations, not inference speedups.
-- **A0's approximately 8% idle estimate is not reproduced:** applying its cross-run arithmetic here gives **3.95%** for T2I. This combines profiled event-duration sums with a separate unprofiled wall interval; it is not measured GPU utilization or confirmed graph/compile headroom.
+- **Startup:** T2I/edit initialization **34.92/29.12 → 13.68/10.33 s**; serving ready **72.07 → 24.04 s**. Of the **48.03 s** serving gap, **15.02 s** was in model loading, **5.50 s** in other engine initialization, and **27.51 s** outside the engine timer, mainly before it started. CPU, storage/cache and network contributions were not isolated.
 
 ## Setup
 
