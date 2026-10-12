@@ -85,7 +85,41 @@ All metrics use full-resolution RGB. PSNR uses `data_range=255`; SSIM uses Gauss
 | T2I, seed 42 | [![BF16 T2I](figures/t2i_teapot_s42/bf16.png)](figures/t2i_teapot_s42/bf16.png) | [![DiT FP8 T2I](figures/t2i_teapot_s42/dit_fp8.png)](figures/t2i_teapot_s42/dit_fp8.png) |
 | Edit, seed 42; [reference](figures/reference.png) | [![BF16 edit](figures/edit_bear_s42/bf16.png)](figures/edit_bear_s42/bf16.png) | [![DiT FP8 edit](figures/edit_bear_s42/dit_fp8.png)](figures/edit_bear_s42/dit_fp8.png) |
 
-In the [English-title case, seed 43](GALLERY.md#english-text-regression--seed-43), DiT FP8 and combined DiT + Text Encoder FP8 omit the requested `QWEN IMAGE 2.1` title; BF16 and Text Encoder FP8 retain it. The [visual observations](data/phase2/visual-review) include the remaining text and editing cases. Quality acceptance thresholds and independent cross-review remain pending.
+### Examples with larger differences
+
+The following text prompts show larger changes than the teapot example. Each pair uses the same prompt and seed; the images are original experiment outputs.
+
+**English poster — seed 43 · DiT FP8 · PSNR 14.40 dB**
+
+> A poster with the exact text "QWEN IMAGE 2.1", clean typography on a plain background.
+
+| BF16 | DiT-only FP8 |
+|---|---|
+| [![BF16 English poster, seed 43](figures/t2i_english_s43/bf16.png)](figures/t2i_english_s43/bf16.png) | [![DiT FP8 English poster, seed 43](figures/t2i_english_s43/dit_fp8.png)](figures/t2i_english_s43/dit_fp8.png) |
+
+The requested title is present in BF16 and missing in DiT FP8. The unrequested portrait already appears in BF16. Combined FP8 also loses the title; Text Encoder FP8 retains it ([all configurations](GALLERY.md#english-text-regression--seed-43)).
+
+**Chinese bookstore sign — seed 44 · DiT FP8 · PSNR 16.28 dB**
+
+> A front-facing bookstore sign with the exact Chinese text "星河书店", clear readable lettering.
+
+| BF16 | DiT-only FP8 |
+|---|---|
+| [![BF16 Chinese bookstore sign, seed 44](figures/t2i_chinese_s44/bf16.png)](figures/t2i_chinese_s44/bf16.png) | [![DiT FP8 Chinese bookstore sign, seed 44](figures/t2i_chinese_s44/dit_fp8.png)](figures/t2i_chinese_s44/dit_fp8.png) |
+
+BF16 places all four characters in one vertical column. DiT FP8 moves “河” into a second column, making the reading order ambiguous; the characters themselves are still present.
+
+**Chinese tea-house sign — seed 45 · Text Encoder FP8 · PSNR 13.58 dB**
+
+> A simple front-facing white sign with only the exact Chinese text "春日茶馆" in large black Chinese characters. No other text or imagery.
+
+| BF16 | Text Encoder FP8 |
+|---|---|
+| [![BF16 Chinese tea-house sign, seed 45](figures/heldout_chinese_s45/bf16.png)](figures/heldout_chinese_s45/bf16.png) | [![Text Encoder FP8 Chinese tea-house sign, seed 45](figures/heldout_chinese_s45/te_fp8.png)](figures/heldout_chinese_s45/te_fp8.png) |
+
+Character size, stroke shapes and spacing change substantially, while “春日茶馆” remains complete and readable. This low-PSNR example reflects a typography change rather than missing text.
+
+[Per-image metrics](data/phase2/quality) · [Visual observations](data/phase2/visual-review) · [Original-image hashes](figures/manifest.json). Quality acceptance thresholds and independent cross-review remain pending.
 
 ## 4. Conclusion
 
