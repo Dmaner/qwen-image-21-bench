@@ -105,16 +105,6 @@ The requested title is present in BF16 and missing in DiT FP8. The unrequested p
 
 BF16 places all four characters in one vertical column. DiT FP8 moves “河” into a second column, making the reading order ambiguous; the characters themselves are still present.
 
-**Chinese tea-house sign — seed 45 · Text Encoder FP8 · PSNR 13.58 dB**
-
-> A simple front-facing white sign with only the exact Chinese text "春日茶馆" in large black Chinese characters. No other text or imagery.
-
-| BF16 | Text Encoder FP8 |
-|---|---|
-| [![BF16 Chinese tea-house sign, seed 45](figures/heldout_chinese_s45/bf16.png)](figures/heldout_chinese_s45/bf16.png) | [![Text Encoder FP8 Chinese tea-house sign, seed 45](figures/heldout_chinese_s45/te_fp8.png)](figures/heldout_chinese_s45/te_fp8.png) |
-
-Character size, stroke shapes and spacing change substantially, while “春日茶馆” remains complete and readable. This low-PSNR example reflects a typography change rather than missing text.
-
 [Per-image metrics](data/phase2/quality) · [Visual observations](data/phase2/visual-review) · [Original-image hashes](figures/manifest.json). Quality acceptance thresholds and independent cross-review remain pending.
 
 ## 4. Conclusion

@@ -8,7 +8,7 @@
     "source_relative_to_phase2": "scripts/quality_manifest.json",
     "sha256": "7740b28014c2237f667b2f9b54e4bc8351cccde2da916a00cc3b44d63b151c58"
   },
-  "scope": "Four selected legacy cases across all five configurations, plus the BF16/Text Encoder FP8 pair for heldout_chinese_s45 used in C1_REPORT.md. Original PNGs; no resize, re-encoding, annotation or regeneration.",
+  "scope": "Four selected legacy cases across all five configurations, plus an archived BF16/Text Encoder FP8 pair for heldout_chinese_s45. Original PNGs; no resize, re-encoding, annotation or regeneration.",
   "model": "Qwen/Qwen-Image-2.1",
   "model_revision": "d26bb61231c349cf6b7896fa83353113880e1ba3",
   "omni_revision": "3dc35694b3d458fc1461a8fe71832ac12e8c8cea",
