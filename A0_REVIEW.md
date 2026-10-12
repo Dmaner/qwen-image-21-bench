@@ -4,6 +4,23 @@ Independent BF16 reproduction by Dmaner of [luca-888's A0 report](https://github
 
 **Result:** the two fixed workloads reproduce A0's output pixels, peak memory and similar request latency.
 
+## Cross-review differences from [A0](https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/A0_REPORT.md)
+
+| Comparable measurement | A0 | This review | Difference |
+|---|---:|---:|---:|
+| T2I request latency | 7.3869 s | 7.3791 s | -0.11% |
+| Edit request latency | 8.3630 s | 8.4615 s | +1.18% |
+| Serving client latency | 7.4529 s | 7.4598 s | +0.09% |
+| Steady-step GPU-event duration, T2I | 131.97 ms | 137.69 ms | +4.33% |
+| Steady-step GPU-event duration, edit | 145.75 ms | 152.62 ms | +4.72% |
+| Allocated / reserved peaks | 36.86/38.12 GiB T2I; 36.87/39.28 GiB edit | Same | Match at reported precision |
+
+- **Environment:** identical prompt/seed/reference input, model/Omni revisions and core package versions; different provider, host and driver (**580.95.05 → 595.91.07**). A0 used several physical H200s; this reproduction used one. A0's historical image digest/full dependency lock was unavailable. The shallow checkout also produces a different Omni distribution-version string despite the same source SHA.
+- **Startup differs substantially:** T2I/edit initialization **34.92/29.12 → 13.68/10.33 s**; serving ready **72.07 → 24.04 s**. Cold-start conditions were not controlled across providers, so these are observations, not inference speedups.
+- **Trace structure agrees, absolute time differs:** both have 50 steps and 1,832 correlated GPU events per steady step. Principal kernel/module shares differ by less than 0.5 percentage points, while steady-step GPU-event duration is approximately 4–5% higher here. Neither profiler timing nor initialization is substituted for headline latency.
+- **A0's approximately 8% idle estimate is not reproduced:** applying its cross-run arithmetic here gives **3.95%** for T2I. This combines profiled event-duration sums with a separate unprofiled wall interval; it is not measured GPU utilization or confirmed graph/compile headroom.
+- **Scope:** 28 saved repeated outputs match the corresponding A0 RGB pixels, covering only two fixed inputs. With n=2 headline measurements, this establishes a small-sample reproduction with similar performance, not statistical equivalence. C1's later BF16/FP8 tables use fresh same-machine controls rather than this historical baseline.
+
 ## Setup
 
 | Setting | Reproduction |
@@ -130,20 +147,3 @@ Binary units throughout: GiB = 1024³ bytes. The worker's independent per-reques
 | Highest recorded denoising allocation | 30.87 GiB | 32.88 GiB | Retained snapshot window only |
 
 The engine's `peak_memory_mb` corresponds to **reserved MiB**, not allocated memory. The bounded snapshots retain 100,000 allocator events, about 2.82 / 3.10 seconds. Their VAE-decode peaks agree with the independent whole-request counters **at 0.01 GiB reporting precision**; this supports the peak-location conclusion without claiming the snapshots contain the entire request. [T2I memory analysis](data/a0-cross/t2i_memory_snapshot_analysis.json) · [Edit memory analysis](data/a0-cross/edit_memory_snapshot_analysis.json)
-
-## Differences from A0
-
-| Comparable measurement | A0 | This review | Difference |
-|---|---:|---:|---:|
-| T2I request latency | 7.3869 s | 7.3791 s | -0.11% |
-| Edit request latency | 8.3630 s | 8.4615 s | +1.18% |
-| Serving client latency | 7.4529 s | 7.4598 s | +0.09% |
-| Steady-step GPU-event duration, T2I | 131.97 ms | 137.69 ms | +4.33% |
-| Steady-step GPU-event duration, edit | 145.75 ms | 152.62 ms | +4.72% |
-| Allocated / reserved peaks | 36.86/38.12 GiB T2I; 36.87/39.28 GiB edit | Same | Match at reported precision |
-
-- **Environment:** identical prompt/seed/reference input, model/Omni revisions and core package versions; different provider, host and driver (**580.95.05 → 595.91.07**). A0 used several physical H200s; this reproduction used one. A0's historical image digest/full dependency lock was unavailable. The shallow checkout also produces a different Omni distribution-version string despite the same source SHA.
-- **Startup differs substantially:** T2I/edit initialization **34.92/29.12 → 13.68/10.33 s**; serving ready **72.07 → 24.04 s**. Cold-start conditions were not controlled across providers, so these are observations, not inference speedups.
-- **Trace structure agrees, absolute time differs:** both have 50 steps and 1,832 correlated GPU events per steady step. Principal kernel/module shares differ by less than 0.5 percentage points, while steady-step GPU-event duration is approximately 4–5% higher here. Neither profiler timing nor initialization is substituted for headline latency.
-- **A0's approximately 8% idle estimate is not reproduced:** applying its cross-run arithmetic here gives **3.95%** for T2I. This combines profiled event-duration sums with a separate unprofiled wall interval; it is not measured GPU utilization or confirmed graph/compile headroom.
-- **Scope:** 28 saved repeated outputs match the corresponding A0 RGB pixels, covering only two fixed inputs. With n=2 headline measurements, this establishes a small-sample reproduction with similar performance, not statistical equivalence. C1's later BF16/FP8 tables use fresh same-machine controls rather than this historical baseline.

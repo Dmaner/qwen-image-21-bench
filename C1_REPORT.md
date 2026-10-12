@@ -71,7 +71,7 @@ Most of the measured reduction is in `diffuse`. These four stock stages do not c
 
 ### A0 cross-check and outputs
 
-The standalone [A0 review](A0_REVIEW.md) follows A0's report structure and ends with a direct comparison, including torch-profiler differences.
+The standalone [A0 review](A0_REVIEW.md) opens with the cross-review differences against A0, including torch-profiler measurements.
 
 A separate earlier BF16 cross-check retained A0's exact prompts, seed 42, model and code revisions:
 
