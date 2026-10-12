@@ -79,3 +79,18 @@ Run the unchanged capture helper **only in the new experiment-only container**: 
 Performance/profile analyzers use the standard library. Quality analysis uses Pillow/NumPy/scikit-image (recorded analysis versions11.3.0/2.2.6/0.25.2). A newly generated review CSV is unfilled: PSNR/SSIM or successful execution do not constitute quality acceptance. Keep any new human/model-assisted observations separate from the frozen published review.
 
 The recorded source/config hashes are evidence for the original run. If adapting paths, software, inputs or instrumentation, save a new version and hashes rather than overwriting that evidence. A different GPU or dependency stack is a new cohort, not a reproduction of the reported H200 numbers.
+
+## Supplementary LPIPS analysis
+
+On 2026-10-13, [add_lpips.py](analysis/add_lpips.py) scored the archived BF16, DiT FP8, Text Encoder FP8 and combined FP8 images on CPU. It uses the official [LPIPS implementation](https://github.com/richzhang/PerceptualSimilarity), pretrained AlexNet v0.1, FP32, native 1024×1024 RGB normalized to [-1, 1], with no resize/crop. Results are the arithmetic mean of 24 per-image distances per candidate. This adds a metric to the original outputs; it does not rerun inference.
+
+Recorded scoring environment: Python 3.13.13, `lpips==0.1.4`, `torch==2.11.0`, `torchvision==0.26.0`, `numpy==2.4.6`, `Pillow==12.2.0`, `scipy==1.17.1`; macOS CPU, six threads. Install these in a separate analysis environment. From this repository's root:
+
+```sh
+python reproduce/analysis/add_lpips.py \
+  --metrics-root data/phase2/quality \
+  --images-root /path/to/original/results \
+  --output-dir /path/to/new/lpips-results
+```
+
+The images root must contain `quality_bf16/images`, `quality_dit_fp8/images`, `quality_te_fp8/images` and `quality_joint_fp8/images`, each with all 24 original PNGs. The full corpus remains local; the public gallery alone is insufficient. The script verifies every PNG and decoded-RGB hash against the original quality records, and records its own hash, model-weight hashes and identity/symmetry checks. [Results](../data/phase2/quality/lpips/lpips_metrics.json) · [Per-image CSV](../data/phase2/quality/lpips/lpips_pairs.csv).

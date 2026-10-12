@@ -6,6 +6,7 @@ C1's headline tables come from the fresh Phase 2 cohort. The separate [A0 review
 |---|---|---|
 | Latency and memory | [PERFORMANCE.json](phase2/performance/PERFORMANCE.json) | Raw request rows, environment/configuration and worker-memory records |
 | Paired quality | [All quality metrics](phase2/quality), [completed model-assisted reviews](phase2/visual-review) | Request metadata; selected original PNGs in the [gallery](../GALLERY.md) |
+| Supplementary LPIPS | [Method, hashes and scores](phase2/quality/lpips/lpips_metrics.json), [per-image CSV](phase2/quality/lpips/lpips_pairs.csv) | Added on 2026-10-13 from archived images; separate from the original release ZIP |
 | Quantization actually executed | [GPU audit](phase2/audits/GPU_AUDIT_REVIEW.json) | Frozen component configs; actual worker observations summarized in the linked audit |
 | Kernel counts and quantization overhead | [Profile analysis](phase2/profiles/PROFILE_ANALYSIS.md), [JSON](phase2/profiles/profile_comparison.json), [independent audit](phase2/audits/ACTUAL_PROFILE_REVIEW.json) | Profile summaries; full raw traces and memory pickles remain local |
 | Latest BF16 equals A0 anchors | [A0_ALIGNMENT_RECHECK.json](phase2/audits/A0_ALIGNMENT_RECHECK.json) | BF16 T2I/edit anchor images in the [gallery](../GALLERY.md); author originals referenced by revision |

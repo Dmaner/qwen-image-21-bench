@@ -13,7 +13,7 @@ Offline latency is the mean of 10 requests after warmup and feasibility checks. 
 
 - **Latency:** DiT FP8 reduces offline T2I/edit latency by 17.1%/14.7%. All 80 measured offline requests succeeded.
 - **Memory:** DiT FP8 saves 6.50 GiB; combined FP8 saves 12.97 GiB. Text Encoder FP8 saves memory without reducing latency here.
-- **Image quality:** 24 paired cases per FP8 configuration. DiT FP8 reaches 32.96 dB on teapot/seed 42; its initial/held-out means are 23.86/26.96 dB. DiT FP8 and combined FP8 omit the requested English title at seed 43; BF16 and Text Encoder FP8 retain it.
+- **Image quality:** 24 paired cases per FP8 configuration. DiT FP8 reaches 32.96 dB on teapot/seed 42; its overall means are 25.41 dB PSNR, 0.9357 SSIM and 0.0748 LPIPS (AlexNet v0.1, lower is closer to BF16). DiT FP8 and combined FP8 omit the requested English title at seed 43; BF16 and Text Encoder FP8 retain it.
 
 [Full report](https://github.com/Dmaner/qwen-image-21-bench/blob/main/C1_REPORT.md) · [Comparison images](https://github.com/Dmaner/qwen-image-21-bench/blob/main/GALLERY.md) · [Raw data](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip) · [Reproduction](https://github.com/Dmaner/qwen-image-21-bench/tree/main/reproduce)
 
