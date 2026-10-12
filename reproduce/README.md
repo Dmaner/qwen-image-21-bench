@@ -1,4 +1,4 @@
-# Reproduce the C1 five-arm experiment
+# Reproduce the C1 experiment with five configurations
 
 These are the **exact executed scripts**, copied from the archived Phase 2 container. [source-manifest.json](scripts/source-manifest.json) maps every copied file to its original artifact path and SHA256. See [PROVENANCE.md](../PROVENANCE.md) for A0 derivation and third-party sources. No new blanket license is applied to these files.
 
@@ -45,12 +45,12 @@ cd /workspace/c1-phase2
 bash scripts/run_experiment.sh
 ```
 
-The runner first checks five separate GPU worker audits and aborts if the quantization gates fail. It then runs all arms (`bf16`, `dit_fp8`, `te_fp8`, `joint_fp8`, `selective_bf16`):
+The runner first checks five separate GPU worker audits and aborts if the quantization gates fail. It then runs all configurations (`bf16`, `dit_fp8`, `te_fp8`, `joint_fp8`, `selective_bf16`):
 
-- T2I/edit/serving: 1 warmup + 1 feasibility + 10 measured requests per arm/task.
+- T2I/edit/serving: 1 warmup + 1 feasibility + 10 measured requests per configuration/task.
 - Independent T2I/edit memory: 1 warmup + 1 measured request.
-- Quality: 1 warmup + 24 frozen cases per arm.
-- Independent profiler: 1 warmup + one complete 50-step request for each arm/task.
+- Quality: 1 warmup + 24 frozen cases per configuration.
+- Independent profiler: 1 warmup + one complete 50-step request for each configuration/task.
 
 Quant audits and the profiler export-only adapter run in separate processes and stay off for headline/quality measurements. Selective BF16 protects DiT blocks0/1/30/31 and keeps TE BF16; it is a preregistered structural hypothesis, not an identified sensitivity optimum. The serving harness additionally performs its existing three-prompt benchmark cross-check; those requests are not the n=10 headline sample.
 

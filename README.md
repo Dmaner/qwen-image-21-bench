@@ -4,7 +4,7 @@ Performance, paired image quality and torch-profiler evidence for the C1 FP8 wor
 
 **Requirement:** H200 BF16 versus FP8 quality, memory, and latency; extend only after the first comparison. BF16 versus DiT-only FP8 is the primary comparison; TE-only, joint and selective configurations are subsequent extensions.
 
-**1× H200 SXM · 1024² · 50 steps · CFG 1 · eager · FA3 · batch/concurrency 1.** Five fresh arms: BF16, DiT FP8, language-encoder FP8, joint FP8, and selective DiT FP8 with BF16 blocks.
+**1× H200 SXM · 1024² · 50 steps · CFG 1 · eager · FA3 · batch/concurrency 1.** Five configurations with fresh measurements: BF16, DiT FP8, language-encoder FP8, joint FP8, and selective DiT FP8 with BF16 blocks.
 
 | Start here | Contents |
 |---|---|
@@ -19,7 +19,7 @@ Performance, paired image quality and torch-profiler evidence for the C1 FP8 wor
 
 DiT-only FP8 reduced offline T2I/edit latency by **17.1% / 14.7%** and peak allocated memory by **6.50 GiB**. Joint FP8 saved **12.97 GiB**, but both lost the requested title in one text-rendering case. The selective configuration retained it with a small speed/memory cost. **Quality acceptance remains pending**; the review is model-assisted and the selected images are not a general quality pass.
 
-The C1 report uses the **2026-10-11 Phase 2 five-arm cohort**. The [A0 review](A0_REVIEW.md) uses the separate **2026-10-10 BF16 cross-check**; the earlier Phase 1 pilot is not pooled into either report. No model weights are distributed.
+The C1 report uses the **2026-10-11 Phase 2 comparison of five configurations**. The [A0 review](A0_REVIEW.md) uses the separate **2026-10-10 BF16 cross-check**; the earlier Phase 1 pilot is not pooled into either report. No model weights are distributed.
 
 Download the single compact [release asset](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip) and verify it from this repository checkout:
 

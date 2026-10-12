@@ -1,10 +1,10 @@
 # C1 Phase 2 image gallery
 
-These are **original, byte-for-byte PNGs from the current Phase 2 experiment**. Click any image to open it at full size. All five columns in each case use the same frozen prompt, seed, resolution (1024×1024), 50 steps, and CFG 1 on the same H200. The quantization arm is the intended difference; identical seeds do not imply identical output pixels.
+These are **original, byte-for-byte PNGs from the current Phase 2 experiment**. Click any image to open it at full size. All five columns in each case use the same frozen prompt, seed, resolution (1024×1024), 50 steps, and CFG 1 on the same H200. The quantization configuration is the intended difference; identical seeds do not imply identical output pixels.
 
-The first two cases reuse the A0 prompts and seed 42, but the images below are fresh Phase 2 outputs, not images copied from A0. The two text cases illustrate a specific regression and the selective arm's behavior. These four selected examples are not the full 24-case quality set or a representative quality score.
+The first two cases reuse the A0 prompts and seed 42, but the images below are fresh Phase 2 outputs, not images copied from A0. The two text cases illustrate a specific regression and the selective configuration's behavior. These four selected examples are not the full 24-case quality set or a representative quality score.
 
-**Arms:** DiT FP8 quantizes 160 DiT Linear modules; TE FP8 quantizes 252 language-encoder Linear modules; Joint FP8 combines them. Selective BF16 quantizes 140 DiT Linear modules and keeps blocks 0, 1, 30, and 31 plus the entire TE in BF16. Vision and the LM head stay BF16 in every arm.
+**Configurations:** DiT FP8 quantizes 160 DiT Linear modules; TE FP8 quantizes 252 language-encoder Linear modules; Joint FP8 combines them. Selective BF16 quantizes 140 DiT Linear modules and keeps blocks 0, 1, 30, and 31 plus the entire TE in BF16. Vision and the LM head stay BF16 in every configuration.
 
 **Review boundary:** Captions summarize the completed, labeled model-assisted review of this experiment. They are not independent human/A0 acceptance or a general quality certification. BF16 already has prompt-following errors, which are retained below. PSNR/SSIM have no agreed pass/fail threshold here, and a favorable selected example does not establish general quality recovery.
 
@@ -20,7 +20,7 @@ PNG hashes, original experiment paths, dimensions, and copy verification are in 
 | --- | --- | --- | --- | --- |
 | [![BF16: t2i_teapot_s42](figures/t2i_teapot_s42/bf16.png)](figures/t2i_teapot_s42/bf16.png) | [![DiT FP8: t2i_teapot_s42](figures/t2i_teapot_s42/dit_fp8.png)](figures/t2i_teapot_s42/dit_fp8.png) | [![TE FP8: t2i_teapot_s42](figures/t2i_teapot_s42/te_fp8.png)](figures/t2i_teapot_s42/te_fp8.png) | [![Joint FP8: t2i_teapot_s42](figures/t2i_teapot_s42/joint_fp8.png)](figures/t2i_teapot_s42/joint_fp8.png) | [![Selective BF16: t2i_teapot_s42](figures/t2i_teapot_s42/selective_bf16.png)](figures/t2i_teapot_s42/selective_bf16.png) |
 
-The review observed a ceramic teapot on a wooden table, with a coherent spout, handle, and lid across all five arms. No clear new target-object violation was observed in this example; textures and local contours differ.
+The review observed a ceramic teapot on a wooden table, with a coherent spout, handle, and lid across all five configurations. No clear new target-object violation was observed in this example; textures and local contours differ.
 
 ## A0 single-reference edit prompt — seed 42
 
@@ -34,7 +34,7 @@ Reference input (514×556, original PNG): [![Reference bear](figures/reference.p
 | --- | --- | --- | --- | --- |
 | [![BF16: edit_bear_s42](figures/edit_bear_s42/bf16.png)](figures/edit_bear_s42/bf16.png) | [![DiT FP8: edit_bear_s42](figures/edit_bear_s42/dit_fp8.png)](figures/edit_bear_s42/dit_fp8.png) | [![TE FP8: edit_bear_s42](figures/edit_bear_s42/te_fp8.png)](figures/edit_bear_s42/te_fp8.png) | [![Joint FP8: edit_bear_s42](figures/edit_bear_s42/joint_fp8.png)](figures/edit_bear_s42/joint_fp8.png) | [![Selective BF16: edit_bear_s42](figures/edit_bear_s42/selective_bf16.png)](figures/edit_bear_s42/selective_bf16.png) |
 
-Across all five arms, the review observed the reference bear identity, white Qwen shirt/logo, moonlit setting, floating stars, and dancing pose. Pose and rendering changes are part of the requested edit; this is not a claim of pixel preservation.
+Across all five configurations, the review observed the reference bear identity, white Qwen shirt/logo, moonlit setting, floating stars, and dancing pose. Pose and rendering changes are part of the requested edit; this is not a claim of pixel preservation.
 
 ## English text regression — seed 43
 

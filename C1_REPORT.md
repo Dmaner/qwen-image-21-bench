@@ -8,7 +8,7 @@ Item C1 of [vllm-project/vllm-omni#8586](https://github.com/vllm-project/vllm-om
 
 The first comparison is **BF16 versus DiT-only FP8 on one H200**, with the same prompts, seeds, reference inputs and inference settings. It must report paired image quality and failures, peak memory, and latency before extending the experiment. Completing that comparison does not mean FP8 quality has been accepted.
 
-The initial two-arm comparison was completed before the TE-only, joint and selective experiments. Those three arms are **extensions**. All tables below use fresh BF16/DiT-only controls and extension measurements from the same Phase 2 H200; earlier Phase 1 timings are not pooled into them. Frozen [arm configurations](reproduce/scripts/configs/arms.json) and [quality cases](reproduce/scripts/quality_manifest.json) define the workload.
+The initial comparison was completed before the TE-only, joint and selective experiments. Those three configurations are **extensions**. All tables below use fresh BF16/DiT-only controls and extension measurements from the same Phase 2 H200; earlier Phase 1 timings are not pooled into them. Frozen [configurations](reproduce/scripts/configs/arms.json) and [quality cases](reproduce/scripts/quality_manifest.json) define the workload.
 
 ## Setup
 
@@ -23,10 +23,10 @@ The initial two-arm comparison was completed before the TE-only, joint and selec
 | Quantization | Online E4M3 weights and dynamic per-token activation quantization; worker audits and traces check actual execution |
 | T2I prompt | `A ceramic teapot on a wooden table` |
 | Edit | One [reference image](figures/reference.png), A0's `qwen_bear.png` (514×556); `Let this mascot dance under the moon, surrounded by floating stars` |
-| Timing budget | Per arm/task: 1 warmup + 1 feasibility + 10 measured requests in one process; torch profiler disabled, synchronized stock stage timing enabled |
-| Separate diagnostics | Memory: 1 warmup + 1 measured request. Profiler: 1 warmup + one full 50-step capture for T2I and editing per arm |
+| Timing budget | Per configuration/task: 1 warmup + 1 feasibility + 10 measured requests in one process; torch profiler disabled, synchronized stock stage timing enabled |
+| Separate diagnostics | Memory: 1 warmup + 1 measured request. Profiler: 1 warmup + one full 50-step capture for T2I and editing per configuration |
 
-| Scope | Arm | DiT block Linears | Language-encoder Linears |
+| Scope | Configuration | DiT block Linears | Language-encoder Linears |
 |---|---|---|---|
 | Primary comparison | BF16 | BF16 | BF16 |
 | Primary comparison | DiT FP8 | 160 FP8 | BF16 |
@@ -40,7 +40,7 @@ Vision, LM head, VAE, DiT boundary projections and attention are not quantized. 
 
 Wall time per image, **mean ± sample SD**, measured n=10:
 
-| Arm | T2I | Edit (1 ref) |
+| Configuration | T2I | Edit (1 ref) |
 |---|---:|---:|
 | BF16 | 7.260 ± 0.016 s | 8.332 ± 0.074 s |
 | DiT FP8 | 6.018 ± 0.013 s | 7.109 ± 0.081 s |
@@ -80,7 +80,7 @@ A separate earlier BF16 cross-check retained A0's exact prompts, seed 42, model 
 | T2I | 7.387 s | 7.379 s | −0.11% |
 | Edit (1 ref) | 8.363 s | 8.462 s | +1.18% |
 
-The author baseline and cross-check used different physical H200s and drivers (580.95.05 vs 595.91.07). This is a reproducibility check; the five-arm performance table above uses its own fresh controls. All 28 saved repeated cross-check outputs matched A0's decoded RGB pixels, including warmup and diagnostic outputs—not 28 independent prompts. [Cross-check records](data/a0-cross/comparison.json).
+The author baseline and cross-check used different physical H200s and drivers (580.95.05 vs 595.91.07). This is a reproducibility check; the performance table for the five configurations above uses its own fresh controls. All 28 saved repeated cross-check outputs matched A0's decoded RGB pixels, including warmup and diagnostic outputs—not 28 independent prompts. [Cross-check records](data/a0-cross/comparison.json).
 
 The following are **Phase 2 quality-run outputs**, using the same A0 prompts and seed 42. They are not labeled as timing-run images. Both BF16 anchors match the author's PNG files exactly ([verification](data/phase2/audits/A0_ALIGNMENT_RECHECK.json)).
 
@@ -93,7 +93,7 @@ The following are **Phase 2 quality-run outputs**, using the same A0 prompts and
 
 Sequential `/v1/images/generations` requests, `response_format=b64_json`, concurrency 1, n=10. Mean ± sample SD:
 
-| Arm | Client total | Engine generation |
+| Configuration | Client total | Engine generation |
 |---|---:|---:|
 | BF16 | 7.338 ± 0.025 s | 7.240 ± 0.021 s |
 | DiT FP8 | 6.103 ± 0.018 s | 6.006 ± 0.020 s |
@@ -105,9 +105,9 @@ Client timing ends after the response body is received; subsequent client JSON/b
 
 ## 3. Where the time goes inside denoising (torch-profiler traces)
 
-Ten separate captures cover all 50 steps: T2I and editing for each arm, after warmup, with shapes, stacks and memory collection. Runtime audits and correlated launches verify actual CUTLASS SM90 E4M3 execution.
+Ten separate captures cover all 50 steps: T2I and editing for each configuration, after warmup, with shapes, stacks and memory collection. Runtime audits and correlated launches verify actual CUTLASS SM90 E4M3 execution.
 
-| Arm | DiT FP8 GEMMs / request | Language-encoder FP8 GEMMs / request |
+| Configuration | DiT FP8 GEMMs / request | Language-encoder FP8 GEMMs / request |
 |---|---:|---:|
 | BF16 | 0 | 0 |
 | DiT FP8 | 8,000 | 0 |
@@ -133,7 +133,7 @@ The export-only adapter changes post-capture summary aggregation, not trace coll
 
 Binary units: 1 GiB = 1024³ bytes. Each separate diagnostic uses one warmup and one measured request; values below are the **measured request's worker peak counters**.
 
-| Arm | T2I allocated | T2I reserved | Edit allocated | Edit reserved |
+| Configuration | T2I allocated | T2I reserved | Edit allocated | Edit reserved |
 |---|---:|---:|---:|---:|
 | BF16 | 36.86 GiB | 38.12 GiB | 36.87 GiB | 39.28 GiB |
 | DiT FP8 | 30.36 GiB | 31.60 GiB | 30.37 GiB | 32.77 GiB |
@@ -160,7 +160,7 @@ PSNR uses `data_range=255`; SSIM uses Gaussian weights, sigma 1.5, window 11 and
 
 Selected text cases from the labeled **model-assisted review**:
 
-| Arm | English title, seed 43 | Chinese text, seed 44 |
+| Configuration | English title, seed 43 | Chinese text, seed 44 |
 |---|---|---|
 | BF16 | Title present; an unrequested portrait already appears | Clear vertical order |
 | DiT FP8 | **Entire requested title missing** | All characters present; **reading order ambiguous** |
@@ -179,7 +179,7 @@ Selected text cases from the labeled **model-assisted review**:
 
 ## Artifacts
 
-- [Original image gallery](GALLERY.md): representative T2I, editing and text cases across all five arms.
+- [Original image gallery](GALLERY.md): representative T2I, editing and text cases across all five configurations.
 - [Compact raw data](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip): request/environment/configuration records, worker memory and quantization audits, quality metrics/reviews, profiler summaries and separate A0 cross-check metadata.
 - [Data index](data/README.md), [member manifest](data/ARTIFACT_MANIFEST.json) and [SHA256](data/SHA256SUMS).
 - [Reproduction](reproduce/README.md): exact executed scripts, software pins, inputs and analysis commands; [source provenance](PROVENANCE.md).
