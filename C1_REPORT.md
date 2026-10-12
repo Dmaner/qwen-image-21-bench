@@ -70,13 +70,13 @@ DiT-only FP8 saves **6.50 GiB (17.6%)** of peak allocated memory. Combined DiT +
 
 Each FP8 configuration is paired with BF16 using identical prompts, seeds and reference inputs. The initial set contains four prompts × seeds 42/43/44; the held-out set contains four additional prompts × seeds 45/46/47, fixed before evaluation. The cases cover ordinary T2I, English/Chinese text and single-reference editing.
 
-The mean scores combine all 24 paired cases (12 initial + 12 held-out); the teapot column is one case. All cases completed without inference errors.
+The mean scores combine all 24 paired cases (12 initial + 12 held-out). All cases completed without inference errors.
 
-| Configuration vs BF16 | Teapot, seed 42: PSNR | Mean PSNR ↑ | Mean SSIM ↑ | Mean LPIPS ↓ |
-|---|---:|---:|---:|---:|
-| DiT FP8 | 32.96 dB | 25.41 dB | 0.9357 | 0.0748 |
-| Text Encoder FP8 | 32.13 dB | 26.10 dB | 0.9319 | 0.0728 |
-| DiT + Text Encoder FP8 | 30.64 dB | 23.42 dB | 0.9097 | 0.0951 |
+| Configuration vs BF16 | Mean PSNR ↑ | Mean SSIM ↑ | Mean LPIPS ↓ |
+|---|---:|---:|---:|
+| DiT FP8 | 25.41 dB | 0.9357 | 0.0748 |
+| Text Encoder FP8 | 26.10 dB | 0.9319 | 0.0728 |
+| DiT + Text Encoder FP8 | 23.42 dB | 0.9097 | 0.0951 |
 
 All metrics use full-resolution RGB. PSNR uses `data_range=255`; SSIM uses Gaussian weights, sigma 1.5, window 11 and population covariance. LPIPS uses AlexNet v0.1 (`lpips==0.1.4`), RGB normalized to [-1, 1], with no resize/crop; lower means closer to BF16. LPIPS was added on 2026-10-13 by CPU scoring of the archived outputs, without rerunning inference. [Per-image metrics](data/phase2/quality) · [LPIPS scores and method](data/phase2/quality/lpips/lpips_metrics.json) · [Prompts and seeds](reproduce/scripts/quality_manifest.json).
 
