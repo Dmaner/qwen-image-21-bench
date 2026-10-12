@@ -38,8 +38,6 @@ Engine stage time is 7.377 / 8.460 s, within 2 ms of the respective wall time. [
 
 ### Full pipeline accounting
 
-A separate `--stages` run uses A0's pre/post-processing hook and additional synchronized timing points. Indented rows are nested and **must not be added together**.
-
 | Stage | T2I | Edit |
 |---|---:|---:|
 | **Wall time, n=2** | **7.312 s** | **8.488 s** |
@@ -56,8 +54,6 @@ A separate `--stages` run uses A0's pre/post-processing hook and additional sync
 | ↳ ↳ VAE decode | 0.113 s | 0.113 s |
 | Post-process | 0.031 s | 0.039 s |
 | Outside pre/forward/post | 0.003 s | 0.006 s |
-
-Only about 3.3 / 5.6 ms remains outside pre-process, forward and post-process. Editing's context preparation includes image-conditioned prompt work as well as the text encoder; nested stages do not isolate each operation's causal cost.
 
 ### Separate diagnostic runs
 
