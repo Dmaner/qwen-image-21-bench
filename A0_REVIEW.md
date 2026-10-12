@@ -1,6 +1,6 @@
 # A0 cross-review: Qwen-Image 2.1 on Runpod H200
 
-Independent BF16 reproduction by Dmaner of [luca-888's A0 report](https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/A0_REPORT.md) for [vLLM-Omni #8586](https://github.com/vllm-project/vllm-omni/issues/8586). Experiments: **2026-10-10**; report: **2026-10-12**. This is the earlier A0 cross-check; C1's later FP8 comparisons use their own fresh BF16 controls.
+Independent BF16 reproduction by Dmaner of [luca-888's A0 report](https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/A0_REPORT.md) for [vLLM-Omni #8586](https://github.com/vllm-project/vllm-omni/issues/8586). Experiments: **2026-10-10**; report: **2026-10-12**.
 
 **Result:** the two fixed workloads reproduce A0's output pixels, peak memory and similar request latency.
 
@@ -15,11 +15,11 @@ Independent BF16 reproduction by Dmaner of [luca-888's A0 report](https://github
 | Steady-step GPU-event duration, edit | 145.75 ms | 152.62 ms | +4.72% |
 | Allocated / reserved peaks | 36.86/38.12 GiB T2I; 36.87/39.28 GiB edit | Same | Match at reported precision |
 
-- **Environment:** identical prompt/seed/reference input, model/Omni revisions and core package versions; different provider, host and driver (**580.95.05 → 595.91.07**). A0 used several physical H200s; this reproduction used one. A0's historical image digest/full dependency lock was unavailable. The shallow checkout also produces a different Omni distribution-version string despite the same source SHA.
+- **Environment:** matched prompts, seed, reference input, model/code revisions and core versions; different hosts and drivers (**580.95.05 vs 595.91.07**).
 - **Startup differs substantially:** T2I/edit initialization **34.92/29.12 → 13.68/10.33 s**; serving ready **72.07 → 24.04 s**. Cold-start conditions were not controlled across providers, so these are observations, not inference speedups.
-- **Trace structure agrees, absolute time differs:** both have 50 steps and 1,832 correlated GPU events per steady step. Principal kernel/module shares differ by less than 0.5 percentage points, while steady-step GPU-event duration is approximately 4–5% higher here. Neither profiler timing nor initialization is substituted for headline latency.
+- **Trace structure:** both traces contain 50 steps and 1,832 events per steady step; kernel/module shares differ by <0.5 percentage points.
 - **A0's approximately 8% idle estimate is not reproduced:** applying its cross-run arithmetic here gives **3.95%** for T2I. This combines profiled event-duration sums with a separate unprofiled wall interval; it is not measured GPU utilization or confirmed graph/compile headroom.
-- **Scope:** 28 saved repeated outputs match the corresponding A0 RGB pixels, covering only two fixed inputs. With n=2 headline measurements, this establishes a small-sample reproduction with similar performance, not statistical equivalence. C1's later BF16/FP8 tables use fresh same-machine controls rather than this historical baseline.
+- **Scope:** all 28 saved outputs, covering two fixed inputs, match A0's corresponding RGB pixels. [Cross-check records](data/a0-cross/comparison.json)
 
 ## Setup
 
@@ -51,7 +51,7 @@ The timing runs keep A0's synchronized stock stage profiler. They do not enable 
 | Generation failures / OOM | 0 / 0 | 0 / 0 |
 | Within-group output determinism | 4/4 identical PNG hashes | 4/4 identical PNG hashes |
 
-### Full pipeline accounting
+### Full pipeline accounting (separate diagnostic run)
 
 | Stage | T2I | Edit |
 |---|---:|---:|
@@ -74,7 +74,7 @@ The timing runs keep A0's synchronized stock stage profiler. They do not enable 
 |:---:|:---:|:---:|
 | <img src="figures/t2i_teapot_s42/bf16.png" width="260" alt="BF16 teapot output matching the A0 cross-check"> | <img src="figures/reference.png" width="200" alt="Bear editing reference"> | <img src="figures/edit_bear_s42/bf16.png" width="260" alt="BF16 editing output matching the A0 cross-check"> |
 
-These existing gallery files originated in the later Phase 2 quality run. Their PNG bytes match both this cross-check's timing `measured_0` images and A0's corresponding originals, as recorded in the [image audit](data/a0-cross/publication_evidence.json). They are reused to avoid duplicate attachments; their original provenance is unchanged.
+Reused Phase 2 BF16 quality-run images are byte-identical to the corresponding A0 and cross-check timing outputs; see the [image audit](data/a0-cross/publication_evidence.json).
 
 ## 2. Serving measurements
 
@@ -92,7 +92,7 @@ Sequential `/v1/images/generations` requests, `response_format=b64_json`, same w
 
 The headers-minus-engine residual includes HTTP handling, hand-off and response encoding; it is **an upper bound on encoding, not a separately timed encoding stage**. Client decode timings are recorded separately from response transfer.
 
-The separate shared serving benchmark used three requests at concurrency 1 and completed 3/3, with **7.4148 s** mean engine time. Across all nine completed experiment groups, the 16 T2I and 12 editing outputs match A0's corresponding decoded RGB pixels. These are repeats of **two fixed inputs**, including warmup and diagnostics, not 28 independent quality cases. [Cross-check records](data/a0-cross/comparison.json)
+The separate shared serving benchmark used three requests at concurrency 1 and completed 3/3, with **7.4148 s** mean engine time.
 
 ## 3. Where the time goes inside denoising (torch-profiler traces)
 
@@ -131,7 +131,7 @@ Within Transformer blocks, with a different denominator:
 | SwiGLU MLP | 40.21% | 36.70% |
 | Remaining modulation / residual / gating | 10.58% | 9.58% |
 
-The attention **module** includes projections, normalization and RoPE, so it is larger than the attention-kernel category. The latter includes both FA3 and PyTorch SDPA events across the request. [T2I trace analysis](data/a0-cross/t2i_trace_analysis.json) · [Edit trace analysis](data/a0-cross/edit_trace_analysis.json)
+[T2I trace analysis](data/a0-cross/t2i_trace_analysis.json) · [Edit trace analysis](data/a0-cross/edit_trace_analysis.json)
 
 ## 4. GPU memory
 
