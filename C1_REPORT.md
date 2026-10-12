@@ -10,7 +10,7 @@ For [vllm-project/vllm-omni#8586](https://github.com/vllm-project/vllm-omni/issu
 | Packages | vLLM 0.31.0, torch 2.13.0+cu130, Transformers 5.14.1, Diffusers 0.40.0, Triton 3.7.1; Python 3.12.3 |
 | Model | `Qwen/Qwen-Image-2.1@d26bb61231c349cf6b7896fa83353113880e1ba3` |
 | Hardware | 1× NVIDIA H200 SXM (Runpod), driver 595.91.07 |
-| Workload | Offline T2I/edit and HTTP T2I; 1024×1024, 50 steps, seed 42 for timing, `true_cfg_scale=1.0`, batch/concurrency 1 |
+| Workload | Offline T2I/edit; 1024×1024, 50 steps, seed 42 for timing, `true_cfg_scale=1.0`, batch/concurrency 1 |
 | Execution | Eager, FA3 SM90, BF16 prefix KV reuse; no CUDA graphs, CPU offload or VAE tiling |
 | T2I prompt | `A ceramic teapot on a wooden table` |
 | Edit | One [reference image](figures/reference.png), 514×556; `Let this mascot dance under the moon, surrounded by floating stars` |
@@ -38,7 +38,7 @@ Offline wall time per image, n=10. The timer covers `omni.generate(...)` and out
 | Text Encoder FP8 | 7.284 ± 0.021 s | +0.3% | 8.376 ± 0.081 s | +0.5% |
 | DiT + Text Encoder FP8 | 6.013 ± 0.009 s | −17.2% | 7.078 ± 0.062 s | −15.0% |
 
-DiT-only FP8 reduces T2I latency by **17.1%** and editing latency by **14.7%**. Text Encoder FP8 provides no latency benefit on these inputs. All **120 measured requests** across the four configurations and three modes completed without recorded errors or OOMs.
+DiT-only FP8 reduces T2I latency by **17.1%** and editing latency by **14.7%**. Text Encoder FP8 provides no latency benefit on these inputs. All **80 measured requests** across the four configurations and two tasks completed without recorded errors or OOMs.
 
 The reduction is concentrated in denoising. Mean `diffuse` time for all 50 steps, from the same requests:
 
@@ -49,20 +49,7 @@ The reduction is concentrated in denoising. Mean `diffuse` time for all 50 steps
 
 [Latency and stage measurements](data/phase2/performance/PERFORMANCE.json).
 
-## 2. Serving (T2I)
-
-Sequential `/v1/images/generations` requests, `response_format=b64_json`, concurrency 1, n=10. Client time ends when the response body is received.
-
-| Configuration | Client total | Δ vs BF16 | Engine generation | Δ vs BF16 |
-|---|---:|---:|---:|---:|
-| BF16 | 7.338 ± 0.025 s | — | 7.240 ± 0.021 s | — |
-| DiT FP8 | 6.103 ± 0.018 s | −16.8% | 6.006 ± 0.020 s | −17.0% |
-| Text Encoder FP8 | 7.372 ± 0.012 s | +0.5% | 7.276 ± 0.010 s | +0.5% |
-| DiT + Text Encoder FP8 | 6.131 ± 0.014 s | −16.4% | 6.033 ± 0.012 s | −16.7% |
-
-DiT-only FP8 reduces client latency by **16.8%**. [Serving measurements](data/phase2/performance/PERFORMANCE.json).
-
-## 3. Memory
+## 2. Memory
 
 Worker peak allocated/reserved memory, in GiB. One measured request after one warmup per configuration/task; percentage changes are approximate, based on the logged 0.01 GiB values.
 
@@ -79,7 +66,7 @@ Worker peak allocated/reserved memory, in GiB. One measured request after one wa
 
 DiT-only FP8 saves **6.50 GiB (17.6%)** of peak allocated memory. Combined DiT + Text Encoder FP8 saves **12.97 GiB (35.2%)**. [Memory records](data/phase2/performance/PERFORMANCE.json).
 
-## 4. Image Quality
+## 3. Image Quality
 
 Each FP8 configuration is paired with BF16 using identical prompts, seeds and reference inputs. The initial set contains four prompts × seeds 42/43/44; the held-out set contains four additional prompts × seeds 45/46/47, fixed before evaluation. The cases cover ordinary T2I, English/Chinese text and single-reference editing.
 
@@ -100,7 +87,7 @@ PSNR uses `data_range=255`; SSIM uses Gaussian weights, sigma 1.5, window 11 and
 
 In the [English-title case, seed 43](GALLERY.md#english-text-regression--seed-43), DiT FP8 and combined DiT + Text Encoder FP8 omit the requested `QWEN IMAGE 2.1` title; BF16 and Text Encoder FP8 retain it. The [visual observations](data/phase2/visual-review) include the remaining text and editing cases. Quality acceptance thresholds and independent cross-review remain pending.
 
-## 5. Conclusion
+## 4. Conclusion
 
 - DiT FP8 reduces latency and peak memory, with a text-rendering regression in the tested inputs.
 - Text Encoder FP8 saves memory without reducing latency here. Combined FP8 provides the largest memory saving, with latency close to DiT-only and the same missing-title case.

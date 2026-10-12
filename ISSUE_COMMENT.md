@@ -11,7 +11,7 @@ Compared BF16 with DiT-only FP8, then added Text Encoder FP8 and combined DiT + 
 
 Offline latency is the mean of 10 requests after warmup and feasibility checks. Memory is the worker's peak allocated value from one measured request after warmup. Negative percentages indicate reductions versus BF16.
 
-- **Latency:** DiT FP8 reduces offline T2I/edit latency by 17.1%/14.7%; HTTP T2I client latency falls from 7.338 to 6.103 s (−16.8%). All 120 measured requests succeeded.
+- **Latency:** DiT FP8 reduces offline T2I/edit latency by 17.1%/14.7%. All 80 measured offline requests succeeded.
 - **Memory:** DiT FP8 saves 6.50 GiB; combined FP8 saves 12.97 GiB. Text Encoder FP8 saves memory without reducing latency here.
 - **Image quality:** 24 paired cases per FP8 configuration. DiT FP8 reaches 32.96 dB on teapot/seed 42; its initial/held-out means are 23.86/26.96 dB. DiT FP8 and combined FP8 omit the requested English title at seed 43; BF16 and Text Encoder FP8 retain it.
 
