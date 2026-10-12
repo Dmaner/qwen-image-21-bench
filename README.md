@@ -11,7 +11,7 @@ Performance, paired image quality and torch-profiler evidence for the C1 FP8 wor
 | [Original image gallery](GALLERY.md) | Same-input comparisons: T2I, editing, English and Chinese text |
 | [Essential numerical records](https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip) | Compact raw request/environment/configuration and worker-memory records; analysis and A0 cross-check metadata |
 | [Data index](data/README.md) | Machine-readable results and evidence mapping |
-| [Reproduction](reproduce/README.md) | Executed harness, configs, frozen prompts and analysis tools |
+| [Reproduction](reproduce/README.md) | Four-configuration runner, configs, frozen prompts and analysis tools |
 | [Issue comment](ISSUE_COMMENT.md) | Concise draft with public links |
 | [Provenance](PROVENANCE.md) | Source revisions, attribution and artifact boundaries |
 
@@ -28,4 +28,4 @@ gh release download c1-h200-20261011 --repo Dmaner/qwen-image-21-bench \
 # macOS: replace sha256sum with shasum -a 256
 ```
 
-See [ARTIFACT_MANIFEST.json](data/ARTIFACT_MANIFEST.json) for the included records and hashes. The repository retains the original-image gallery, all quality metrics, model-assisted reviews and profile summaries. **Full raw traces, memory pickles and the complete image corpus remain local.** Retained evidence bytes were not edited; operational account files are excluded.
+See [ARTIFACT_MANIFEST.json](data/ARTIFACT_MANIFEST.json) for the included records and hashes. The repository retains the four-configuration image gallery, its quality metrics and model-assisted reviews, plus the original performance/profile summaries. **Full raw traces, memory pickles and the complete image corpus remain local.** Retained evidence bytes were not edited; operational account files are excluded.

@@ -27,7 +27,7 @@ MODEL = 'Qwen/Qwen-Image-2.1'
 QUANT = {'transformer': {'method': 'fp8'}, 'text_encoder': None, 'vae': None, 'default': None}
 EXPECTED_PACKAGES = {'vllm': '0.31.0', 'torch': '2.13.0+cu130', 'triton': '3.7.1',
                      'transformers': '5.14.1', 'diffusers': '0.40.0'}
-ARMS = ('bf16', 'dit_fp8', 'te_fp8', 'joint_fp8', 'selective_bf16')
+ARMS = ('bf16', 'dit_fp8', 'te_fp8', 'joint_fp8')
 ARM_SPECS = {}
 OFFLINE_HARNESS = 'c1_offline.py'
 SERVING_HARNESS = 'c1_serving.py'
@@ -314,7 +314,7 @@ def compare_metric(base, candidate, field, global_errors):
             'baseline_over_candidate': a['mean'] / b['mean'] if valid else None,
             'latency_reduction_percent': 100 * (1 - b['mean'] / a['mean']) if valid else None,
             'invalid_reasons': reasons,
-            'interpretation': 'selective versus dit_fp8 isolates the selected DiT BF16 protections; joint comparison also changes TE quantization' if candidate['arm'] == 'selective_bf16' else 'Paired workload; quality is a separate gate.'}
+            'interpretation': 'Paired workload; quality is a separate gate.'}
 
 
 def load_arm_specs(path, arms):
@@ -329,11 +329,7 @@ def load_arm_specs(path, arms):
 
 
 def comparisons_for(arms):
-    pairs = [('bf16', arm) for arm in arms if arm != 'bf16']
-    for base in ('dit_fp8', 'joint_fp8'):
-        if base in arms and 'selective_bf16' in arms:
-            pairs.append((base, 'selective_bf16'))
-    return pairs
+    return [('bf16', arm) for arm in arms if arm != 'bf16']
 
 
 def analyze(root, arms=ARMS, modes=MODES):
@@ -397,7 +393,7 @@ def render(report):
         reduction = f"{c['latency_reduction_percent']:.4f}%" if c['valid_comparison'] else '—'
         lines.append(f"| {name} | {fmt(c['baseline'])} | {fmt(c['candidate'])} | {ratio} | {reduction} |")
     lines += ['', 'Serving client_total includes headers+body; JSON/base64/PNG decoding is separate. Engine metrics are ms/1000. Initialization is separate in each group; no profile wall time or GPU event sums are performance samples.', '',
-              'Selective versus dit_fp8 isolates the selected DiT BF16 protections; joint comparison also changes TE quantization. A performance gain does not imply passing quality.', '',
+              'A performance gain does not imply passing quality.', '',
               '## Independent memory', '', '| Group | Allocated GiB | Reserved GiB | Device-used GiB | Valid |', '|---|---:|---:|---:|---|']
     for g in report['groups'].values():
         if g['kind'] != 'mem':

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CPU-only streaming audit of four pinned Qwen21 C1 profiles.
+"""CPU-only streaming audit of pinned Qwen21 C1 profiles.
 
 Example:
   python3 analyze_profiles.py --case bf16-t2i=/path/to/trace.json.gz \
@@ -24,6 +24,7 @@ import sys
 from pathlib import Path
 
 OMNI_REVISION = '3dc35694b3d458fc1461a8fe71832ac12e8c8cea'
+ARMS = ('bf16', 'dit_fp8', 'te_fp8', 'joint_fp8')
 STEP = re.compile(r'qwen_image_21_transformer\.py\(1021\): forward$')
 STEP_LOOSE = re.compile(r'qwen_image_21_transformer\.py\(\d+\): forward$')
 PHASES = {
@@ -501,7 +502,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', type=Path, default=Path(__file__).resolve().parent.parent)
     p.add_argument('--case', action='append', default=[], metavar='ARM-MODE=TRACE')
-    p.add_argument('--arms', nargs='+', default=['bf16', 'dit_fp8', 'te_fp8', 'joint_fp8', 'selective_bf16'])
+    p.add_argument('--arms', nargs='+', default=list(ARMS), choices=ARMS)
     p.add_argument('--arm-manifest', type=Path)
     p.add_argument('--quant-source-dir', type=Path)
     p.add_argument('--out-dir', type=Path)

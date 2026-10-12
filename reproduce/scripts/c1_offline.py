@@ -1,4 +1,4 @@
-"""C1 Phase2: paired five-arm component quantization, minimally extended from A0 cf99e73c.
+"""C1 Phase2: paired four-arm component quantization, minimally extended from A0 cf99e73c.
 
 Runs inside one process / one engine so warmups and measured runs share the same
 prepared state. Writes:
@@ -51,7 +51,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--measured", type=int, default=10)
     p.add_argument("--quant-config-file", default=None,
                    help="Component JSON passed to Omni; omit for matching BF16 baseline.")
-    p.add_argument("--arm", choices=["bf16", "dit_fp8", "te_fp8", "joint_fp8", "selective_bf16"], required=True)
+    p.add_argument("--arm", choices=["bf16", "dit_fp8", "te_fp8", "joint_fp8"], required=True)
     p.add_argument("--cases-file", default=None,
                    help="Quality manifest: one engine, warmup first case then each case once.")
     p.add_argument("--quant-audit", action="store_true",

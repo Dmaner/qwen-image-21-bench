@@ -1,6 +1,6 @@
 {
   "created_at_utc": "2026-10-11T12:32:10.255510+00:00",
-  "scope": "Exact copied C1 reproduction scripts/configs from archived remote execution; no source bytes or archived evidence hashes rewritten. Documentation/manifest are publication additions.",
+  "scope": "Four-configuration C1 reproduction adapted from archived execution. sha256/bytes retain the original executed source; current_sha256/current_bytes describe this checkout. Historical measurement and release hashes are unchanged.",
   "upstream_a0_revision": "cf99e73c8fa1603718c47405730d94c9fbfe6e16",
   "omni_revision": "3dc35694b3d458fc1461a8fe71832ac12e8c8cea",
   "model_revision": "d26bb61231c349cf6b7896fa83353113880e1ba3",
@@ -10,24 +10,33 @@
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/c1_offline.py",
       "sha256": "17e0e0323c0d30d319abb42d6c807f8f8a930233f2d387292b29e03cf42925b0",
       "bytes": 19522,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "39486290aa3f1eca8115ec10e0f7df3dcc89ed603ed62140fe9ad27086243001",
+      "current_bytes": 19504,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/c1_serving.py",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/c1_serving.py",
       "sha256": "2ff421a38ab0c4791deed880b18f0a1987f2eea5417dd0595164a74650d53033",
       "bytes": 9385,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "7dd7755930851ac95aa0f4f2f142df94aaf34507aebbd9512bc64a7595634f48",
+      "current_bytes": 9367,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/run_experiment.sh",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/run_experiment.sh",
       "sha256": "5ced2f688c1dbf130abd42b9c61d4564ca18798aa27d97db597ae2fbacf748ee",
       "bytes": 3574,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "b091e200088592aab93f3262d0584ae8a924c0d3d0aec91e0d08fcb85e9e7c94",
+      "current_bytes": 3559,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/setup.sh",
@@ -35,7 +44,9 @@
       "sha256": "1ff498a1dee9ce7f2cd3fe4e79e1495360f9f59b6bff97a999642bbd5d2a7a84",
       "bytes": 3045,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "1ff498a1dee9ce7f2cd3fe4e79e1495360f9f59b6bff97a999642bbd5d2a7a84",
+      "current_bytes": 3045
     },
     {
       "public_path": "reproduce/scripts/constraints.txt",
@@ -43,47 +54,64 @@
       "sha256": "1f0497c63ebe3529d5f053e223624ad16e3317c9162709185a5d89d80094e006",
       "bytes": 117,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "1f0497c63ebe3529d5f053e223624ad16e3317c9162709185a5d89d80094e006",
+      "current_bytes": 117
     },
     {
       "public_path": "reproduce/scripts/quality_manifest.json",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quality_manifest.json",
       "sha256": "7740b28014c2237f667b2f9b54e4bc8351cccde2da916a00cc3b44d63b151c58",
       "bytes": 19141,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "53b8142ede642992ee3bda4aaf730c452745297fbccc0907287b3e8e286fdba9",
+      "current_bytes": 19119,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/quality_manifest_effective.json",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quality_manifest_effective.json",
       "sha256": "00316975bdce49a82ff721a9ee076a1a0663e0ee7bffd31974b58295fde46a6c",
       "bytes": 19423,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "ff61be7d631ba8077aebb1a1081ca29381af6127122015fe4d5a267a996c04d2",
+      "current_bytes": 19401,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/analyze_performance.py",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/analyze_performance.py",
       "sha256": "43278fee21048c381bef34b3c450cd104254b5cfe70fe0edf579b31ab46e44f5",
       "bytes": 26731,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "dcb75336288d24ed460faa251c066333293eeea3ee9154220b7643ff081cc5fa",
+      "current_bytes": 26270,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/analyze_profiles.py",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/analyze_profiles.py",
       "sha256": "e15cb78db7a49bc213344b0d7edf8c4f2ed664f95566d581b792f840c79a5e06",
       "bytes": 35768,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "da068789a2e6733441d73ca17d6d9621052d4302a256834df4d98af6bd4014f5",
+      "current_bytes": 35777,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/analysis/analyse_quality.py",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/analysis/analyse_quality.py",
       "sha256": "2c2dd13be62b9014259696c013a3b71fc9c175abefceb63ccc4dc155abba4c39",
       "bytes": 29490,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "04079cf6177ed42cfa8d79df6273596ea141da41f9dfb5ed1abffb96a39bc9b2",
+      "current_bytes": 29489,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/reference/parse_diagnostics.py",
@@ -91,7 +119,9 @@
       "sha256": "8c77adc895fc220f7568e4e51146a9150d0cffa8a9bf4d4f6bdbc04f259918f5",
       "bytes": 1981,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "8c77adc895fc220f7568e4e51146a9150d0cffa8a9bf4d4f6bdbc04f259918f5",
+      "current_bytes": 1981
     },
     {
       "public_path": "reproduce/reference/profiler_export_only/sitecustomize.py",
@@ -99,15 +129,20 @@
       "sha256": "455d4e96f7ecb7f96594fcc474d7eab0f563ee4e227843118e86fe346bd813ba",
       "bytes": 2906,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "455d4e96f7ecb7f96594fcc474d7eab0f563ee4e227843118e86fe346bd813ba",
+      "current_bytes": 2906
     },
     {
       "public_path": "reproduce/scripts/configs/arms.json",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/arms.json",
       "sha256": "dc9577e05f94bd496bc0d3e2c6dc627f53e08c3e8f6d016f838aad476810827b",
       "bytes": 1899,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "f4613a03470ffbcb50d57ab54a450b42b2e39551007c88e69a63bd452e13c3a2",
+      "current_bytes": 1118,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/configs/bf16.json",
@@ -115,7 +150,9 @@
       "sha256": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
       "bytes": 84,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+      "current_bytes": 84
     },
     {
       "public_path": "reproduce/scripts/configs/dit_fp8.json",
@@ -123,7 +160,9 @@
       "sha256": "3a83d78d9578e3503448249c1ca85959d70959f42af3154eec02e7ac637d2ae1",
       "bytes": 184,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "3a83d78d9578e3503448249c1ca85959d70959f42af3154eec02e7ac637d2ae1",
+      "current_bytes": 184
     },
     {
       "public_path": "reproduce/scripts/configs/joint_fp8.json",
@@ -131,15 +170,9 @@
       "sha256": "3d57c141835473c5d96c45cf821852fd6e620e552a290d37bb8c66ba978ff010",
       "bytes": 355,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
-    },
-    {
-      "public_path": "reproduce/scripts/configs/selective_bf16.json",
-      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/selective_bf16.json",
-      "sha256": "3f5a289d9b4c5db9c1ff1835ff5441fdc56862620a6a8d7bc633be274d622525",
-      "bytes": 392,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "3d57c141835473c5d96c45cf821852fd6e620e552a290d37bb8c66ba978ff010",
+      "current_bytes": 355
     },
     {
       "public_path": "reproduce/scripts/configs/te_fp8.json",
@@ -147,7 +180,9 @@
       "sha256": "782cf375cbd2ab774bb87bb889dddd889b68d770e48c1701a417585780ad8acc",
       "bytes": 255,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "782cf375cbd2ab774bb87bb889dddd889b68d770e48c1701a417585780ad8acc",
+      "current_bytes": 255
     },
     {
       "public_path": "reproduce/scripts/quant_audit/sitecustomize.py",
@@ -155,15 +190,20 @@
       "sha256": "15a641c31fbee179fa514fdb2e77177e37d7132d9034cfd2ca0fa3629f0bbcad",
       "bytes": 14808,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "15a641c31fbee179fa514fdb2e77177e37d7132d9034cfd2ca0fa3629f0bbcad",
+      "current_bytes": 14808
     },
     {
       "public_path": "reproduce/scripts/quant_audit/audit_protocol.py",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/audit_protocol.py",
       "sha256": "2f747a3684c0ed1cccd986927665045541e745fde2501ee3e59ed6c56a7cbf7c",
       "bytes": 4434,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "7c21339efea6423c45908f89262986d580ebdfe2b9245fe75d3b26668ba7d051",
+      "current_bytes": 4289,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/quant_audit/verify_audit.py",
@@ -171,7 +211,9 @@
       "sha256": "2f252bc97e4f889d54e3a3edfa72d593d8f96192431210971da9e6b67cad4408",
       "bytes": 5769,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "2f252bc97e4f889d54e3a3edfa72d593d8f96192431210971da9e6b67cad4408",
+      "current_bytes": 5769
     },
     {
       "public_path": "reproduce/scripts/quant_audit/source_guards.json",
@@ -179,7 +221,9 @@
       "sha256": "7560e7e632a32717fda0f70a41a7381f6d337e17ae0d26fe5c125905a6144716",
       "bytes": 1248,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "7560e7e632a32717fda0f70a41a7381f6d337e17ae0d26fe5c125905a6144716",
+      "current_bytes": 1248
     },
     {
       "public_path": "reproduce/scripts/quant_audit/expected_topology.json",
@@ -187,15 +231,20 @@
       "sha256": "8dfa7116ddbe04e04640d633759e55f53065b97e64617e5313ddd19359119116",
       "bytes": 32410,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "8dfa7116ddbe04e04640d633759e55f53065b97e64617e5313ddd19359119116",
+      "current_bytes": 32410
     },
     {
       "public_path": "reproduce/scripts/quant_audit/cpu_selftest.py",
       "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/quant_audit/cpu_selftest.py",
       "sha256": "74b8a8411098e589cf1eb64cec8d182f9cb3e4a6928e3524137e3513df2ab1b9",
       "bytes": 5322,
-      "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "byte_identical_to_executed_copy": false,
+      "local_source_copy_also_equal": false,
+      "current_sha256": "7aec92e79d7e89e280df92e8f50f9a5a752265fdcdaff26f921750132b8d21cc",
+      "current_bytes": 5206,
+      "adaptation": "Restrict configuration selection to BF16, DiT FP8, Text Encoder FP8 and combined FP8; retain generation settings and measurement protocol."
     },
     {
       "public_path": "reproduce/scripts/capture_kernel_sources.py",
@@ -203,7 +252,9 @@
       "sha256": "1540d663a4118e463daf66bcc12c13fb0ca1e7dcaf70a4a5e7e5213cfe67cbef",
       "bytes": 945,
       "byte_identical_to_executed_copy": true,
-      "local_source_copy_also_equal": true
+      "local_source_copy_also_equal": true,
+      "current_sha256": "1540d663a4118e463daf66bcc12c13fb0ca1e7dcaf70a4a5e7e5213cfe67cbef",
+      "current_bytes": 945
     }
   ],
   "omitted": [
@@ -215,5 +266,30 @@
     "model weights",
     "previous run logs/results"
   ],
-  "capture_scope_note": "Original capture helper kept byte-identical; run only in a fresh experiment-only container because it collects /tmp/torchinductor_* Python sources. Captured dependency sources retain their own provenance/headers and are not relicensed."
+  "capture_scope_note": "Original capture helper kept byte-identical; run only in a fresh experiment-only container because it collects /tmp/torchinductor_* Python sources. Captured dependency sources retain their own provenance/headers and are not relicensed.",
+  "schema_version": 2,
+  "pre_cleanup_revision": "b13776a72fd39a08156f797added369ae27423f9",
+  "original_files_url": "https://github.com/Dmaner/qwen-image-21-bench/tree/b13776a72fd39a08156f797added369ae27423f9/reproduce",
+  "updated_at_utc": "2026-10-12T18:41:06.410577+00:00",
+  "removed_files": [
+    {
+      "public_path": "reproduce/scripts/configs/selective_bf16.json",
+      "source_artifact_path": "artifacts/qwen-image-c1-phase2-20261011/remote-evidence/scripts/configs/selective_bf16.json",
+      "sha256": "3f5a289d9b4c5db9c1ff1835ff5441fdc56862620a6a8d7bc633be274d622525",
+      "bytes": 392,
+      "byte_identical_to_executed_copy": true,
+      "local_source_copy_also_equal": true,
+      "removal_reason": "Outside the four reported configurations; original remains in pre_cleanup_revision and the experiment archive."
+    }
+  ],
+  "postprocess_files": [
+    {
+      "public_path": "reproduce/analysis/add_lpips.py",
+      "original_sha256": "40ee1259eff3c865bd0ec7155d7c5352537459c3febdf15d1dd55a6918604ef0",
+      "current_sha256": "3fed32f5b9cdbd84f0ca13552d2111c8ad775b44a36cf80eb241190e2e0e83b4",
+      "current_bytes": 6952,
+      "adaptation": "Use neutral provenance text for newly supplied outputs; scoring method unchanged.",
+      "published_scores": "data/phase2/quality/lpips/lpips_metrics.json"
+    }
+  ]
 }

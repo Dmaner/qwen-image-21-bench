@@ -8,7 +8,7 @@
     "source_relative_to_phase2": "scripts/quality_manifest.json",
     "sha256": "7740b28014c2237f667b2f9b54e4bc8351cccde2da916a00cc3b44d63b151c58"
   },
-  "scope": "Four selected legacy cases across all five configurations, plus an archived BF16/Text Encoder FP8 pair for heldout_chinese_s45. Original PNGs; no resize, re-encoding, annotation or regeneration.",
+  "scope": "Four selected cases across BF16, DiT FP8, Text Encoder FP8, and combined FP8. Original PNGs; no resize, re-encoding, annotation or regeneration.",
   "model": "Qwen/Qwen-Image-2.1",
   "model_revision": "d26bb61231c349cf6b7896fa83353113880e1ba3",
   "omni_revision": "3dc35694b3d458fc1461a8fe71832ac12e8c8cea",
@@ -16,15 +16,13 @@
     "t2i_teapot_s42",
     "edit_bear_s42",
     "t2i_english_s43",
-    "t2i_chinese_s44",
-    "heldout_chinese_s45"
+    "t2i_chinese_s44"
   ],
   "arms": [
     "bf16",
     "dit_fp8",
     "te_fp8",
-    "joint_fp8",
-    "selective_bf16"
+    "joint_fp8"
   ],
   "generation_controls": {
     "width": 1024,
@@ -42,14 +40,14 @@
     "attention_input_dtype": "bfloat16"
   },
   "verification": {
-    "copied_pngs": 23,
-    "output_pngs": 22,
+    "copied_pngs": 17,
+    "output_pngs": 16,
     "reference_pngs": 1,
     "all_source_destination_sha256_match": true,
     "all_output_hashes_match_quality_raw_rows": true,
     "reference_hash_matches_frozen_manifest": true
   },
-  "total_png_bytes": 33007079,
+  "total_png_bytes": 24391694,
   "files": [
     {
       "path": "figures/reference.png",
@@ -128,22 +126,6 @@
       "raw_image_sha256": "6fb45409c2eba370069674d3f163e00e9d0b7080998b521845417590814c0427"
     },
     {
-      "path": "figures/t2i_teapot_s42/selective_bf16.png",
-      "source_relative_to_phase2": "remote-evidence/results/quality_selective_bf16/images/t2i_teapot_s42.png",
-      "sha256": "a90971e656f8e8b06704b83e71d36c26147b74a0531af70f55e142adff346b9f",
-      "bytes": 1841260,
-      "width": 1024,
-      "height": 1024,
-      "byte_identical_copy": true,
-      "kind": "generated_output",
-      "arm": "selective_bf16",
-      "case": "t2i_teapot_s42",
-      "seed": 42,
-      "prompt": "A ceramic teapot on a wooden table",
-      "raw_phase": "quality",
-      "raw_image_sha256": "a90971e656f8e8b06704b83e71d36c26147b74a0531af70f55e142adff346b9f"
-    },
-    {
       "path": "figures/edit_bear_s42/bf16.png",
       "source_relative_to_phase2": "remote-evidence/results/quality_bf16/images/edit_bear_s42.png",
       "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
@@ -206,22 +188,6 @@
       "prompt": "Let this mascot dance under the moon, surrounded by floating stars",
       "raw_phase": "quality",
       "raw_image_sha256": "733452d43e0affee49d49f4b876e7dca52e3c4cfdd1bc98312e15868d80d17a5"
-    },
-    {
-      "path": "figures/edit_bear_s42/selective_bf16.png",
-      "source_relative_to_phase2": "remote-evidence/results/quality_selective_bf16/images/edit_bear_s42.png",
-      "sha256": "4ea07776d6d8c3b90b8f759fbb2005c94ce1975b3f103d027b8fdf0bc68d9d1c",
-      "bytes": 1070422,
-      "width": 1024,
-      "height": 1024,
-      "byte_identical_copy": true,
-      "kind": "generated_output",
-      "arm": "selective_bf16",
-      "case": "edit_bear_s42",
-      "seed": 42,
-      "prompt": "Let this mascot dance under the moon, surrounded by floating stars",
-      "raw_phase": "quality",
-      "raw_image_sha256": "4ea07776d6d8c3b90b8f759fbb2005c94ce1975b3f103d027b8fdf0bc68d9d1c"
     },
     {
       "path": "figures/t2i_english_s43/bf16.png",
@@ -288,22 +254,6 @@
       "raw_image_sha256": "1f130fb01e19b2abe849f13da0d6b03bd607706b06e8c38f4953833b51299339"
     },
     {
-      "path": "figures/t2i_english_s43/selective_bf16.png",
-      "source_relative_to_phase2": "remote-evidence/results/quality_selective_bf16/images/t2i_english_s43.png",
-      "sha256": "48ac5a025db1afd6071b64f540d5456587288419538818f948f1b9bc39650005",
-      "bytes": 1543293,
-      "width": 1024,
-      "height": 1024,
-      "byte_identical_copy": true,
-      "kind": "generated_output",
-      "arm": "selective_bf16",
-      "case": "t2i_english_s43",
-      "seed": 43,
-      "prompt": "A poster with the exact text \"QWEN IMAGE 2.1\", clean typography on a plain background.",
-      "raw_phase": "quality",
-      "raw_image_sha256": "48ac5a025db1afd6071b64f540d5456587288419538818f948f1b9bc39650005"
-    },
-    {
       "path": "figures/t2i_chinese_s44/bf16.png",
       "source_relative_to_phase2": "remote-evidence/results/quality_bf16/images/t2i_chinese_s44.png",
       "sha256": "ec2ae96ed13596ca6258326239c75971dc9782d1576166cb5a59527f42eb5234",
@@ -366,54 +316,6 @@
       "prompt": "A front-facing bookstore sign with the exact Chinese text \"星河书店\", clear readable lettering.",
       "raw_phase": "quality",
       "raw_image_sha256": "23c63dfb100b896d430737e4b02e45c80538d81c2fabe739f1f630ef241f743e"
-    },
-    {
-      "path": "figures/t2i_chinese_s44/selective_bf16.png",
-      "source_relative_to_phase2": "remote-evidence/results/quality_selective_bf16/images/t2i_chinese_s44.png",
-      "sha256": "a0098eea20def62e20660f1658e0c14d42460e378d12daa57f3eea49eeb22ac8",
-      "bytes": 1529733,
-      "width": 1024,
-      "height": 1024,
-      "byte_identical_copy": true,
-      "kind": "generated_output",
-      "arm": "selective_bf16",
-      "case": "t2i_chinese_s44",
-      "seed": 44,
-      "prompt": "A front-facing bookstore sign with the exact Chinese text \"星河书店\", clear readable lettering.",
-      "raw_phase": "quality",
-      "raw_image_sha256": "a0098eea20def62e20660f1658e0c14d42460e378d12daa57f3eea49eeb22ac8"
-    },
-    {
-      "path": "figures/heldout_chinese_s45/bf16.png",
-      "source_relative_to_phase2": "remote-evidence/results/quality_bf16/images/heldout_chinese_s45.png",
-      "sha256": "958de5eb12b2aef92353e4b834da239d2c0d96a8d832e7ddb9f5d13c13b602d5",
-      "bytes": 1311551,
-      "width": 1024,
-      "height": 1024,
-      "byte_identical_copy": true,
-      "kind": "generated_output",
-      "arm": "bf16",
-      "case": "heldout_chinese_s45",
-      "seed": 45,
-      "prompt": "A simple front-facing white sign with only the exact Chinese text \"春日茶馆\" in large black Chinese characters. No other text or imagery.",
-      "raw_phase": "quality",
-      "raw_image_sha256": "958de5eb12b2aef92353e4b834da239d2c0d96a8d832e7ddb9f5d13c13b602d5"
-    },
-    {
-      "path": "figures/heldout_chinese_s45/te_fp8.png",
-      "source_relative_to_phase2": "remote-evidence/results/quality_te_fp8/images/heldout_chinese_s45.png",
-      "sha256": "4843f50ce92b63562ad2aeb5c6ef2d583cda24022ce35c692e53babcc6e4397b",
-      "bytes": 1319126,
-      "width": 1024,
-      "height": 1024,
-      "byte_identical_copy": true,
-      "kind": "generated_output",
-      "arm": "te_fp8",
-      "case": "heldout_chinese_s45",
-      "seed": 45,
-      "prompt": "A simple front-facing white sign with only the exact Chinese text \"春日茶馆\" in large black Chinese characters. No other text or imagery.",
-      "raw_phase": "quality",
-      "raw_image_sha256": "4843f50ce92b63562ad2aeb5c6ef2d583cda24022ce35c692e53babcc6e4397b"
     }
   ],
   "selection_arms": {
@@ -421,34 +323,26 @@
       "bf16",
       "dit_fp8",
       "te_fp8",
-      "joint_fp8",
-      "selective_bf16"
+      "joint_fp8"
     ],
     "edit_bear_s42": [
       "bf16",
       "dit_fp8",
       "te_fp8",
-      "joint_fp8",
-      "selective_bf16"
+      "joint_fp8"
     ],
     "t2i_english_s43": [
       "bf16",
       "dit_fp8",
       "te_fp8",
-      "joint_fp8",
-      "selective_bf16"
+      "joint_fp8"
     ],
     "t2i_chinese_s44": [
       "bf16",
       "dit_fp8",
       "te_fp8",
-      "joint_fp8",
-      "selective_bf16"
-    ],
-    "heldout_chinese_s45": [
-      "bf16",
-      "te_fp8"
+      "joint_fp8"
     ]
   },
-  "updated_at_utc": "2026-10-12T18:26:56.878421+00:00"
+  "updated_at_utc": "2026-10-12T18:39:50.989540+00:00"
 }

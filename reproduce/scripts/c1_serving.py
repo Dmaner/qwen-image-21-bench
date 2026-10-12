@@ -31,7 +31,7 @@ PORT = 8091
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
-    p.add_argument("--arm", choices=["bf16", "dit_fp8", "te_fp8", "joint_fp8", "selective_bf16"], required=True)
+    p.add_argument("--arm", choices=["bf16", "dit_fp8", "te_fp8", "joint_fp8"], required=True)
     p.add_argument("--quant-config-file", default=None)
     p.add_argument("--model", required=True)
     p.add_argument("--model-revision", required=True)

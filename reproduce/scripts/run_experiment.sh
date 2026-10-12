@@ -14,7 +14,7 @@ run_case() {
  cat "$out/summary.json" >> "$root/progress.log"
  printf '%s DONE %s\n' "$(date -u +%FT%TZ)" "$out" | tee -a "$root/progress.log"
 }
-arms=(bf16 dit_fp8 te_fp8 joint_fp8 selective_bf16)
+arms=(bf16 dit_fp8 te_fp8 joint_fp8)
 for arm in "${arms[@]}"; do
  q=(); if [[ "$arm" != bf16 ]]; then q=(--quant-config-file "$root/scripts/configs/$arm.json"); fi
  out="$root/results/audit_${arm}"

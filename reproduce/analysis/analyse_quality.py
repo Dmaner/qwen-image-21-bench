@@ -422,7 +422,7 @@ def main():
     parser.add_argument("--manifest", type=Path, default=Path(__file__).resolve().parents[1] / "scripts/quality_manifest.json")
     parser.add_argument("--bf16-dir", type=Path, required=True)
     parser.add_argument("--candidate-dir", "--fp8-dir", dest="candidate_dir", type=Path, required=True)
-    parser.add_argument("--candidate-arm", required=True, help="Raw row/env arm name, e.g. te_fp8 or selective_bf16")
+    parser.add_argument("--candidate-arm", required=True, help="Raw row/env arm name: dit_fp8, te_fp8 or joint_fp8")
     parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parent)
     parser.add_argument("--visual-review-csv", type=Path, help="Optional explicitly completed review, never inferred from PSNR/SSIM")
     parser.add_argument("--no-contact-sheets", action="store_true")

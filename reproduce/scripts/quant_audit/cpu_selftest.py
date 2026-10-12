@@ -49,16 +49,15 @@ for arm in ARMS:
     bad=copy.deepcopy(inv);bad['linears'].pop();assert inventory_errors(bad,arm)
     bad=copy.deepcopy(inv);bad['model_architecture']['te_language_layers']=35;assert inventory_errors(bad,arm)
     bad=copy.deepcopy(inv);bad['resolved_runtime']['enable_cuda_graph_decode']=True;assert inventory_errors(bad,arm)
-inv=synthetic('selective_bf16')
+inv=synthetic('bf16')
 for layer in inv['linears']:
     if layer['name']=='transformer.transformer_blocks.1.attn.to_qkv':layer['weight']=meta('torch.float8_e4m3fn')
-assert inventory_errors(inv,'selective_bf16');checks.append('selective accidentally quantized retained block rejected')
+assert inventory_errors(inv,'bf16');checks.append('BF16 baseline accidentally quantized DiT block rejected')
 inv=synthetic('te_fp8');next(x for x in inv['linears'] if x['name'].startswith('text_encoder.model.visual.'))['weight']=meta('torch.float8_e4m3fn');assert inventory_errors(inv,'te_fp8');checks.append('vision accidentally quantized rejected')
 local_vision=[n.removeprefix('text_encoder.') for n in TOPOLOGY['te_vision_linears']]
 assert sum(fnmatch.fnmatch(n,'model.visual') for n in local_vision)==0
 assert sum(fnmatch.fnmatch(n,'model.visual.*') for n in local_vision)==116
-assert len(expected_names('selective_bf16')['dit_fp8'])==140
-checks.append('explicit vision glob covers 116; bare prefix covers zero; selective exact blocks leave 140')
+checks.append('explicit vision glob covers 116; bare prefix covers zero')
 # Importing diagnostic with C1_QUANT_AUDIT absent must install no hooks.
 os.environ.pop('C1_QUANT_AUDIT',None)
 spec=importlib.util.spec_from_file_location('phase2_hook_test',ROOT/'sitecustomize.py');hook=importlib.util.module_from_spec(spec);spec.loader.exec_module(hook);assert not hook.C1_QUANT_AUDIT_INSTALLED

@@ -1,4 +1,4 @@
-"""Score archived C1 images with LPIPS without changing the original records."""
+"""Score C1 images with LPIPS against paired quality records."""
 
 import argparse
 import csv
@@ -54,7 +54,7 @@ def main():
     result = {
         "schema_version": 1,
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
-        "scope": "Post-hoc CPU scoring of archived 2026-10-11 H200 outputs; no new generation.",
+        "scope": "CPU scoring of supplied C1 outputs against their paired quality records; no inference performed by this script.",
         "method": {
             "implementation": "https://github.com/richzhang/PerceptualSimilarity",
             "network": "alex", "lpips_version": "0.1", "pretrained": True,

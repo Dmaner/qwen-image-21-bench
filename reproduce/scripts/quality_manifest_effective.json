@@ -9,8 +9,7 @@
     "bf16",
     "dit_fp8",
     "te_fp8",
-    "joint_fp8",
-    "selective_bf16"
+    "joint_fp8"
   ],
   "warmup_per_arm": 1,
   "run_order": "one engine per arm; first case warmup once; every listed case exactly once in order",

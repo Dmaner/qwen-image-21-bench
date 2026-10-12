@@ -9,3 +9,4 @@ reference/upstream/
 *.log
 __pycache__/
 *.pyc
+.venv-lpips/

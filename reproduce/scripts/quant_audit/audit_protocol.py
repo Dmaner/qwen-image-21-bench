@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-ARMS = ('bf16', 'dit_fp8', 'te_fp8', 'joint_fp8', 'selective_bf16')
+ARMS = ('bf16', 'dit_fp8', 'te_fp8', 'joint_fp8')
 OMNI_SHA = '3dc35694b3d458fc1461a8fe71832ac12e8c8cea'
 TOPOLOGY = json.loads((ROOT / 'expected_topology.json').read_text())
 DTYPE = 'torch.bfloat16'
@@ -13,9 +13,7 @@ FP8 = 'torch.float8_e4m3fn'
 def expected_names(arm):
     if arm not in ARMS:
         raise ValueError('Unknown audit arm: ' + str(arm))
-    dit = set(TOPOLOGY['dit_block_linears']) if arm in ('dit_fp8', 'joint_fp8', 'selective_bf16') else set()
-    if arm == 'selective_bf16':
-        dit = {n for n in dit if int(n.split('.')[2]) not in (0, 1, 30, 31)}
+    dit = set(TOPOLOGY['dit_block_linears']) if arm in ('dit_fp8', 'joint_fp8') else set()
     te = set(TOPOLOGY['te_language_linears']) if arm in ('te_fp8', 'joint_fp8') else set()
     all_names = set().union(*(set(v) for v in TOPOLOGY.values() if isinstance(v, list)))
     return {'dit_fp8': dit, 'te_fp8': te, 'fp8': dit | te, 'bf16': all_names - dit - te, 'all': all_names}
