@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "audited_at_utc": "2026-10-12T10:54:14.255822+00:00",
+  "purpose": "Publication audit for A0_REVIEW.md; no new model inference",
+  "essential_asset": {
+    "download_url": "https://github.com/Dmaner/qwen-image-21-bench/releases/download/c1-h200-20261011/C1-H200-essential-data-20261011.zip",
+    "bytes": 1360215,
+    "sha256": "179d5ef39ea43b777a8a87dc7d485a01344e4d628107dc36d481b62c0e60ac98",
+    "total_members": 420,
+    "all_member_hashes_match_manifest": true,
+    "a0_members_count": 72
+  },
+  "direct_browsing_copies": [
+    {
+      "source_relative_to_a0_cross": "results/20261010_a0_t2i_h200_eager_trace_export_only/trace_analysis.json",
+      "repo_path": "data/a0-cross/t2i_trace_analysis.json",
+      "essential_member": "a0-cross/results/20261010_a0_t2i_h200_eager_trace_export_only/trace_analysis.json",
+      "bytes": 12085,
+      "sha256": "ee01a781b9d7aa17d0fe8c26ca3cd5eaa0dc5a19d2b01077d6c1255883fd5b80",
+      "byte_identical_copy": true
+    },
+    {
+      "source_relative_to_a0_cross": "results/20261010_a0_t2i_h200_eager_trace_export_only/memory_snapshot_analysis.json",
+      "repo_path": "data/a0-cross/t2i_memory_snapshot_analysis.json",
+      "essential_member": "a0-cross/results/20261010_a0_t2i_h200_eager_trace_export_only/memory_snapshot_analysis.json",
+      "bytes": 822,
+      "sha256": "87b5925f549cd5cb1852bca7d03c600c946dafea7001052362bd4211ad6764fc",
+      "byte_identical_copy": true
+    },
+    {
+      "source_relative_to_a0_cross": "results/20261010_a0_edit_h200_eager_trace_export_only/trace_analysis.json",
+      "repo_path": "data/a0-cross/edit_trace_analysis.json",
+      "essential_member": "a0-cross/results/20261010_a0_edit_h200_eager_trace_export_only/trace_analysis.json",
+      "bytes": 12136,
+      "sha256": "c48fc9425117a83b7b97a4ec8286e4177a861f71296778ada80f991d9315ffbe",
+      "byte_identical_copy": true
+    },
+    {
+      "source_relative_to_a0_cross": "results/20261010_a0_edit_h200_eager_trace_export_only/memory_snapshot_analysis.json",
+      "repo_path": "data/a0-cross/edit_memory_snapshot_analysis.json",
+      "essential_member": "a0-cross/results/20261010_a0_edit_h200_eager_trace_export_only/memory_snapshot_analysis.json",
+      "bytes": 823,
+      "sha256": "83e408be62e1497fcd1402f8e5a1c0b50ad719469cf7c0266e1a3aa9b827407a",
+      "byte_identical_copy": true
+    }
+  ],
+  "two_image_reuse_checks": [
+    {
+      "case": "t2i_teapot_s42",
+      "all_three_png_bytes_equal": true,
+      "all_three_rgb_equal": true,
+      "all_three_rgba_equal": true,
+      "gallery_actual_provenance": {
+        "path": "figures/t2i_teapot_s42/bf16.png",
+        "source_relative_to_phase2": "remote-evidence/results/quality_bf16/images/t2i_teapot_s42.png",
+        "sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "bytes": 1840525,
+        "width": 1024,
+        "height": 1024,
+        "byte_identical_copy": true,
+        "kind": "generated_output",
+        "arm": "bf16",
+        "case": "t2i_teapot_s42",
+        "seed": 42,
+        "prompt": "A ceramic teapot on a wooden table",
+        "raw_phase": "quality",
+        "raw_image_sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b"
+      },
+      "pinned_author_image_url": "https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/results/20261008T100913Z_a0_t2i_h200_eager_time/images/measured_0.png",
+      "author_A0_timing_measured_0": {
+        "path": "results/20261008T100913Z_a0_t2i_h200_eager_time/images/measured_0.png",
+        "bytes": 1840525,
+        "png_sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "rgb_sha256": "59f66d3d3e605e07ab2467be32d1b099258ae92fbf26e777b71f817f83a9a064",
+        "rgba_sha256": "f171d20c2ef91c474070f45c326f2d3537d88bdc68c93f76e54e679fe2eebbb9"
+      },
+      "our_A0_cross_timing_measured_0": {
+        "path": "results/20261010_a0_t2i_h200_eager_time/images/measured_0.png",
+        "bytes": 1840525,
+        "png_sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "rgb_sha256": "59f66d3d3e605e07ab2467be32d1b099258ae92fbf26e777b71f817f83a9a064",
+        "rgba_sha256": "f171d20c2ef91c474070f45c326f2d3537d88bdc68c93f76e54e679fe2eebbb9"
+      },
+      "existing_gallery_BF16": {
+        "path": "figures/t2i_teapot_s42/bf16.png",
+        "bytes": 1840525,
+        "png_sha256": "b78bc930384bad7e0f85c29b6db823cc21d080204f8487a3c6cf164a3e06b96b",
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "rgb_sha256": "59f66d3d3e605e07ab2467be32d1b099258ae92fbf26e777b71f817f83a9a064",
+        "rgba_sha256": "f171d20c2ef91c474070f45c326f2d3537d88bdc68c93f76e54e679fe2eebbb9"
+      }
+    },
+    {
+      "case": "edit_bear_s42",
+      "all_three_png_bytes_equal": true,
+      "all_three_rgb_equal": true,
+      "all_three_rgba_equal": true,
+      "gallery_actual_provenance": {
+        "path": "figures/edit_bear_s42/bf16.png",
+        "source_relative_to_phase2": "remote-evidence/results/quality_bf16/images/edit_bear_s42.png",
+        "sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "bytes": 1073198,
+        "width": 1024,
+        "height": 1024,
+        "byte_identical_copy": true,
+        "kind": "generated_output",
+        "arm": "bf16",
+        "case": "edit_bear_s42",
+        "seed": 42,
+        "prompt": "Let this mascot dance under the moon, surrounded by floating stars",
+        "raw_phase": "quality",
+        "raw_image_sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2"
+      },
+      "pinned_author_image_url": "https://github.com/luca-888/qwen-image-21-bench/blob/cf99e73c8fa1603718c47405730d94c9fbfe6e16/results/20261008T125447Z_a0_edit_h200_eager_time_bear/images/measured_0.png",
+      "author_A0_timing_measured_0": {
+        "path": "results/20261008T125447Z_a0_edit_h200_eager_time_bear/images/measured_0.png",
+        "bytes": 1073198,
+        "png_sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "rgb_sha256": "312ace2cf1785fb44308439297cf76878a3bb1b3589e9a32b55551288b07db0d",
+        "rgba_sha256": "92defa73734507476083742576365396dde10dae27308e07c5399b13893c4687"
+      },
+      "our_A0_cross_timing_measured_0": {
+        "path": "results/20261010_a0_edit_h200_eager_time/images/measured_0.png",
+        "bytes": 1073198,
+        "png_sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "rgb_sha256": "312ace2cf1785fb44308439297cf76878a3bb1b3589e9a32b55551288b07db0d",
+        "rgba_sha256": "92defa73734507476083742576365396dde10dae27308e07c5399b13893c4687"
+      },
+      "existing_gallery_BF16": {
+        "path": "figures/edit_bear_s42/bf16.png",
+        "bytes": 1073198,
+        "png_sha256": "d9e0002ada507c89a98538243d8c3a76c9f90696e4235e6ca4017b64ff981ee2",
+        "mode": "RGBA",
+        "size": [
+          1024,
+          1024
+        ],
+        "rgb_sha256": "312ace2cf1785fb44308439297cf76878a3bb1b3589e9a32b55551288b07db0d",
+        "rgba_sha256": "92defa73734507476083742576365396dde10dae27308e07c5399b13893c4687"
+      }
+    }
+  ],
+  "public_pixel_boundary": "Existing gallery provides two displayed anchor PNGs with verified original Phase2 quality provenance and exact equivalence to both timing cohorts. The essential ZIP intentionally omits all28 saved A0-cross output images; do not claim readers can independently rerun all28 raw-image comparisons using this compact asset. Retain the recorded28-image result as a local audit with explicit scope. No new images requested or copied.",
+  "raw_profile_boundary": "The essential ZIP has derived trace/memory analyses and provenance markers, but not raw Chrome trace.gz or memory pickle payloads. Readers can check reported values/arithmetic from public JSON, not independently rerun raw-event extraction or allocator-history replay. No large attachments proposed."
+}
