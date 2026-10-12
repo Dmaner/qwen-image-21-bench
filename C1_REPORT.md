@@ -8,7 +8,7 @@ Item C1 of [vllm-project/vllm-omni#8586](https://github.com/vllm-project/vllm-om
 
 The first comparison is **BF16 versus DiT-only FP8 on one H200**, with the same prompts, seeds, reference inputs and inference settings. It must report paired image quality and failures, peak memory, and latency before extending the experiment. Completing that comparison does not mean FP8 quality has been accepted.
 
-The initial comparison was completed before the TE-only, joint and selective experiments. Those three configurations are **extensions**. All tables below use fresh BF16/DiT-only controls and extension measurements from the same Phase 2 H200; earlier Phase 1 timings are not pooled into them. Frozen [configurations](reproduce/scripts/configs/arms.json) and [quality cases](reproduce/scripts/quality_manifest.json) define the workload.
+The Text Encoder FP8, DiT + Text Encoder FP8, and DiT FP8 with BF16 blocks experiments followed the initial comparison as **extensions**. All tables below use fresh BF16/DiT-only controls and extension measurements from the same Phase 2 H200; earlier Phase 1 timings are not pooled into them. Frozen [configurations](reproduce/scripts/configs/arms.json) and [quality cases](reproduce/scripts/quality_manifest.json) define the workload.
 
 ## Setup
 
@@ -26,15 +26,15 @@ The initial comparison was completed before the TE-only, joint and selective exp
 | Timing budget | Per configuration/task: 1 warmup + 1 feasibility + 10 measured requests in one process; torch profiler disabled, synchronized stock stage timing enabled |
 | Separate diagnostics | Memory: 1 warmup + 1 measured request. Profiler: 1 warmup + one full 50-step capture for T2I and editing per configuration |
 
-| Scope | Configuration | DiT block Linears | Language-encoder Linears |
+| Scope | Configuration | DiT block Linears | Text Encoder Linears |
 |---|---|---|---|
 | Primary comparison | BF16 | BF16 | BF16 |
 | Primary comparison | DiT FP8 | 160 FP8 | BF16 |
-| Extension | TE FP8 | BF16 | 252 FP8 |
-| Extension | Joint FP8 | 160 FP8 | 252 FP8 |
-| Extension | Selective BF16 | 140 FP8; 20 BF16 in blocks 0, 1, 30, 31 | BF16 |
+| Extension | Text Encoder FP8 | BF16 | 252 FP8 |
+| Extension | DiT + Text Encoder FP8 | 160 FP8 | 252 FP8 |
+| Extension | DiT FP8 with BF16 blocks | 140 FP8; 20 BF16 in blocks 0, 1, 30, 31 | BF16 |
 
-Vision, LM head, VAE, DiT boundary projections and attention are not quantized. Selective BF16 is a configuration fixed before this run, not a result of sensitivity search; compare it primarily with DiT-only FP8.
+Text Encoder FP8 quantizes only Linear modules in the language component. Vision, LM head, VAE, DiT boundary projections and attention are not quantized. DiT FP8 with BF16 blocks is a configuration fixed before this run, not a result of sensitivity search; compare it primarily with DiT-only FP8.
 
 ## 1. Latency: DiT-only FP8 reduces request time
 
@@ -44,9 +44,9 @@ Wall time per image, **mean ± sample SD**, measured n=10:
 |---|---:|---:|
 | BF16 | 7.260 ± 0.016 s | 8.332 ± 0.074 s |
 | DiT FP8 | 6.018 ± 0.013 s | 7.109 ± 0.081 s |
-| TE FP8 | 7.284 ± 0.021 s | 8.376 ± 0.081 s |
-| Joint FP8 | 6.013 ± 0.009 s | 7.078 ± 0.062 s |
-| Selective BF16 | 6.152 ± 0.009 s | 7.243 ± 0.055 s |
+| Text Encoder FP8 | 7.284 ± 0.021 s | 8.376 ± 0.081 s |
+| DiT + Text Encoder FP8 | 6.013 ± 0.009 s | 7.078 ± 0.062 s |
+| DiT FP8 with BF16 blocks | 6.152 ± 0.009 s | 7.243 ± 0.055 s |
 
 The primary comparison gives **17.1% lower T2I latency and 14.7% lower editing latency**. All 150 measured requests across offline T2I/editing and serving completed without recorded inference errors.
 
@@ -97,9 +97,9 @@ Sequential `/v1/images/generations` requests, `response_format=b64_json`, concur
 |---|---:|---:|
 | BF16 | 7.338 ± 0.025 s | 7.240 ± 0.021 s |
 | DiT FP8 | 6.103 ± 0.018 s | 6.006 ± 0.020 s |
-| TE FP8 | 7.372 ± 0.012 s | 7.276 ± 0.010 s |
-| Joint FP8 | 6.131 ± 0.014 s | 6.033 ± 0.012 s |
-| Selective BF16 | 6.258 ± 0.019 s | 6.161 ± 0.015 s |
+| Text Encoder FP8 | 7.372 ± 0.012 s | 7.276 ± 0.010 s |
+| DiT + Text Encoder FP8 | 6.131 ± 0.014 s | 6.033 ± 0.012 s |
+| DiT FP8 with BF16 blocks | 6.258 ± 0.019 s | 6.161 ± 0.015 s |
 
 Client timing ends after the response body is received; subsequent client JSON/base64/PNG decoding is separate. Client minus engine time includes API handling, response encoding, hand-off and transfer, so it is not a measurement of encoding alone. [Serving measurements](data/phase2/performance/PERFORMANCE.json).
 
@@ -107,15 +107,15 @@ Client timing ends after the response body is received; subsequent client JSON/b
 
 Ten separate captures cover all 50 steps: T2I and editing for each configuration, after warmup, with shapes, stacks and memory collection. Runtime audits and correlated launches verify actual CUTLASS SM90 E4M3 execution.
 
-| Configuration | DiT FP8 GEMMs / request | Language-encoder FP8 GEMMs / request |
+| Configuration | DiT FP8 GEMMs / request | Text Encoder FP8 GEMMs / request |
 |---|---:|---:|
 | BF16 | 0 | 0 |
 | DiT FP8 | 8,000 | 0 |
-| TE FP8 | 0 | 252 |
-| Joint FP8 | 8,000 | 252 |
-| Selective BF16 | 7,000 | 0 |
+| Text Encoder FP8 | 0 | 252 |
+| DiT + Text Encoder FP8 | 8,000 | 252 |
+| DiT FP8 with BF16 blocks | 7,000 | 0 |
 
-Counts agree for T2I and editing. TE FP8 executes once per request; DiT FP8 executes on every denoising step. DiT attention remains BF16 FA3.
+Counts agree for T2I and editing. Text Encoder FP8 executes once per request; DiT FP8 executes on every denoising step. DiT attention remains BF16 FA3.
 
 Selected denoising costs in the **DiT-only FP8** traces, summed across 50 steps:
 
@@ -137,11 +137,11 @@ Binary units: 1 GiB = 1024³ bytes. Each separate diagnostic uses one warmup and
 |---|---:|---:|---:|---:|
 | BF16 | 36.86 GiB | 38.12 GiB | 36.87 GiB | 39.28 GiB |
 | DiT FP8 | 30.36 GiB | 31.60 GiB | 30.37 GiB | 32.77 GiB |
-| TE FP8 | 30.39 GiB | 31.66 GiB | 30.40 GiB | 32.83 GiB |
-| Joint FP8 | 23.89 GiB | 25.14 GiB | 23.90 GiB | 26.31 GiB |
-| Selective BF16 | 31.17 GiB | 32.43 GiB | 31.18 GiB | 33.60 GiB |
+| Text Encoder FP8 | 30.39 GiB | 31.66 GiB | 30.40 GiB | 32.83 GiB |
+| DiT + Text Encoder FP8 | 23.89 GiB | 25.14 GiB | 23.90 GiB | 26.31 GiB |
+| DiT FP8 with BF16 blocks | 31.17 GiB | 32.43 GiB | 31.18 GiB | 33.60 GiB |
 
-DiT-only FP8 saves **6.50 GiB allocated** versus BF16. Joint FP8 saves **12.97 GiB**. Selective BF16 adds **0.81 GiB** versus DiT-only FP8. Allocated/reserved are allocator counters, not sampled whole-device usage. [Memory records](data/phase2/performance/PERFORMANCE.json).
+DiT-only FP8 saves **6.50 GiB allocated** versus BF16. DiT + Text Encoder FP8 saves **12.97 GiB**. DiT FP8 with BF16 blocks adds **0.81 GiB** versus DiT-only FP8. Allocated/reserved are allocator counters, not sampled whole-device usage. [Memory records](data/phase2/performance/PERFORMANCE.json).
 
 ## 5. Paired quality and failures
 
@@ -152,9 +152,9 @@ Mean per-image **PSNR (dB) / SSIM**, full-resolution decoded RGB, n=12 per colum
 | Candidate vs BF16 | Legacy | Held-out |
 |---|---:|---:|
 | DiT FP8 | 23.86 / 0.9071 | 26.96 / 0.9644 |
-| TE FP8 | 24.54 / 0.9028 | 27.67 / 0.9609 |
-| Joint FP8 | 22.69 / 0.8759 | 24.14 / 0.9436 |
-| Selective BF16 | 26.69 / 0.9178 | 27.76 / 0.9676 |
+| Text Encoder FP8 | 24.54 / 0.9028 | 27.67 / 0.9609 |
+| DiT + Text Encoder FP8 | 22.69 / 0.8759 | 24.14 / 0.9436 |
+| DiT FP8 with BF16 blocks | 26.69 / 0.9178 | 27.76 / 0.9676 |
 
 PSNR uses `data_range=255`; SSIM uses Gaussian weights, sigma 1.5, window 11 and population covariance. No candidate was RGB-identical to BF16 on any of its 24 pairs. No numerical acceptance threshold has been agreed.
 
@@ -164,17 +164,17 @@ Selected text cases from the labeled **model-assisted review**:
 |---|---|---|
 | BF16 | Title present; an unrequested portrait already appears | Clear vertical order |
 | DiT FP8 | **Entire requested title missing** | All characters present; **reading order ambiguous** |
-| TE FP8 | Title present | Clear vertical order |
-| Joint FP8 | **Entire requested title missing** | Clear vertical order |
-| Selective BF16 | Title present | Clear horizontal order; layout changed |
+| Text Encoder FP8 | Title present | Clear vertical order |
+| DiT + Text Encoder FP8 | **Entire requested title missing** | Clear vertical order |
+| DiT FP8 with BF16 blocks | Title present | Clear horizontal order; layout changed |
 
 [Original text comparisons](GALLERY.md#english-text-regression--seed-43) show the requested `QWEN IMAGE 2.1` title and Chinese `星河书店` sign. No clear new target violation was observed in the 12 held-out pairs per candidate; existing BF16 errors were recorded separately. This is not independent human acceptance. Recovering one failure does not establish general quality preservation or identify the sensitive layers. [Metrics](data/phase2/quality) and [completed observations](data/phase2/visual-review).
 
 ## 6. Conclusion
 
 1. **Primary BF16/DiT-only comparison:** FP8 reduces T2I/edit latency by 17.1%/14.7% and peak allocated memory by 6.50 GiB, but introduces a clear text-rendering failure. Quality acceptance remains pending.
-2. **Extensions:** TE-only FP8 saves memory without a latency gain here. Joint FP8 saves more memory with latency close to DiT-only, but shares the title failure.
-3. Selective BF16 retains that title at a cost of 2.2% T2I / 1.9% edit latency and 0.81 GiB versus DiT-only. Independent cross-review and agreed quality tolerances are still needed.
+2. **Extensions:** Text Encoder FP8 saves memory without a latency gain here. DiT + Text Encoder FP8 saves more memory with latency close to DiT-only, but shares the title failure.
+3. DiT FP8 with BF16 blocks retains that title at a cost of 2.2% T2I / 1.9% edit latency and 0.81 GiB versus DiT-only. Independent cross-review and agreed quality tolerances are still needed.
 4. These results cover this H200 configuration. Prefix-KV FP8, consumer GPUs, multi-GPU and concurrent workloads are not covered.
 
 ## Artifacts

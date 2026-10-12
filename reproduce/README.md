@@ -52,7 +52,7 @@ The runner first checks five separate GPU worker audits and aborts if the quanti
 - Quality: 1 warmup + 24 frozen cases per configuration.
 - Independent profiler: 1 warmup + one complete 50-step request for each configuration/task.
 
-Quant audits and the profiler export-only adapter run in separate processes and stay off for headline/quality measurements. Selective BF16 protects DiT blocks0/1/30/31 and keeps TE BF16; it is a preregistered structural hypothesis, not an identified sensitivity optimum. The serving harness additionally performs its existing three-prompt benchmark cross-check; those requests are not the n=10 headline sample.
+Quant audits and the profiler export-only adapter run in separate processes and stay off for headline/quality measurements. DiT FP8 with BF16 blocks keeps DiT blocks 0/1/30/31 and the text encoder in BF16; it is a preregistered structural hypothesis, not an identified sensitivity optimum. The serving harness additionally performs its existing three-prompt benchmark cross-check; those requests are not the n=10 headline sample.
 
 This workflow performs a full GPU experiment. It does not provision a cloud machine, contact Feishu, or publish its outputs.
 
