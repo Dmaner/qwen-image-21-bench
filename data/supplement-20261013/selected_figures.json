@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "figures": [
+    {
+      "case_id": "t2i_english_s43",
+      "arm": "bf16",
+      "seed": 43,
+      "source": "results/quality_bf16/images/t2i_english_s43.png",
+      "published_image": "figures/supplement-20261013/t2i_english_s43_bf16.png",
+      "sha256": "efcae5b6ffc6a2453164c6a448e2b8d7302adba93804f6f8b286101327222996",
+      "bytes": 1532518,
+      "selection_reason": "Previously observed text regression; fixed same-case BF16/DiT/selective comparison.",
+      "prompt": "A poster with the exact text \"QWEN IMAGE 2.1\", clean typography on a plain background.",
+      "inspection": "model-assisted; human acceptance pending",
+      "byte_identical_to_source": true
+    },
+    {
+      "case_id": "t2i_english_s43",
+      "arm": "dit_fp8",
+      "seed": 43,
+      "source": "results/quality_dit_fp8/images/t2i_english_s43.png",
+      "published_image": "figures/supplement-20261013/t2i_english_s43_dit_fp8.png",
+      "sha256": "1ad0e78457c64fdfcf500fa80d36028e0b561c26779733a7afd3d3c934ee0885",
+      "bytes": 1672908,
+      "selection_reason": "Previously observed text regression; fixed same-case BF16/DiT/selective comparison.",
+      "prompt": "A poster with the exact text \"QWEN IMAGE 2.1\", clean typography on a plain background.",
+      "inspection": "model-assisted; human acceptance pending",
+      "byte_identical_to_source": true
+    },
+    {
+      "case_id": "t2i_english_s43",
+      "arm": "mlp_bf16",
+      "seed": 43,
+      "source": "results/quality_mlp_bf16/images/t2i_english_s43.png",
+      "published_image": "figures/supplement-20261013/t2i_english_s43_mlp_bf16.png",
+      "sha256": "b39327a82df87ccabfb67d1b9d5c5590a1b6f2e9289a8f202bb2e9bda6e10968",
+      "bytes": 1660194,
+      "selection_reason": "Previously observed text regression; fixed same-case BF16/DiT/selective comparison.",
+      "prompt": "A poster with the exact text \"QWEN IMAGE 2.1\", clean typography on a plain background.",
+      "inspection": "model-assisted; human acceptance pending",
+      "byte_identical_to_source": true
+    },
+    {
+      "case_id": "t2i_chinese_s44",
+      "arm": "bf16",
+      "seed": 44,
+      "source": "results/quality_bf16/images/t2i_chinese_s44.png",
+      "published_image": "figures/supplement-20261013/t2i_chinese_s44_bf16.png",
+      "sha256": "ec2ae96ed13596ca6258326239c75971dc9782d1576166cb5a59527f42eb5234",
+      "bytes": 1527091,
+      "selection_reason": "Previously observed text regression; fixed same-case BF16/DiT/selective comparison.",
+      "prompt": "A front-facing bookstore sign with the exact Chinese text \"星河书店\", clear readable lettering.",
+      "inspection": "model-assisted; human acceptance pending",
+      "byte_identical_to_source": true
+    },
+    {
+      "case_id": "t2i_chinese_s44",
+      "arm": "dit_fp8",
+      "seed": 44,
+      "source": "results/quality_dit_fp8/images/t2i_chinese_s44.png",
+      "published_image": "figures/supplement-20261013/t2i_chinese_s44_dit_fp8.png",
+      "sha256": "211520267aa34573e79eeb6f69786734d817bd8f0357fa905575685cbb382c84",
+      "bytes": 1616250,
+      "selection_reason": "Previously observed text regression; fixed same-case BF16/DiT/selective comparison.",
+      "prompt": "A front-facing bookstore sign with the exact Chinese text \"星河书店\", clear readable lettering.",
+      "inspection": "model-assisted; human acceptance pending",
+      "byte_identical_to_source": true
+    },
+    {
+      "case_id": "t2i_chinese_s44",
+      "arm": "mlp_bf16",
+      "seed": 44,
+      "source": "results/quality_mlp_bf16/images/t2i_chinese_s44.png",
+      "published_image": "figures/supplement-20261013/t2i_chinese_s44_mlp_bf16.png",
+      "sha256": "d2448d7e76909c60f287b14d563b87c19d4036285dabfca0cee1a7e834ec32a1",
+      "bytes": 1560594,
+      "selection_reason": "Previously observed text regression; fixed same-case BF16/DiT/selective comparison.",
+      "prompt": "A front-facing bookstore sign with the exact Chinese text \"星河书店\", clear readable lettering.",
+      "inspection": "model-assisted; human acceptance pending",
+      "byte_identical_to_source": true
+    },
+    {
+      "case_id": "edit_person_background_s42",
+      "arm": "bf16",
+      "seed": 42,
+      "source": "results/quality_bf16/images/edit_person_background_s42.png",
+      "published_image": "figures/supplement-20261013/edit_person_background_s42_bf16.png",
+      "sha256": "fea0ecd451422611213e2b5c9e7529894263fde1aeadce51bdee55f9115b0783",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/astronaut.png"
+      ],
+      "input_image_sha256": [
+        "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5"
+      ],
+      "selection_reason": "Largest candidate LPIPS within edit_person_background; ties use lower seed then frozen arm order.",
+      "candidate_lpips_vs_bf16": null,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 1512192
+    },
+    {
+      "case_id": "edit_person_background_s42",
+      "arm": "dit_fp8",
+      "seed": 42,
+      "source": "results/quality_dit_fp8/images/edit_person_background_s42.png",
+      "published_image": "figures/supplement-20261013/edit_person_background_s42_dit_fp8.png",
+      "sha256": "e905342dbb99569792b5c30ada58b47df3a6b65ec78919911b04ea904ec6e73c",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/astronaut.png"
+      ],
+      "input_image_sha256": [
+        "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5"
+      ],
+      "selection_reason": "Largest candidate LPIPS within edit_person_background; ties use lower seed then frozen arm order.",
+      "candidate_lpips_vs_bf16": 0.005325067322701216,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 1501470
+    },
+    {
+      "case_id": "edit_product_color_s44",
+      "arm": "bf16",
+      "seed": 44,
+      "source": "results/quality_bf16/images/edit_product_color_s44.png",
+      "published_image": "figures/supplement-20261013/edit_product_color_s44_bf16.png",
+      "sha256": "c2fd07e02dc25d1e0c41403c75487cf8284e490d0b913aadb6efbf7a80d3edb6",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/coffee.png"
+      ],
+      "input_image_sha256": [
+        "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7"
+      ],
+      "selection_reason": "Largest candidate LPIPS within edit_product_color; ties use lower seed then frozen arm order.",
+      "candidate_lpips_vs_bf16": null,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 1731609
+    },
+    {
+      "case_id": "edit_product_color_s44",
+      "arm": "joint_fp8",
+      "seed": 44,
+      "source": "results/quality_joint_fp8/images/edit_product_color_s44.png",
+      "published_image": "figures/supplement-20261013/edit_product_color_s44_joint_fp8.png",
+      "sha256": "b6f5c559c964332ba4e35e943327bc8514d08cb89fa7886c6315f00e2082f4ad",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/coffee.png"
+      ],
+      "input_image_sha256": [
+        "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7"
+      ],
+      "selection_reason": "Largest candidate LPIPS within edit_product_color; ties use lower seed then frozen arm order.",
+      "candidate_lpips_vs_bf16": 0.0867096334695816,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 1747424
+    },
+    {
+      "case_id": "edit_sign_text_s44",
+      "arm": "bf16",
+      "seed": 44,
+      "source": "results/quality_bf16/images/edit_sign_text_s44.png",
+      "published_image": "figures/supplement-20261013/edit_sign_text_s44_bf16.png",
+      "sha256": "f0a40cd8da678ae95072f17ef49ddd91e42561399c3d7953c526e47fae92071d",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/synthetic_cafe_sign.png"
+      ],
+      "input_image_sha256": [
+        "b979a34154682a0b00aacf69b02ac22b00e77615f90e2f2ba8274dc2d9848f32"
+      ],
+      "selection_reason": "Largest candidate LPIPS within edit_sign_text; ties use lower seed then frozen arm order.",
+      "candidate_lpips_vs_bf16": null,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 639926
+    },
+    {
+      "case_id": "edit_sign_text_s44",
+      "arm": "dit_fp8",
+      "seed": 44,
+      "source": "results/quality_dit_fp8/images/edit_sign_text_s44.png",
+      "published_image": "figures/supplement-20261013/edit_sign_text_s44_dit_fp8.png",
+      "sha256": "58edb77bfff34f341cf399287de5fc55ae0d6f657f70de8a3c401bd4aefc1e4e",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/synthetic_cafe_sign.png"
+      ],
+      "input_image_sha256": [
+        "b979a34154682a0b00aacf69b02ac22b00e77615f90e2f2ba8274dc2d9848f32"
+      ],
+      "selection_reason": "Largest candidate LPIPS within edit_sign_text; ties use lower seed then frozen arm order.",
+      "candidate_lpips_vs_bf16": 0.034258488565683365,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 651197
+    },
+    {
+      "case_id": "prefix_two_ref_s43",
+      "arm": "bf16",
+      "seed": 43,
+      "source": "results/quality_bf16/images/prefix_two_ref_s43.png",
+      "published_image": "figures/supplement-20261013/prefix_two_ref_s43_bf16.png",
+      "sha256": "a683281ed4272dc5f2b86f8ad2be09d04b57a3ecc02ac595ec230c0e2423f55b",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/astronaut.png",
+        "reproduce/supplement/inputs/coffee.png"
+      ],
+      "input_image_sha256": [
+        "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+        "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7"
+      ],
+      "selection_reason": "Largest candidate LPIPS among prefix-storage two-reference cases; show the paired BF16 and both prefix-storage arms.",
+      "candidate_lpips_vs_bf16": null,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 1619562
+    },
+    {
+      "case_id": "prefix_two_ref_s43",
+      "arm": "prefix_fp8_v",
+      "seed": 43,
+      "source": "results/quality_prefix_fp8_v/images/prefix_two_ref_s43.png",
+      "published_image": "figures/supplement-20261013/prefix_two_ref_s43_prefix_fp8_v.png",
+      "sha256": "bb4176817f70e7a52f48e6cd878d2b0740611c8387db3bd09fac10c9c2dd1250",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/astronaut.png",
+        "reproduce/supplement/inputs/coffee.png"
+      ],
+      "input_image_sha256": [
+        "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+        "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7"
+      ],
+      "selection_reason": "Largest candidate LPIPS among prefix-storage two-reference cases; show the paired BF16 and both prefix-storage arms.",
+      "candidate_lpips_vs_bf16": 0.01570630446076393,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 1619329
+    },
+    {
+      "case_id": "prefix_two_ref_s43",
+      "arm": "prefix_fp8",
+      "seed": 43,
+      "source": "results/quality_prefix_fp8/images/prefix_two_ref_s43.png",
+      "published_image": "figures/supplement-20261013/prefix_two_ref_s43_prefix_fp8.png",
+      "sha256": "ee0ac63587c76dec55c8bb43c0dfc6b92694de217f705e900b3a90c08498ce3b",
+      "byte_identical_to_source": true,
+      "original_inputs": [
+        "reproduce/supplement/inputs/astronaut.png",
+        "reproduce/supplement/inputs/coffee.png"
+      ],
+      "input_image_sha256": [
+        "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+        "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7"
+      ],
+      "selection_reason": "Largest candidate LPIPS among prefix-storage two-reference cases; show the paired BF16 and both prefix-storage arms.",
+      "candidate_lpips_vs_bf16": 0.03701069578528404,
+      "inspection": "model-assisted; human acceptance pending",
+      "bytes": 1614019
+    }
+  ],
+  "selection_policy": "Existing English/Chinese text regressions; worst LPIPS candidate per added single-reference group; worst LPIPS prefix-storage two-reference seed.",
+  "images_are_unchanged_original_outputs": true,
+  "quality_source_sha256": "4810f8f168ff929866bec922254524c86036e0677f66a27d747592809c967233",
+  "manifest_sha256": "8360ab5de58989c9b0ded6f23526b28961c68b22cc7c44bc566c71e4a469c5e3"
+}

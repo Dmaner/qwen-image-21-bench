@@ -1,0 +1,7 @@
+vllm==0.31.0
+torch==2.13.0+cu130
+triton==3.7.1
+transformers==5.14.1
+diffusers==0.40.0
+fa3-fwd==0.0.3
+kernels==0.16.1

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "arms": [
+    {
+      "arm": "bf16",
+      "quant_config_file": "configs/bf16.json",
+      "quant_config_sha256": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+      "prefix_kv_cache_dtype": "auto"
+    },
+    {
+      "arm": "dit_fp8",
+      "quant_config_file": "configs/dit_fp8.json",
+      "quant_config_sha256": "3a83d78d9578e3503448249c1ca85959d70959f42af3154eec02e7ac637d2ae1",
+      "prefix_kv_cache_dtype": "auto"
+    },
+    {
+      "arm": "mlp_bf16",
+      "quant_config_file": "configs/mlp_bf16.json",
+      "quant_config_sha256": "8b3b19bb97892dcf5af9ad1d3879c71eb7e90d5d35e8123e43f4e151ba07782b",
+      "prefix_kv_cache_dtype": "auto"
+    },
+    {
+      "arm": "te_fp8",
+      "quant_config_file": "configs/te_fp8.json",
+      "quant_config_sha256": "782cf375cbd2ab774bb87bb889dddd889b68d770e48c1701a417585780ad8acc",
+      "prefix_kv_cache_dtype": "auto"
+    },
+    {
+      "arm": "joint_fp8",
+      "quant_config_file": "configs/joint_fp8.json",
+      "quant_config_sha256": "3d57c141835473c5d96c45cf821852fd6e620e552a290d37bb8c66ba978ff010",
+      "prefix_kv_cache_dtype": "auto"
+    },
+    {
+      "arm": "prefix_fp8_v",
+      "quant_config_file": "configs/prefix_fp8_v.json",
+      "quant_config_sha256": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+      "prefix_kv_cache_dtype": "fp8_v"
+    },
+    {
+      "arm": "prefix_fp8",
+      "quant_config_file": "configs/prefix_fp8.json",
+      "quant_config_sha256": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+      "prefix_kv_cache_dtype": "fp8"
+    }
+  ]
+}

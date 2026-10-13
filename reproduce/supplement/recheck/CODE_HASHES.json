@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "prepared_not_executed",
+  "expected_omni_sha": "3dc35694b3d458fc1461a8fe71832ac12e8c8cea",
+  "engine_source_sha256": "9d5fbcc29c1166c1c45443e490c9764c5aa303dc456b467f6c28ded9c6a6037f",
+  "files": {
+    "scripts/c1_offline.py": "2f7107aec535ff5f8e2ae1f195274e0dc3cfd6b368730239a0bf4fbb119e6be5",
+    "scripts/c1_offline_recheck.py": "508bb3bb53674d80dbdb1a132ab67f51189f7da875380c407bdf67dd64e4e4d5",
+    "scripts/run_recheck.py": "761895f3296b7ccb035ed25f44553bc60dfd73c70bfb524850cf89b1d9016ff2",
+    "recheck/timing_observer/sitecustomize.py": "7781e48520ba1d89911074f7fc1ebfa729ff3751d048a0d688ba118913fd664f",
+    "scripts/configs/arms.json": "8c4705c002731fb455b91e4d4d5bf350afef584db6734af9c91fc6ba4ba3defa",
+    "scripts/configs/bf16.json": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+    "scripts/configs/prefix_fp8_v.json": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+    "scripts/configs/prefix_fp8.json": "fe78b04e6166ad8da09a3cc47d5578c27863d072168ac05b867645081167d8bd",
+    "inputs/cases/t2i.json": "11289f5674c014f04422862aa5b067bb03cf9d6609011215d227cba3ad1e91be",
+    "recheck/cpu_selftest.py": "05fc12a3db50467ff164c58cf9e44d27a28ccf9275ccf18b78471705f8be24f5",
+    "scripts/analyze_recheck.py": "c65595007337b476697b4d5fb3b8186581e9d81c340a1d16169d17dfccdef147"
+  },
+  "review_artifacts": {
+    "recheck/runner.diff": "02d4b79861677f711b523bec87e4e1757bf45188be38437626469e46811e6ec6",
+    "recheck/RECHECK_DESIGN.md": "ea01ba1766ef3a76ed79755a1476f37b3dda9de55a4618b23cfa8b7dd50c5166",
+    "recheck/CPU_SELFTEST.json": "a7ca652c99039715833def1985d3c8c312777aa8fa05acf2a20ee9312495e7be"
+  }
+}

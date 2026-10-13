@@ -1,0 +1,21 @@
+{
+  "id": "t2i_teapot_s42",
+  "group": "t2i_teapot",
+  "task": "t2i",
+  "prompt": "A ceramic teapot on a wooden table",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "num_inference_steps": 50,
+  "true_cfg_scale": 1.0,
+  "input_image": null,
+  "input_image_sha256": [],
+  "expected_text": null,
+  "split": "legacy",
+  "targets": [
+    "ceramic teapot",
+    "wooden table",
+    "coherent spout/handle/lid"
+  ],
+  "negative_prompt": null
+}

@@ -1,0 +1,25 @@
+{
+  "id": "edit_bear_s42",
+  "group": "edit_bear",
+  "task": "edit",
+  "prompt": "Let this mascot dance under the moon, surrounded by floating stars",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "num_inference_steps": 50,
+  "true_cfg_scale": 1.0,
+  "input_image": "/workspace/c1-supplement/inputs/qwen_bear.png",
+  "input_image_sha256": [
+    "69ac975d5408ebb8de85b1126ad5a37372621e416c4f1a9037cd2ba19b712817"
+  ],
+  "expected_text": null,
+  "split": "legacy",
+  "targets": [
+    "same reference bear identity",
+    "white Qwen shirt/logo",
+    "night and moon",
+    "floating stars",
+    "dancing pose"
+  ],
+  "negative_prompt": null
+}

@@ -1,0 +1,12 @@
+{
+  "vllm_omni.diffusion.worker.diffusion_model_runner": "24262037374028debd6a89b5173b0b868f1a4e4b3b72f01a231c8cb5a8dd9288",
+  "vllm_omni.diffusion.models.qwen_image_21.qwen_image_21_transformer": "5636ecdcb78466f3cc16bbf0924df920e3a53ececa0cf1e3e11f4ebadd40fa2b",
+  "vllm_omni.diffusion.models.qwen_image_21.pipeline_qwen_image_21": "8d8148e7aa72d183884fbfeabe6cf33629d864ec69df7a07a6b68dc53b437310",
+  "vllm_omni.diffusion.models.utils": "dd78cde956e18ac6885b1d3288b87f2e95069fa1e439626d6c47fa68bc32d4f3",
+  "vllm_omni.quantization.fp8_config": "e56cbf632025d9683443131e9cac74017bc6eb86c1a44cbbaa8c294b3d8c4d6c",
+  "vllm_omni.quantization.component_config": "3365ef7394b1692bcb81d9a09cfeb68f17d20264a34465f9c909d5fbc2f9d0ae",
+  "vllm.model_executor.layers.quantization.online.base": "3ec24ffec2de161308db964ad785629f6de32832d9f36bb1bb69578eebd98d08",
+  "vllm.model_executor.layers.quantization.online.fp8": "8dcdeaf95b619e623952b55c6c80d80eb38cc522863b920054ddac6d271ad46c",
+  "vllm.model_executor.layers.quantization.compressed_tensors.utils": "e7c4b3b9d5bb2a6c7abfdb3f3546aafcebb4c1526250d13e3c90de8bda474f78",
+  "vllm.model_executor.layers.quantization.utils.config_utils": "5c1335ff5fabd5478220d3a93c228f5d3aa15a3308685b3bdf211d42bd2eeb88"
+}

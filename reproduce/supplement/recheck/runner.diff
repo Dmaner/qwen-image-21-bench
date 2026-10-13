@@ -1,0 +1,41 @@
+--- scripts/c1_offline.py
++++ scripts/c1_offline_recheck.py
+@@ -223,6 +223,28 @@
+     }
+ 
+ 
++def metrics_to_json(value):
++    """Serialize metadata only after wall timing; never copy a Tensor to CPU."""
++    import dataclasses
++    import math
++    from collections.abc import Mapping
++    if value is None or isinstance(value, (str, bool, int)):
++        return value
++    if isinstance(value, float):
++        return value if math.isfinite(value) else {"nonfinite_float": str(value)}
++    if isinstance(value, Mapping):
++        return {str(k): metrics_to_json(v) for k, v in value.items()}
++    if isinstance(value, (list, tuple)):
++        return [metrics_to_json(v) for v in value]
++    if dataclasses.is_dataclass(value) and not isinstance(value, type):
++        return {field.name: metrics_to_json(getattr(value, field.name)) for field in dataclasses.fields(value)}
++    if callable(getattr(value, "model_dump", None)):
++        return metrics_to_json(value.model_dump(mode="python"))
++    if callable(getattr(value, "dict", None)):
++        return metrics_to_json(value.dict())
++    return {"unsupported_metadata_type": type(value).__module__ + "." + type(value).__name__}
++
++
+ class GpuMemSampler:
+     """Polls device-used memory via nvidia-smi (whole device, including the CUDA context)."""
+ 
+@@ -388,6 +410,9 @@
+                 row["wall_s"] = time.perf_counter() - t
+             row["device_used_peak_mib"] = mem.peak_mib
+             o = outputs[0]
++            # Diagnostic cohort only: save existing output metadata after wall timing stops.
++            row["output_metrics"] = metrics_to_json(getattr(o, "metrics", None))
++            row["diagnostic_wall_interval"] = {"start_perf_counter": t, "end_perf_counter": t + row["wall_s"]}
+             row["stage_durations_s"] = dict(getattr(o, "stage_durations", {}) or {})
+             row["engine_peak_memory_mb"] = getattr(o, "peak_memory_mb", None)
+             # The runner resets torch's peak counters before each request; non-zero here only if

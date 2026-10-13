@@ -1,8 +1,14 @@
-# Reproduce the C1 experiment
+# Reproduce C1 experiments
 
-Run the four configurations in [C1_REPORT.md](../C1_REPORT.md): `bf16`, `dit_fp8`, `te_fp8`, and `joint_fp8`. The runner is adapted from the archived experiment; [source-manifest.json](scripts/source-manifest.json) records original and current file hashes.
+## Latest H200 supplement
 
-## Recorded environment
+Use [supplement/README.md](supplement/README.md) for the seven-configuration, 36-case run and independent CFG4 prefix check. It includes all fixed inputs and the current setup, runtime-audit and analysis commands. [Design](../EXPERIMENT_DESIGN.md) · [Data](../data/supplement-20261013/README.md).
+
+## Historical 2026-10-11 experiment
+
+Run the four configurations from the historical 2026-10-11 cohort: `bf16`, `dit_fp8`, `te_fp8`, and `joint_fp8`. The runner is adapted from the archived experiment; [source-manifest.json](scripts/source-manifest.json) records original and current file hashes.
+
+### Recorded environment
 
 - 1× H200; recorded driver 595.91.07.
 - Base image: `vllm/vllm-openai@sha256:a4a4c0437bf7240089da5f08aa370c4aee17ae5290f7a3b468825ee26c4c3a6b`.
@@ -32,7 +38,7 @@ printf '%s  %s\n' \
 bash scripts/setup.sh
 ```
 
-## GPU execution
+### GPU execution
 
 Use an otherwise idle H200 with port 8091 free:
 
@@ -50,7 +56,7 @@ The runner verifies each configuration's quantization audit before running:
 
 Prompts, seeds and reference inputs are in [quality_manifest_effective.json](scripts/quality_manifest_effective.json). Each run saves its command, environment, logs and results under `results/`.
 
-## CPU analysis after successful execution
+### CPU analysis after successful execution
 
 In the same container, calculate performance, PSNR/SSIM and profiler summaries:
 

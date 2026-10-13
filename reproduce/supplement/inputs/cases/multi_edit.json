@@ -1,0 +1,28 @@
+{
+  "id": "prefix_two_ref_s42",
+  "group": "prefix_two_ref",
+  "task": "edit",
+  "prompt": "Create a realistic studio photograph using both reference images. Use the astronaut in the first image as the person: preserve her face, hairstyle, orange spacesuit and patches. Place the espresso cup, saucer and spoon from the second image on a small wooden table in front of her. Preserve the cup's brown exterior, white interior and coffee, and the spoon's metallic appearance. Use a plain light-gray background. Keep the person and the cup clearly visible; add no other people, cups or text.",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "num_inference_steps": 50,
+  "true_cfg_scale": 1.0,
+  "input_image": [
+    "/workspace/c1-supplement/inputs/astronaut.png",
+    "/workspace/c1-supplement/inputs/coffee.png"
+  ],
+  "input_image_sha256": [
+    "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+    "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7"
+  ],
+  "expected_text": null,
+  "split": "supplement_frozen_20261013",
+  "targets": [
+    "person from first reference with preserved face, hair and orange spacesuit",
+    "cup, saucer, spoon and coffee from second reference",
+    "cup set on small wooden table in front of person",
+    "light-gray background and no extra people, cups or text"
+  ],
+  "negative_prompt": null
+}

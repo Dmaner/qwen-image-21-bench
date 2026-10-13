@@ -1,0 +1,13 @@
+{
+  "transformer": {
+    "method": "fp8",
+    "activation_scheme": "dynamic",
+    "is_checkpoint_fp8_serialized": false,
+    "ignored_layers": [
+      "transformer.transformer_blocks.*.img_mlp.*"
+    ]
+  },
+  "text_encoder": null,
+  "vae": null,
+  "default": null
+}
