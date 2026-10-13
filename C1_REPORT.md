@@ -98,9 +98,38 @@ Each candidate uses identical prompts, seeds and ordered reference images as BF1
 | Prefix V FP8 | 43.73 dB | 0.9934 | 0.0037 | 36/36 |
 | Prefix K+V FP8 | 35.06 dB | 0.9804 | 0.0151 | 36/36 |
 
-LPIPS ≤ 0.15 is the predeclared working screen; maintainer acceptance and human assessment remain pending.
-Model-assisted inspection found no clear new task failure across the 12 additional editing cases per candidate. The existing English-title failure remains in DiT FP8, joint FP8 and the `img_mlp` BF16 configuration.
-[Per-case metrics](data/supplement-20261013/quality_pairs.csv) · [Category results and failures](data/supplement-20261013/quality_gate.csv).
+### Quality gate reference
+
+The supplement predeclared **per-case LPIPS ≤ 0.15** before inference, following the image-default recommendation in the [quantization quality test](https://github.com/vllm-project/vllm-omni/blob/main/tests/diffusion/quantization/test_quantization_quality.py). This is a working gate for this evaluation; model-specific maintainer confirmation remains pending.
+
+| Check | Working rule |
+|---|---|
+| Numerical similarity | Every paired output must have LPIPS ≤ 0.15 against its matched BF16 output. Missing or failed outputs count as failures. A mean below 0.15 does not establish a full-suite pass. |
+| Visual task fidelity | Model-assisted inspection checks for newly missing, incorrect or unreadable requested text, lost required subjects, or failed edits relative to BF16. Existing BF16 issues and uncertain observations are recorded separately. |
+| PSNR / SSIM | Supporting measurements; no additional pass threshold is applied. |
+
+**Per-case LPIPS passes by category:**
+
+| Category | DiT FP8 | DiT FP8 + `img_mlp` BF16 | Text Encoder FP8 | Joint FP8 | Prefix V FP8 | Prefix K+V FP8 |
+|---|---:|---:|---:|---:|---:|---:|
+| Ordinary T2I | 6/6 | 6/6 | 6/6 | 6/6 | 6/6 | 6/6 |
+| Chinese text | 5/6 | 4/6 | 3/6 | 3/6 | 6/6 | 6/6 |
+| English text | 4/6 | 5/6 | 5/6 | 5/6 | 6/6 | 6/6 |
+| Bear edits | 6/6 | 6/6 | 6/6 | 6/6 | 6/6 | 6/6 |
+| Person-background edits | 3/3 | 3/3 | 3/3 | 3/3 | 3/3 | 3/3 |
+| Product-color edits | 3/3 | 3/3 | 3/3 | 3/3 | 3/3 | 3/3 |
+| Sign-text edits | 3/3 | 3/3 | 3/3 | 3/3 | 3/3 | 3/3 |
+| Two-reference edits | 2/3 | 3/3 | 3/3 | 3/3 | 3/3 | 3/3 |
+
+Both prefix-storage configurations pass the numerical gate on all 36 cases. The four weight-quantized configurations have 3–4 failures each and do not pass the numerical gate across the full suite.
+
+**Model-assisted visual findings:**
+
+- English title, seed 43: DiT FP8, joint FP8 and `img_mlp` BF16 omit `QWEN IMAGE 2.1`; BF16, Text Encoder FP8 and both prefix configurations retain it.
+- Chinese sign, seed 44: DiT FP8 makes the reading order of `星河书店` ambiguous. The `img_mlp` BF16 output restores readable text but changes the composition substantially and still exceeds the LPIPS threshold.
+- Across the 12 additional editing cases per candidate, the existing model-assisted review records no clear new task failure. DiT FP8's two-reference case at seed 44 exceeds the LPIPS threshold and shows substantial composition changes while retaining the requested person and cup set.
+
+[Per-case metrics](data/supplement-20261013/quality_pairs.csv) · [Category maxima and failing case IDs](data/supplement-20261013/quality_gate.csv) · [Visual observations](data/supplement-20261013/visual_review.csv).
 
 ### Separate CFG=4 prefix comparison
 
